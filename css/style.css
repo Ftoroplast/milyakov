@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "Lato Thin";
+  font-weight: 200;
+  font-style: normal;
+
+  src: url("../fonts/Lato-Thin.ttf");
+}
+
+@font-face {
   font-family: "Lato Light";
   font-weight: 300;
   font-style: normal;
@@ -39,6 +47,187 @@
 }
 
 body {
+  min-width: 1200px;
+
+  background-color: #d0d3d9;
+
+  color: #ffffff;
+
   font-family: "Lato Regular", "Arial", sans-serif;
-  
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+h1 {
+  color: #f48647;
+
+  font-family: "Lato Medium", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 14.58px;
+}
+
+h2 {
+  color: #1a2232;
+
+  font-family: "Lato Bold", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: auto;
+}
+
+figcaption {
+  display: none;
+}
+
+.column {
+  float: left;
+}
+
+.column--right {
+  float: right;
+}
+
+.column--one-quarter {
+  width:  4.545%;
+}
+
+.column--two-quarters {
+  width:  9.09%;
+}
+
+.column--three-quarters {
+  width:  13.635%;
+}
+
+.column--four-quarters {
+  width:  18.18%;
+}
+
+.column--five-quarters {
+  width:  22.725%;
+}
+
+.column--six-quarters {
+  width:  27.27%;
+}
+
+.column--seven-quarters {
+  width:  31.814999999999998%;
+}
+
+.column--eight-quarters {
+  width:  36.36%;
+}
+
+.column--nine-quarters {
+  width:  40.905%;
+}
+
+.column--ten-quarters {
+  width:  45.45%;
+}
+
+.column--eleven-quarters {
+  width:  49.995%;
+}
+
+.column--twelve-quarters {
+  width:  54.54%;
+}
+
+.column--thirteen-quarters {
+  width:  59.085%;
+}
+
+.column--fourteen-quarters {
+  width:  63.629999999999995%;
+}
+
+.column--fifteen-quarters {
+  width:  68.175%;
+}
+
+.column--sixteen-quarters {
+  width:  72.72%;
+}
+
+.column--seventeen-quarters {
+  width:  77.265%;
+}
+
+.column--eighteen-quarters {
+  width:  81.81%;
+}
+
+.column--nineteen-quarters {
+  width:  86.355%;
+}
+
+.column--twenty-quarters {
+  width:  90.9%;
+}
+
+.column--twenty-one-quarters {
+  width:  95.445%;
+}
+
+.column--twenty-two-quarters {
+  width:  99.99%;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container {
+  padding: 0 4.166%;
+  margin: 0 auto;
+}
+
+.navigation {
+  text-align: right;
+}
+
+.navigation__list {
+  list-style: none;
+}
+
+.page-title {
+  padding-left: 13.636%;
+}
+
+.phone-block {
+  text-align: center;
+}
+
+.content__title {
+  text-align: center;
+}
+
+.content__column {
+  width: 50%;
+}
+
+.gallery {
+  font-size: 0;
+}
+
+.gallery__item {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+
+  font-size: 22px;
+}
+
+.gallery__item--clients {
+  vertical-align: bottom;
+}
+
+.gallery__picture {
+  margin: 0;
 }

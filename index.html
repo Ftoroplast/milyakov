@@ -8,11 +8,20 @@
   </head>
   <body>
     <header>
-      <div class="container">
-        <div class="logo">
+      <div class="container clearfix">
+        <div class="logo column column--three-quarters">
           <img src="img/logo__header--milyakov.svg" width="150" height="77" alt="Anton Milyakov">
         </div>
-        <a class="navigation" href="#">Меню</a>
+        <nav class="navigation column column--right column--eighteen-quarters">
+          <a class="navigation__btn" href="#">Меню</a>
+          <ul class="navigation__list">
+            <li class="navigation__item"><a class="navigation__link" href="#how-i-work">Как я работаю</a></li>
+            <li class="navigation__item"><a class="navigation__link" href="#about-me">О себе</a></li>
+            <li class="navigation__item"><a class="navigation__link" href="#portfolio">Портфолио</a></li>
+            <li class="navigation__item"><a class="navigation__link" href="#clients">Клиенты</a></li>
+            <li class="navigation__item"><a class="navigation__link" href="#contacts">Контакты</a></li>
+          </ul>
+        </nav>
         <h1 class="page-title">
           <p class="page-title__role">Ведущий для вашего</p>
           <p class="page-title__category">Корпоратива</p>
@@ -26,26 +35,26 @@
 
     <main>
       <div class="container">
-        <section class="content content--my-experience">
+        <section class="content content--my-experience clearfix" id="my-experience">
           <h2 class="content__title">Мой опыт</h2>
-          <div class="content__column content__column--left">
+          <div class="content__column content__column--left column column--ten-quarters">
             <p class="content__text">За <span class="content__number">4</span> года, я провёл <span class="content__number">267</span> мероприятий,
                с аудиторией от <span class="content__number">8</span> до <span class="content__number">1500</span> человек.</p>
-            <div class="content__column content__column--right">
-              <p class="content__text">Телеведущий на каналах</p>
-              <img src="img/logo__my-experience--match-tv.png" width="250" height="69" alt="МАТЧ TV">
-              <img src="img/logo__my-experience--s-tv.png" width="79" height="70" alt="S TV">
-            </div>
+          </div>
+          <div class="content__column content__column--right column column--ten-quarters">
+            <p class="content__text">Телеведущий на каналах</p>
+            <img src="img/logo__my-experience--match-tv.png" width="250" height="69" alt="МАТЧ TV">
+            <img src="img/logo__my-experience--s-tv.png" width="79" height="70" alt="S TV">
           </div>
         </section>
-        <section class="content content--how-i-work">
+        <section class="content content--how-i-work" id="how-i-work">
           <h2 class="content__title">Как я работаю</h2>
         </section>
-        <section class="content content--about-me">
+        <section class="content content--about-me" id="about-me">
           <h2 class="content__title">Немного обо мне</h2>
           <video class="content__video" src="#"></video>
         </section>
-        <section class="content content--portfolio">
+        <section class="content content--portfolio" id="portfolio">
           <h2 class="content__title">Портфолио</h2>
           <div class="gallery gallery--portfolio">
             <figure class="gallery__item gallery__item--portfolio">
@@ -110,7 +119,7 @@
             </div>
           </div>
         </section>
-        <section class="content content--clients">
+        <section class="content content--clients" id="clients">
           <h2 class="content__title">Клиенты</h2>
           <div class="gallery gallery--clients">
             <figure class="gallery__item gallery__item--clients">
@@ -153,8 +162,8 @@
         </section>
       </div>
       <footer>
-        <div class="container">
-          <section class="contacts">
+        <div class="container clearfix">
+          <section class="contacts column column--six-quarters" id="contacts">
             <h3 class="contacts__title">Антон Миляков</h3>
             <p class="contacts__phone">
               Телефон: <a class="contacts__link" href="tel:89262461146">+7(926)246-11-46</a>
@@ -163,13 +172,13 @@
               Email: <a class="contacts__link" href="mailto:milyakov.anton@gmail.com">milyakov.anton@gmail.com</a>
             </p>
           </section>
-          <section class="partners">
+          <section class="partners column column--ten-quarters">
             <div class="partners__logo">
               <img src="img/logo__footer--i-egoist.png" width="102" height="86" alt="I-Egoist">
             </div>
             <p class="partners__text">Я одеваюсь здесь!</p>
           </section>
-          <section class="copyright">
+          <section class="copyright column column--six-quarters">
             <p class="copyright__text">
               Разработано <span class="copyright__company">Julo</span>
             </p>
