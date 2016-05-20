@@ -81,6 +81,10 @@ figcaption {
   display: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .column {
   float: left;
 }
@@ -184,15 +188,26 @@ figcaption {
 }
 
 .container {
+  box-sizing: border-box;
+  width: 1200px;
   padding: 0 4.166%;
   margin: 0 auto;
 }
 
+.container--header {
+  padding-top: 50px;
+  background: #171c2a url("../img/bg__header--milyakov.jpg") no-repeat;
+  background-size: cover;
+}
+
 .navigation {
+  margin-bottom: 175px;
   text-align: right;
 }
 
 .navigation__list {
+  display: none;
+
   list-style: none;
 }
 
@@ -200,8 +215,51 @@ figcaption {
   padding-left: 13.636%;
 }
 
+.page-title__role {
+  margin-bottom: 35px;
+
+  color: #f9f9f9;
+
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 14.58px;
+}
+
+.page-title__category {
+  margin-bottom: 160px;
+}
+
 .phone-block {
+  position: relative;
+
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  margin-bottom: 115px;
+  
+  box-sizing: border-box;
+  width: 522px;
+  height: 44px;
+
+  background: transparent url("../img/bg__phone-block--rectangle.svg") no-repeat center;
+  background-size: 522px 44px;
+
   text-align: center;
+}
+
+.phone-block__phone {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+
+  color: #f9f9f9;
+
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 11.26px;
 }
 
 .content__title {
