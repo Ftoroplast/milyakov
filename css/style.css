@@ -1,4 +1,12 @@
 @font-face {
+  font-family: "Tahoma Bold";
+  font-weight: 700;
+  font-style: normal;
+
+  src: url("../fonts/tahomabd.ttf");
+}
+
+@font-face {
   font-family: "Lato Thin";
   font-weight: 200;
   font-style: normal;
@@ -339,7 +347,6 @@ a {
 
 .content {
   position: relative;
-  z-index: -2;
   box-sizing: border-box;
   padding-top: 30px;
   padding-bottom: 50px;
@@ -469,7 +476,7 @@ a {
 }
 
 .container--portfolio {
-
+  padding-right: 0;
 }
 
 .container--portfolio::before {
@@ -477,7 +484,6 @@ a {
   position: absolute;
   bottom: -50px;
   right: 0;
-  z-index: -1;
 
   width: 0;
   height: 0;
@@ -491,8 +497,10 @@ a {
 }
 
 .gallery {
-  width: 1300px;
-  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+  overflow-x: auto;
+  white-space: nowrap;
   font-size: 0;
 }
 
@@ -500,12 +508,19 @@ a {
   display: inline-block;
   vertical-align: top;
   margin: 0;
+  margin-right: 9px;
 
   font-size: 22px;
 }
 
 .gallery__item--clients {
   vertical-align: bottom;
+
+  margin-right: 9.091%;
+}
+
+.gallery__item:last-child {
+  margin-right: 0;
 }
 
 .gallery__picture {
@@ -513,5 +528,135 @@ a {
 }
 
 .page-footer {
+  overflow: hidden;
   background-color: #1a2232;
+}
+
+.container--footer {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.contacts__title {
+  margin-bottom: 30px;
+
+  color: #f9f9f9;
+
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.contacts__phone {
+  margin-bottom: 9px;
+
+  color: #f9f9f9;
+
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.contacts__email {
+  color: #f9f9f9;
+
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.contacts__link {
+  color: #f9f9f9;
+
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.contacts__phone .contacts__link {
+  margin-left: 39px;
+}
+
+.contacts__email .contacts__link {
+  margin-left: 61px;
+}
+
+.partners {
+  position: relative;
+}
+
+.partners::before {
+  content: "";
+  position: absolute;
+  top: -42px;
+  left: 35px;
+
+  width: 3px;
+  height: 207px;
+
+  background-color: #b7b9be;
+
+  transform: rotate(20deg);
+}
+
+.partners::after {
+  content: "";
+  position: absolute;
+  top: -42px;
+  right: 35px;
+
+  width: 3px;
+  height: 207px;
+
+  background-color: #b7b9be;
+
+  transform: rotate(20deg);
+}
+
+.partners__logo {
+  width: 150px;
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.partners__text {
+  margin-top: 2px;
+
+  color: #f9f9f9;
+
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.copyright__text {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+
+  text-transform: lowercase;
+
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.copyright__company {
+  margin-left: 13px;
+
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  color: #25ec75;
+
+  font-family: "Tahoma Bold", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
 }
