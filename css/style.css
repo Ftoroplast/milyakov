@@ -225,11 +225,11 @@ a {
 }
 
 .navigation__btn {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+  float: right;
 
   width: 104px;
-  height: 44px;
+  height: 38px;
 
   margin-top: 20px;
 
@@ -238,16 +238,19 @@ a {
   font-family: "Lato Regular", "Arial", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 44px;
+  line-height: 38px;
 }
 
 .navigation__btn::before {
   content: "";
+  position: relative;
+  bottom: 2px;
+
   display: inline-block;
   vertical-align: middle;
 
   width: 2px;
-  height: 44px;
+  height: 38px;
   margin-right: 20px;
 
   background-color: #f9f9f9;
@@ -257,11 +260,14 @@ a {
 
 .navigation__btn::after {
   content: "";
+  position: relative;
+  bottom: 2px;
+
   display: inline-block;
   vertical-align: middle;
 
   width: 2px;
-  height: 44px;
+  height: 38px;
   margin-left: 20px;
 
   background-color: #f9f9f9;
@@ -272,17 +278,13 @@ a {
 .navigation__list {
   position: absolute;
   top: 20px;
-  right: 0;
+  right: -6px;
 
   display: none;
 
   list-style: none;
 
   font-size: 0;
-}
-
-.navigation__btn:hover {
-  opacity: 0;
 }
 
 .navigation__btn:hover + .navigation__list,
@@ -301,7 +303,12 @@ a {
   position: relative;
 
   display: block;
-  padding: 12px 20px;
+  box-sizing: border-box;
+  width: 160px;
+  padding: 7px 5px;
+  margin-right: 13px;
+
+  text-align: center;
 
   background-color: #f48647;
 
@@ -317,41 +324,41 @@ a {
   content: "";
   position: absolute;
   bottom: 0;
-  left: -15px;
+  left: -10px;
 
   width: 0;
   height: 0;
 
-  border-bottom: 49px solid #f48647;
-  border-left: 15px solid transparent;
+  border-bottom: 38px solid #f48647;
+  border-left: 10px solid transparent;
 }
 
 .navigation__link::after {
   content: "";
   position: absolute;
   bottom: 0;
-  right: -14px;
+  right: -10px;
 
   width: 0;
   height: 0;
 
-  border-top: 49px solid #f48647;
-  border-right: 15px solid transparent;
+  border-top: 38px solid #f48647;
+  border-right: 10px solid transparent;
 }
 
-.navigation__item::before {
+.navigation__item:first-child::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
+  left: -6px;
   z-index: 1;
 
   width: 2px;
-  height: 49px;
+  height: 38px;
 
-  background-color: #202634;
+  background-color: #f9f9f9;
 
-  transform: rotate(20deg);
+  transform: rotate(15deg);
 }
 
 .page-title {
