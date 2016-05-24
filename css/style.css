@@ -55,7 +55,7 @@
 }
 
 body {
-  min-width: 1200px;
+  min-width: 900px;
 
   background-color: #d0d3d9;
 
@@ -126,7 +126,7 @@ a {
 }
 
 .column--seven-quarters {
-  width:  31.814999999999998%;
+  width:  31.815%;
 }
 
 .column--eight-quarters {
@@ -198,10 +198,14 @@ a {
 .container {
   position: relative;
 
-  box-sizing: border-box;
-  width: 1200px;
-  padding: 0 4.166%;
+  min-width: 900px;
+  max-width: 1200px;
+
   margin: 0 auto;
+}
+
+.container__inner-wrapper {
+  padding: 0 4.166%;
 }
 
 .page-header {
@@ -212,15 +216,18 @@ a {
 }
 
 .container--header {
+  background: url("../img/bg__header--milyakov.png") no-repeat 86% bottom;
+  background-size: 602px 588px;
+}
+
+.container__inner-wrapper--header {
   padding-top: 50px;
-  background: url("../img/bg__header--milyakov.png") no-repeat 82% bottom;
-  background-size: 547.65px 534.6px;
 }
 
 .navigation {
   position: relative;
 
-  margin-bottom: 175px;
+  margin-bottom: 185px;
   text-align: right;
 }
 
@@ -231,7 +238,8 @@ a {
   width: 104px;
   height: 38px;
 
-  margin-top: 20px;
+  margin-top: 18px;
+  margin-right: 5px;
 
   color: #f9f9f9;
 
@@ -253,7 +261,7 @@ a {
 
   background-color: #f9f9f9;
 
-  transform: rotate(15deg);
+  transform: rotate(20deg);
 }
 
 .navigation__btn::after {
@@ -271,13 +279,13 @@ a {
 
   background-color: #f9f9f9;
 
-  transform: rotate(15deg);
+  transform: rotate(20deg);
 }
 
 .navigation__list {
   position: absolute;
-  top: 22px;
-  right: -3px;
+  top: 20px;
+  right: 3px;
 
   display: none;
 
@@ -306,7 +314,7 @@ a {
 
   display: block;
   box-sizing: border-box;
-  padding: 7px 20px;
+  padding: 7px 29px;
   min-width: 175px;
   min-height: 38px;
 
@@ -335,7 +343,7 @@ a {
 
   background-color: #f48647;
 
-  transform: skew(-15deg);
+  transform: skew(-20deg);
 }
 
 .navigation__item:first-child::before {
@@ -350,7 +358,7 @@ a {
 
   background-color: #f9f9f9;
 
-  transform: rotate(15deg);
+  transform: rotate(20deg);
 }
 
 .navigation__item:hover > .navigation__link::before,
@@ -380,8 +388,12 @@ a {
   position: static;
 
   display: block;
-  width: 900px;
-  margin-right: 14px;
+  min-width: 600px;
+  margin-right: 19px;
+}
+
+.navigation__link--modal-window {
+  min-width: 130px;
 }
 
 .navigation__item--modal-window:last-child::after {
@@ -396,16 +408,16 @@ a {
 
   background-color: #f9f9f9;
 
-  transform: rotate(15deg);
+  transform: rotate(20deg);
 }
 
 .page-title {
-  padding-left: 150px;
-  margin-bottom: 160px;
+  padding-left: 147px;
+  margin-bottom: 181px;
 }
 
 .page-title__role {
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 
   color: #f9f9f9;
 
@@ -438,7 +450,7 @@ a {
   display: inline-block;
   vertical-align: top;
   width: 250px;
-  height: 45px;
+  height: 44px;
   padding: 0 25px;
   margin-right: 3px;
 
@@ -447,7 +459,7 @@ a {
   font-family: "Lato Regular", "Arial", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  line-height: 45px;
+  line-height: 41px;
 }
 
 .phone-block__phone::before {
@@ -465,7 +477,7 @@ a {
 
   border: 2px solid #f4c547;
 
-  transform: skew(-15deg);
+  transform: skew(-24deg);
 }
 
 .phone-block__btn {
@@ -473,8 +485,8 @@ a {
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
-  width: 250px;
-  height: 45px;
+  width: 249px;
+  height: 44px;
   padding: 0 25px;
 
   color: #1a2232;
@@ -482,7 +494,7 @@ a {
   font-family: "Lato Regular", "Arial", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  line-height: 45px;
+  line-height: 41px;
 }
 
 .phone-block__btn::before {
@@ -500,7 +512,7 @@ a {
 
   background-color: #f4c547;
 
-  transform: skew(-15deg);
+  transform: skew(-24deg);
 }
 
 label[for="spoiler"] {
@@ -522,7 +534,12 @@ label[for="spoiler"] {
 .spoiler {
   display: none;
 
-  padding-bottom: 82px;
+  padding-top: 94px;
+  padding-bottom: 74px;
+}
+
+#spoiler {
+  display: none;
 }
 
 #spoiler:checked ~ .spoiler {
@@ -530,9 +547,9 @@ label[for="spoiler"] {
 }
 
 .spoiler__text {
-  width: 600px;
+  width: 54.54%;
 
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 
   color: #f9f9f9;
 
@@ -543,14 +560,14 @@ label[for="spoiler"] {
 }
 
 .spoiler__text--title {
-  margin-bottom: 22px;
+  margin-bottom: 11px;
 
   color: #f48647;
 
   font-family: "Lato Bold", "Arial", sans-serif;
   font-weight: 700;
   font-size: 28px;
-  line-height: 36px;
+  line-height: 44px;
 }
 
 .spoiler__text--feature {
@@ -558,7 +575,8 @@ label[for="spoiler"] {
 }
 
 .spoiler__text--conclusion {
-  margin-top: 63px;
+  margin-top: 62px;
+  margin-bottom: 0;
 
   font-family: "Lato Bold", "Arial", sans-serif;
   font-weight: 700;
@@ -569,14 +587,14 @@ label[for="spoiler"] {
 .content {
   position: relative;
   box-sizing: border-box;
-  padding-top: 30px;
+  padding-top: 27px;
   padding-bottom: 50px;
 }
 
 .content__title {
   position: relative;
 
-  width: 330px;
+  width: 27.4%;
 
   margin: 0 auto;
   margin-bottom: 80px;
@@ -587,7 +605,7 @@ label[for="spoiler"] {
 }
 
 .content__title--my-experience {
-  margin-bottom: 48px;
+  margin-bottom: 47px;
 }
 
 .content__title::before {
@@ -602,7 +620,7 @@ label[for="spoiler"] {
 
   background-color: #1a2232;
 
-  transform: rotate(15deg);
+  transform: rotate(21deg);
 }
 
 .content__title::after {
@@ -617,26 +635,29 @@ label[for="spoiler"] {
 
   background-color: #1a2232;
 
-  transform: rotate(15deg);
+  transform: rotate(21deg);
 }
 
 .content__column {
   box-sizing: border-box;
   width: 50%;
-  padding: 30px;
+  padding-right: 3%;
   padding-top: 0;
   padding-bottom: 0;
+  padding-left: 50px;
+}
 
+.content__column--right {
+  padding-left: 45px;
+}
+
+.content__text {
   color: #1a2232;
 
   font-family: "Lato Semibold", "Arial", sans-serif;
   font-weight: 600;
   font-size: 24px;
-  line-height: 75px;
-}
-
-.content__column--right {
-  padding-left: 45px;
+  line-height: 70px;
 }
 
 .content__number {
@@ -663,7 +684,7 @@ label[for="spoiler"] {
   left: 50%;
 
   width: 2px;
-  height: 175px;
+  height: 50%;
 
   background-color: #000000;
 }
@@ -697,11 +718,11 @@ label[for="spoiler"] {
   background-color: #f48647;
 }
 
-.container--portfolio {
+.container__inner-wrapper--portfolio {
   padding-right: 0;
 }
 
-.container--portfolio::before {
+.container__inner-wrapper--portfolio::before {
   content: "";
   position: absolute;
   bottom: -50px;

@@ -9,216 +9,232 @@
   </head>
   <body>
     <header class="page-header">
-      <div class="container container--header clearfix">
-        <div class="logo column column--three-quarters">
-          <img src="img/logo__header--milyakov.svg" width="150" height="77" alt="Anton Milyakov">
+      <div class="container container--header">
+        <div class="container__inner-wrapper container__inner-wrapper--header clearfix">
+          <div class="logo column column--three-quarters">
+            <img src="img/logo__header--milyakov.svg" width="150" height="77" alt="Anton Milyakov">
+          </div>
+          <nav class="navigation column column--right column--eighteen-quarters">
+            <a class="navigation__btn" href="#">Меню</a>
+            <ul class="navigation__list">
+              <li class="navigation__item"><a class="navigation__link" href="#how-i-work">Как я работаю</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#about-me">О себе</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#portfolio">Портфолио</a></li>
+              <li class="navigation__item"><a class="navigation__link" href="#clients">Клиенты</a></li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="#contacts">Контакты</a>
+                <div class="navigation__modal-window">
+                  <ul class="navigation__list navigation__list--modal-window">
+                    <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="#">instagram</a></li>
+                    <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="#">vkontakte</a></li>
+                    <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="#">milyakov.anton@gmail.com</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <h1 class="page-title">
+            <p class="page-title__role">Ведущий для вашего</p>
+            <p class="page-title__category">Корпоратива</p>
+          </h1>
+          <div class="phone-block">
+            <a class="phone-block__phone" href="tel:89262461146">+7 (926) 246-11-46</a>
+            <a class="phone-block__btn" href="#">Заказать звонок</a>
+          </div>
+          <label for="spoiler"></label>
         </div>
-        <nav class="navigation column column--right column--eighteen-quarters">
-          <a class="navigation__btn" href="#">Меню</a>
-          <ul class="navigation__list">
-            <li class="navigation__item"><a class="navigation__link" href="#how-i-work">Как я работаю</a></li>
-            <li class="navigation__item"><a class="navigation__link" href="#about-me">О себе</a></li>
-            <li class="navigation__item"><a class="navigation__link" href="#portfolio">Портфолио</a></li>
-            <li class="navigation__item"><a class="navigation__link" href="#clients">Клиенты</a></li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="#contacts">Контакты</a>
-              <div class="navigation__modal-window">
-                <ul class="navigation__list navigation__list--modal-window">
-                  <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="#">instagram</a></li>
-                  <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="#">vkontakte</a></li>
-                  <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="#">milyakov.anton@gmail.com</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
-        <h1 class="page-title">
-          <p class="page-title__role">Ведущий для вашего</p>
-          <p class="page-title__category">Корпоратива</p>
-        </h1>
-        <div class="phone-block">
-          <a class="phone-block__phone" href="tel:89262461146">+7 (926) 246-11-46</a>
-          <a class="phone-block__btn" href="#">Заказать звонок</a>
-        </div>
-        <label for="spoiler"></label>
       </div>
-      <input type="checkbox" id="spoiler" hidden>
+      <input type="checkbox" id="spoiler">
       <div class="spoiler container container--header">
-        <p class="spoiler__text spoiler__text--title">
-          Здравствуйте!<br>
-          Меня зовут Антон Миляков.
-        </p>
-        <p class="spoiler__text">Я ведущий <b class="spoiler__text spoiler__text--feature">ярких</b> мероприятий в Москве и не только.
-          От маленьких и уютных до больших и роскошных.</p>
-        <p class="spoiler__text">К каждому мероприятию у меня <b class="spoiler__text spoiler__text--feature">персональный подход</b>,
-          я стараюсь сделать их <b class="spoiler__text spoiler__text--feature">уникальными</b>
-          и не похожими друг на друга.</p>
-        <p class="spoiler__text">Сценарий каждого события составляется на основе
-          <b class="spoiler__text spoiler__text--feature">ваших пожеланий</b> и моих идей.</p>
-        <p class="spoiler__text spoiler__text--conclusion">Я люблю свою работу.
-          Видеть сияющие и радостные глаза гостей,
-          для меня <b class="spoiler__text spoiler__text--conclusion spoiler__text--feature">настоящее удовольствие</b>!</p>
+        <div class="container__inner-wrapper">
+          <p class="spoiler__text spoiler__text--title">
+            Здравствуйте!<br>
+            Меня зовут Антон Миляков.
+          </p>
+          <p class="spoiler__text">Я ведущий <b class="spoiler__text spoiler__text--feature">ярких</b> мероприятий в Москве и не только.
+            От&nbsp;маленьких и уютных до больших и роскошных.</p>
+          <p class="spoiler__text">К каждому мероприятию у меня <b class="spoiler__text spoiler__text--feature">персональный подход</b>,
+            я&nbsp;стараюсь сделать их <b class="spoiler__text spoiler__text--feature">уникальными</b>
+            и&nbsp;не&nbsp;похожими&nbsp;друг&nbsp;на&nbsp;друга.</p>
+          <p class="spoiler__text">Сценарий каждого события составляется на основе
+            <b class="spoiler__text spoiler__text--feature">ваших&nbsp;пожеланий</b> и моих идей.</p>
+          <p class="spoiler__text spoiler__text--conclusion">Я люблю свою работу.<br>
+            Видеть сияющие и радостные глаза гостей,
+            для меня <b class="spoiler__text spoiler__text--conclusion spoiler__text--feature">настоящее удовольствие</b>!</p>
+        </div>
       </div>
     </header>
 
     <main>
       <section class="content content--my-experience clearfix" id="my-experience">
         <div class="container">
-          <h2 class="content__title content__title--my-experience">Мой опыт</h2>
-          <div class="content__column content__column--left column column--ten-quarters">
-            <p class="content__text">За <span class="content__number">4</span> года, я провёл <span class="content__number">267</span> мероприятий,
-               с&nbsp;аудиторией от <span class="content__number">8</span> до <span class="content__number">1500</span> человек.</p>
-          </div>
-          <div class="content__column content__column--right column column--ten-quarters">
-            <p class="content__text">Телеведущий на каналах</p>
-            <div class="content__picture">
-              <img src="img/logo__my-experience--match-tv.png" width="250" height="69" alt="МАТЧ TV">
+          <div class="container__inner-wrapper clearfix">
+            <h2 class="content__title content__title--my-experience">Мой опыт</h2>
+            <div class="content__column content__column--left column column--ten-quarters">
+              <p class="content__text">За <span class="content__number">4</span> года, я провёл <span class="content__number">267</span> мероприятий,
+                 с&nbsp;аудиторией от <span class="content__number">8</span> до <span class="content__number">1500</span> человек.</p>
             </div>
-            <div class="content__picture">
-              <img src="img/logo__my-experience--s-tv.png" width="79" height="70" alt="S TV">
+            <div class="content__column content__column--right column column--ten-quarters">
+              <p class="content__text">Телеведущий на каналах</p>
+              <div class="content__picture">
+                <img src="img/logo__my-experience--match-tv.png" width="250" height="69" alt="МАТЧ TV">
+              </div>
+              <div class="content__picture">
+                <img src="img/logo__my-experience--s-tv.png" width="79" height="70" alt="S TV">
+              </div>
             </div>
           </div>
         </div>
       </section>
       <section class="content content--how-i-work" id="how-i-work">
         <div class="container">
-          <h2 class="content__title">Как я работаю</h2>
+          <div class="container__inner-wrapper">
+            <h2 class="content__title">Как я работаю</h2>
+          </div>
         </div>
       </section>
       <section class="content content--about-me" id="about-me">
         <div class="container container--about-me">
-          <h2 class="content__title">Немного о себе</h2>
-          <video class="content__video" src="#"></video>
+          <div class="container__inner-wrapper">
+            <h2 class="content__title">Немного о себе</h2>
+            <video class="content__video" src="#"></video>
+          </div>
         </div>
       </section>
       <section class="content content--portfolio" id="portfolio">
         <h2 class="content__title content__title--portfolio">Портфолио</h2>
-        <div class="container container--portfolio">
-          <div class="gallery gallery--portfolio">
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--the_golden_voice_of_russia.jpg" width="345" height="228" alt="VIII Международный вокальный фестиваль «Золотой Голос России»."></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">VIII Международный вокальный фестиваль «Золотой Голос России».</h3>
-                <p class="gallery__text gallery__text--portfolio">20.01.16 в концертном зале «Королевский» более 100 вокалистов боролись за звание лучшего. Участников оценивали российская и советская певица Ольга Кормухина, финалистка шоу «Голос»
-                   Эра Канн, певец Bahh Tee, а фестиваль был показан по каналу STV.</p>
-              </figcaption>
-            </figure>
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--training_on_public_speaking.jpg" width="358" height="228" alt="Тренинг по публичным выступлениям."></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">Тренинг по Публичным выступлениям.</h3>
-                <p class="gallery__text gallery__text--portfolio">Делюсь накопленным опытом в своей профессиональной сфере. Не обошлось и без десятка практических упражнений.</p>
-              </figcaption>
-            </figure>
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--presentation_of_the_new_collection_in_the_network_of_jewelry_stores_adamas.jpg" width="152" height="228" alt="Презентация новой коллекции в сети ювелирных магазинов «Адамас»."></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">Сеть ювелирных магазинов «Адамас».</h3>
-                <p class="gallery__title gallery__title--portfolio">Презентация новой коллекции.</p>
-              </figcaption>
-            </figure>
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--show_songs_from_the_stars.jpg" width="361" height="228" alt="Шоу \"Песни со звёздами\"."></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">Шоу «Песни со звездами».</h3>
-                <p class="gallery__text gallery__text--portfolio">В гостях лауреат премии «Золотой Граммофон» Согдиана. Клуб Пятница. Специально для канала STV.</p>
-              </figcaption>
-            </figure>
-            <br>
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--internship_in_match_tv.jpg" width="416" height="228" alt="Стажировка на МАТЧ ТВ!"></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">Стажировка на МАТЧ ТВ!</h3>
-                <p class="gallery__text gallery__text--portfolio">Десятки часов тренировок и отработок самых невероятных форс-мажорных ситуаций в студии во время прямого эфира.</p>
-              </figcaption>
-            </figure>
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--tv_show_musical_ring.jpg" width="152" height="228" alt="Телешоу «Музыкальный ринг». Генеральный продюсер iRADIO Константин Кирьянов делиться своими впечатлениями от шоу."></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">Телешоу «Музыкальный ринг».</h3>
-                <p class="gallery__text gallery__text--portfolio">Генеральный продюсер iRADIO Константин Кирьянов делиться своими впечатлениями от шоу.</p>
-              </figcaption>
-            </figure>
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--anita_tsoy_in_the_guests_of_the_show_songs_with_the_stars.jpg" width="349" height="228" alt="Анита Цой в гостях шоу «Песни со звездами»."></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">Шоу «Песни со звездами».</h3>
-                <p class="gallery__text gallery__text--portfolio">В гостях Анита Цой.</p>
-              </figcaption>
-            </figure>
-            <figure class="gallery__item gallery__item--portfolio">
-              <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--the_guest_of_the_show_songs_with_stars_alexey_nazarov.jpg" width="295" height="228" alt="В гостях шоу «Песни со звездами» российский певец, битмейкер и продюсер Алексей Назаров, известный под псевдонимом LX-24."></p>
-              <figcaption class="gallery__description gallery__description--portfolio">
-                <h3 class="gallery__title gallery__title--portfolio">Шоу «Песни со звездами».</h3>
-                <p class="gallery__text gallery__text--portfolio">В гостях российский певец, битмейкер и продюсер Алексей Назаров, известный под псевдонимом LX-24.</p>
-              </figcaption>
-            </figure>
+        <div class="container">
+          <div class="container__inner-wrapper container__inner-wrapper--portfolio">
+            <div class="gallery gallery--portfolio">
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--the_golden_voice_of_russia.jpg" width="345" height="228" alt="VIII Международный вокальный фестиваль «Золотой Голос России»."></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">VIII Международный вокальный фестиваль «Золотой Голос России».</h3>
+                  <p class="gallery__text gallery__text--portfolio">20.01.16 в концертном зале «Королевский» более 100 вокалистов боролись за звание лучшего. Участников оценивали российская и советская певица Ольга Кормухина, финалистка шоу «Голос»
+                     Эра Канн, певец Bahh Tee, а фестиваль был показан по каналу STV.</p>
+                </figcaption>
+              </figure>
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--training_on_public_speaking.jpg" width="358" height="228" alt="Тренинг по публичным выступлениям."></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">Тренинг по Публичным выступлениям.</h3>
+                  <p class="gallery__text gallery__text--portfolio">Делюсь накопленным опытом в своей профессиональной сфере. Не обошлось и без десятка практических упражнений.</p>
+                </figcaption>
+              </figure>
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--presentation_of_the_new_collection_in_the_network_of_jewelry_stores_adamas.jpg" width="152" height="228" alt="Презентация новой коллекции в сети ювелирных магазинов «Адамас»."></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">Сеть ювелирных магазинов «Адамас».</h3>
+                  <p class="gallery__title gallery__title--portfolio">Презентация новой коллекции.</p>
+                </figcaption>
+              </figure>
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--show_songs_from_the_stars.jpg" width="361" height="228" alt="Шоу \"Песни со звёздами\"."></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">Шоу «Песни со звездами».</h3>
+                  <p class="gallery__text gallery__text--portfolio">В гостях лауреат премии «Золотой Граммофон» Согдиана. Клуб Пятница. Специально для канала STV.</p>
+                </figcaption>
+              </figure>
+              <br>
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--internship_in_match_tv.jpg" width="416" height="228" alt="Стажировка на МАТЧ ТВ!"></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">Стажировка на МАТЧ ТВ!</h3>
+                  <p class="gallery__text gallery__text--portfolio">Десятки часов тренировок и отработок самых невероятных форс-мажорных ситуаций в студии во время прямого эфира.</p>
+                </figcaption>
+              </figure>
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--tv_show_musical_ring.jpg" width="152" height="228" alt="Телешоу «Музыкальный ринг». Генеральный продюсер iRADIO Константин Кирьянов делиться своими впечатлениями от шоу."></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">Телешоу «Музыкальный ринг».</h3>
+                  <p class="gallery__text gallery__text--portfolio">Генеральный продюсер iRADIO Константин Кирьянов делиться своими впечатлениями от шоу.</p>
+                </figcaption>
+              </figure>
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--anita_tsoy_in_the_guests_of_the_show_songs_with_the_stars.jpg" width="349" height="228" alt="Анита Цой в гостях шоу «Песни со звездами»."></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">Шоу «Песни со звездами».</h3>
+                  <p class="gallery__text gallery__text--portfolio">В гостях Анита Цой.</p>
+                </figcaption>
+              </figure>
+              <figure class="gallery__item gallery__item--portfolio">
+                <p class="gallery__picture gallery__picture--portfolio"><img src="img/pic__gallery--the_guest_of_the_show_songs_with_stars_alexey_nazarov.jpg" width="295" height="228" alt="В гостях шоу «Песни со звездами» российский певец, битмейкер и продюсер Алексей Назаров, известный под псевдонимом LX-24."></p>
+                <figcaption class="gallery__description gallery__description--portfolio">
+                  <h3 class="gallery__title gallery__title--portfolio">Шоу «Песни со звездами».</h3>
+                  <p class="gallery__text gallery__text--portfolio">В гостях российский певец, битмейкер и продюсер Алексей Назаров, известный под псевдонимом LX-24.</p>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
       <section class="content content--clients" id="clients">
         <div class="container">
-          <h2 class="content__title">Клиенты</h2>
-          <div class="gallery gallery--clients">
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--mercedes-benz.png" width="201" height="143" alt="Mercedes Benz"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--toyota.png" width="176" height="145" alt="Toyota"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--lukoil.png" width="200" height="54" alt="Лукойл"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--reso-guarantee.png" width="200" height="62" alt="Ресо Гарантия"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--mega.png" width="200" height="55" alt="Мега"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--alphabet_of_taste.png" width="152" height="143" alt="Азбука Вкуса"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--zara.png" width="201" height="48" alt="Zara"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--kolbasoff.png" width="203" height="149" alt="Колбасофф"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--adamas.png" width="200" height="85" alt="Адамас"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--aviapark.png" width="203" height="40" alt="ТЦ Авиапарк"></p>
-            </figure>
-            <figure class="gallery__item gallery__item--clients">
-              <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--the_snow_queen.png" width="202" height="42" alt="Снежная Королева"></p>
-            </figure>
+          <div class="container__inner-wrapper">
+            <h2 class="content__title">Клиенты</h2>
+            <div class="gallery gallery--clients">
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--mercedes-benz.png" width="201" height="143" alt="Mercedes Benz"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--toyota.png" width="176" height="145" alt="Toyota"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--lukoil.png" width="200" height="54" alt="Лукойл"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--reso-guarantee.png" width="200" height="62" alt="Ресо Гарантия"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--mega.png" width="200" height="55" alt="Мега"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--alphabet_of_taste.png" width="152" height="143" alt="Азбука Вкуса"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--zara.png" width="201" height="48" alt="Zara"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--kolbasoff.png" width="203" height="149" alt="Колбасофф"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--adamas.png" width="200" height="85" alt="Адамас"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--aviapark.png" width="203" height="40" alt="ТЦ Авиапарк"></p>
+              </figure>
+              <figure class="gallery__item gallery__item--clients">
+                <p class="gallery__picture gallery__picture--clients"><img src="img/logo__clients--the_snow_queen.png" width="202" height="42" alt="Снежная Королева"></p>
+              </figure>
+            </div>
           </div>
         </div>
       </section>
     </main>
     <footer class="page-footer">
       <div class="container container--footer clearfix">
-        <section class="contacts column column--six-quarters" id="contacts">
-          <h3 class="contacts__title">Антон Миляков</h3>
-          <p class="contacts__phone">
-            Телефон: <a class="contacts__link" href="tel:89262461146">+7(926)246-11-46</a>
-          </p>
-          <p class="contacts__email">
-            Email: <a class="contacts__link" href="mailto:milyakov.anton@gmail.com">milyakov.anton@gmail.com</a>
-          </p>
-        </section>
-        <section class="partners column column--ten-quarters">
-          <div class="partners__logo">
-            <img src="img/logo__footer--i-egoist.png" width="102" height="86" alt="I-Egoist">
-            <p class="partners__text">Я одеваюсь здесь!</p>
-          </div>
-        </section>
-        <section class="copyright column column--six-quarters">
-          <p class="copyright__text">
-            Разработано <span class="copyright__company">Julo</span>
-          </p>
-        </section>
+        <div class="container__inner-wrapper">
+          <section class="contacts column column--six-quarters" id="contacts">
+            <h3 class="contacts__title">Антон Миляков</h3>
+            <p class="contacts__phone">
+              Телефон: <a class="contacts__link" href="tel:89262461146">+7(926)246-11-46</a>
+            </p>
+            <p class="contacts__email">
+              Email: <a class="contacts__link" href="mailto:milyakov.anton@gmail.com">milyakov.anton@gmail.com</a>
+            </p>
+          </section>
+          <section class="partners column column--ten-quarters">
+            <div class="partners__logo">
+              <img src="img/logo__footer--i-egoist.png" width="102" height="86" alt="I-Egoist">
+              <p class="partners__text">Я одеваюсь здесь!</p>
+            </div>
+          </section>
+          <section class="copyright column column--six-quarters">
+            <p class="copyright__text">
+              Разработано <span class="copyright__company">Julo</span>
+            </p>
+          </section>
+        </div>
       </div>
     </footer>
     <script src="js/jquery-2.2.4.min.js"></script>
