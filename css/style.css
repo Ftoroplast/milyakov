@@ -588,13 +588,13 @@ label[for="spoiler"] {
   position: relative;
   box-sizing: border-box;
   padding-top: 27px;
-  padding-bottom: 50px;
+  padding-bottom: 72px;
 }
 
 .content__title {
   position: relative;
 
-  width: 27.4%;
+  width: 302px;
 
   margin: 0 auto;
   margin-bottom: 80px;
@@ -605,7 +605,11 @@ label[for="spoiler"] {
 }
 
 .content__title--my-experience {
-  margin-bottom: 47px;
+  margin-bottom: 50px;
+}
+
+.content__title--how-i-works {
+  padding-top: 5px;
 }
 
 .content__title::before {
@@ -647,8 +651,9 @@ label[for="spoiler"] {
   padding-left: 50px;
 }
 
-.content__column--right {
-  padding-left: 45px;
+.content__column--channels {
+  padding-left: 102px;
+  padding-top: 7px;
 }
 
 .content__text {
@@ -658,6 +663,11 @@ label[for="spoiler"] {
   font-weight: 600;
   font-size: 24px;
   line-height: 70px;
+}
+
+.content__text--channels {
+  line-height: 32px;
+  margin-bottom: 15px;
 }
 
 .content__number {
@@ -670,7 +680,7 @@ label[for="spoiler"] {
   display: inline-block;
   vertical-align: top;
 
-  margin-right: 70px;
+  margin-right: 65px;
 }
 
 .content__picture:last-child {
@@ -681,16 +691,16 @@ label[for="spoiler"] {
   content: "";
   position: absolute;
   top: 110px;
-  left: 50%;
+  left: 52.3%;
 
   width: 2px;
-  height: 50%;
+  height: 49%;
 
   background-color: #000000;
 }
 
 .content--how-i-work {
-  min-height: 695px;
+  min-height: 700px;
 
   background-color: #f9f9f9;
 }
@@ -703,7 +713,7 @@ label[for="spoiler"] {
 .container--about-me::before {
   content: "";
   position: absolute;
-  top: -30px;
+  top: -27px;
   left: 0;
   z-index: 1;
 
@@ -711,10 +721,12 @@ label[for="spoiler"] {
   height: 0;
 
   border-top: 365px solid #1a2232;
-  border-right: 150px solid transparent;
+  border-right: 146px solid transparent;
 }
 
 .content--portfolio {
+  padding-bottom: 40px;
+
   background-color: #f48647;
 }
 
@@ -731,11 +743,13 @@ label[for="spoiler"] {
   width: 0;
   height: 0;
 
-  border-bottom: 945px solid #1a2232;
-  border-left: 385px solid transparent;
+  border-bottom: 959px solid #1a2232;
+  border-left: 388px solid transparent;
 }
 
 .content--clients {
+  padding-bottom: 36px;
+
   background-color: #f9f9f9;
 }
 
@@ -777,11 +791,15 @@ label[for="spoiler"] {
 
 .container--footer {
   padding-top: 35px;
-  padding-bottom: 35px;
+  padding-bottom: 17px;
+}
+
+.contacts {
+  padding-top: 25px;
 }
 
 .contacts__title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 
   color: #f9f9f9;
 
@@ -791,7 +809,7 @@ label[for="spoiler"] {
 }
 
 .contacts__phone {
-  margin-bottom: 9px;
+  margin-bottom: 6px;
 
   color: #f9f9f9;
 
@@ -820,11 +838,13 @@ label[for="spoiler"] {
 }
 
 .contacts__phone .contacts__link {
-  margin-left: 39px;
+  margin-left: 35px;
 }
 
 .contacts__email .contacts__link {
   margin-left: 61px;
+
+  font-size: 16px;
 }
 
 .partners {
@@ -834,29 +854,29 @@ label[for="spoiler"] {
 .partners::before {
   content: "";
   position: absolute;
-  top: -42px;
-  left: 35px;
+  top: -44px;
+  left: 73px;
 
   width: 3px;
-  height: 207px;
+  height: 209px;
 
   background-color: #b7b9be;
 
-  transform: rotate(20deg);
+  transform: rotate(22deg);
 }
 
 .partners::after {
   content: "";
   position: absolute;
-  top: -42px;
-  right: 35px;
+  top: -44px;
+  right: 59px;
 
   width: 3px;
-  height: 207px;
+  height: 209px;
 
   background-color: #b7b9be;
 
-  transform: rotate(20deg);
+  transform: rotate(22deg);
 }
 
 .partners__logo {
@@ -878,10 +898,9 @@ label[for="spoiler"] {
 }
 
 .copyright__text {
-  position: absolute;
-  right: 0;
-  bottom: 20px;
+  margin-top: 121px;
 
+  text-align: right;
   text-transform: lowercase;
 
   font-family: "Lato Regular", "Arial", sans-serif;
