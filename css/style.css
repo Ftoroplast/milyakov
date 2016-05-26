@@ -768,13 +768,16 @@ label[for="spoiler"] {
 }
 
 .gallery--portfolio {
-  height: 530px;
+  min-height: 530px;
 }
 
 .gallery__container {
   position: absolute;
   left: 10px;
-  width: 100%;
+}
+
+.gallery--container {
+  width: 1500px;
 }
 
 .gallery__item {
@@ -838,6 +841,9 @@ label[for="spoiler"] {
 }
 
 .scroll__track {
+  position: absolute;
+  left: 0;
+
   width: 25%;
   height: 100%;
 
