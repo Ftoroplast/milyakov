@@ -732,6 +732,7 @@ label[for="spoiler"] {
 
 .container__inner-wrapper--portfolio {
   padding-right: 0;
+  padding-left: 0;
 }
 
 .container__inner-wrapper--portfolio::before {
@@ -756,9 +757,24 @@ label[for="spoiler"] {
 .gallery {
   position: relative;
   z-index: 1;
-  overflow-x: auto;
+
+  padding-left: 0.566%;
+  margin-left: 3.6%;
+
+  overflow: auto;
+
   white-space: nowrap;
   font-size: 0;
+}
+
+.gallery--portfolio {
+  height: 530px;
+}
+
+.gallery__container {
+  position: absolute;
+  left: 10px;
+  width: 100%;
 }
 
 .gallery__item {
@@ -782,6 +798,56 @@ label[for="spoiler"] {
 
 .gallery__picture {
   margin: 0;
+}
+
+.scroll {
+  position: absolute;
+  bottom: 0;
+  left: 1.5%;
+  right: 5%;
+
+  display: none;
+  height: 20px;
+  margin-top: 20px;
+
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.scroll__arrow {
+  position: absolute;
+
+  width: 26px;
+  height: 20px;
+
+  background: transparent url("../img/icon__scroll--arrow-right.png") no-repeat center;
+  background-size: 100% 100%;
+
+  cursor: pointer;
+}
+
+.scroll__arrow--left {
+  top: 0;
+  left: -1%;
+
+  transform: rotate(180deg);
+}
+
+.scroll__arrow--right {
+  top: 0;
+  right: -1%;
+}
+
+.scroll__track {
+  width: 25%;
+  height: 100%;
+
+  margin: 0 15px;
+
+  background-color: #f9f9f9;
+
+  transform: skew(-22deg);
+
+  cursor: pointer;
 }
 
 .page-footer {
