@@ -842,12 +842,12 @@ label[for="spoiler"] {
 
 .scroll__track {
   position: absolute;
-  left: 0;
+  left: 15px;
 
   width: 25%;
   height: 100%;
 
-  margin: 0 15px;
+  /*margin: 0 15px;*/
 
   background-color: #f9f9f9;
 
