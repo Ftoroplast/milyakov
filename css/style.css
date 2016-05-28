@@ -843,6 +843,7 @@ label[for="spoiler"] {
 .scroll__track {
   position: absolute;
   left: 15px;
+  z-index: 1;
 
   width: 25%;
   height: 20px;

@@ -25,6 +25,9 @@
   var timerTrackToRight;
   var timerTrackToLeft;
   var timerTrackMove;
+  var shiftX = [];
+  var topTrackCoord = [];
+  var leftTrackCoord = [];
 
   setInterval(function () {
     for (let i = 0; i < scrolls.length; ++i) {
@@ -77,21 +80,44 @@
       clearInterval(timerOnRightArrow);
       clearInterval(timerTrackToRight);
     });
+
+    scrollTracks[i].addEventListener("mousedown", function (event) {
+      // currentTrackPosition = parseFloat(getComputedStyle(scrollTracks[i]).left) + parseFloat(getComputedStyle(scrolls[i]).left);
+      // shiftX = event.pageX - currentTrackPosition;
+      topTrackCoord[i] = getCoords(scrollTracks[i]).top;
+      leftTrackCoord[i] = getCoords(scrollTracks[i]).left;
+      document.body.appendChild(scrollTracks[i]);
+      scrollTracks[i].style.top = topTrackCoord[i] + "px";
+      scrollTracks[i].style.left = leftTrackCoord[i] + 4 + "px";
+      shiftX[i] = event.pageX - leftTrackCoord[i];
+      scrollTracks[i].addEventListener("mousemove", trackMove);
+    });
+
+    document.addEventListener("mouseup", function (event) {
+      scrolls[i].appendChild(scrollTracks[i]);
+      scrollTracks[i].style.left = getCoords(scrollTracks[i]).left - getCoords(scrolls[i]).left + "px";
+      scrollTracks[i].style.top = 0 + "px";
+      scrollTracks[i].removeEventListener("mousemove", trackMove);
+    });
+
+    function trackMove() {
+        // if ((event.pageX - shiftX - currentTrackPosition >= 15 || event.pageX - shiftX - currentTrackPosition <= scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 15) && parseFloat(getComputedStyle(scrollTracks[i]).left) >= 15 && parseFloat(getComputedStyle(scrollTracks[i]).left) <= scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 15 ||
+        //     parseFloat(getComputedStyle(scrollTracks[i]).left) > scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 15 && (event.pageX - shiftX) < parseFloat(getComputedStyle(scrollTracks[i]).left) ||
+        //     parseFloat(getComputedStyle(scrollTracks[i]).left) < 15 && (event.pageX - shiftX) > parseFloat(getComputedStyle(scrollTracks[i]).left)) {
+        //   scrollTracks[i].style.left = event.pageX - shiftX - parseFloat(getComputedStyle(scrollTracks[i]).left) + parseFloat(getComputedStyle(scrolls[i]).left) + "px";
+        // }
+        if (parseFloat(getComputedStyle(scrollTracks[i]).left) >= parseFloat(getComputedStyle(scrolls[i]).left) + 15 && parseFloat(getComputedStyle(scrollTracks[i]).left) <= scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 15) {
+          scrollTracks[i].style.left = event.pageX - shiftX[i] + "px";
+        }
+    }
   }
 
-  // for (let i = 0; i < scrollTracks.length; ++i) {
-  //   scrollTracks[i].addEventListener("mousedown", function (e) {
-  //     document.addEventListener("mousemove", trackMove);
-  //   });
-  //
-  //   scrollTracks[i].addEventListener("mouseup", function () {
-  //     document.removeEventListener("mousemove", trackMove);
-  //   });
-  //
-  //   function trackMove(event) {
-  //       if (parseFloat(getComputedStyle(scrollTracks[i]).left) > -3 && parseFloat(getComputedStyle(scrollTracks[i]).left) < scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 15) {
-  //         scrollTracks[i].style.left =
-  //     }
-  //   }
-  // }
+  function getCoords(elem) { // кроме IE8-
+    var box = elem.getBoundingClientRect();
+
+    return {
+      top: box.top + pageYOffset,
+      left: box.left + pageXOffset
+    };
+  }
 })();
