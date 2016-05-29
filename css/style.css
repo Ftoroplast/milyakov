@@ -775,10 +775,6 @@ label[for="spoiler"] {
   left: 0;
 }
 
-.gallery--container {
-  width: 1500px;
-}
-
 .gallery__item {
   display: inline-block;
   vertical-align: top;
@@ -842,13 +838,10 @@ label[for="spoiler"] {
 
 .scroll__track {
   position: absolute;
-  left: 15px;
+  left: 14px;
   z-index: 1;
 
-  width: 25%;
   height: 20px;
-
-  /*margin: 0 15px;*/
 
   background-color: #f9f9f9;
 
