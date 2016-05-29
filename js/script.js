@@ -1,19 +1,5 @@
-// $(function()
-// {
-//   var galleryPortfolioJsp =	$(".gallery--portfolio").jScrollPane(
-//     {
-//       showArrows: true,
-// 			autoReinitialise: true
-//     });
-//
-// 		var galleryClientsJsp =	$(".gallery--clients").jScrollPane(
-// 	    {
-// 	      showArrows: true,
-// 				autoReinitialise: true
-// 	    });
-// });
-
 (function () {
+  // Реализация скроллбара
   var galleries = document.querySelectorAll(".gallery");
   var galleryContainers = document.querySelectorAll(".gallery__container");
   var scrolls = document.querySelectorAll(".scroll");
@@ -22,7 +8,6 @@
   var scrollTracks = document.querySelectorAll(".scroll__track");
   var timerTrackToRight;
   var timerTrackToLeft;
-  var timerTrackMove;
   var shiftX = [];
 
   setInterval(function () {
@@ -137,5 +122,26 @@
       top: box.top + pageYOffset,
       left: box.left + pageXOffset
     };
+  }
+
+  //Реализация попапа
+  var sectionPortfolio = document.querySelector(".content--portfolio");
+  var galleryItemsPortfolio = document.querySelectorAll(".gallery__item--portfolio");
+  var galleryLinksPortfolio = document.querySelectorAll(".gallery__link--portfolio");
+  var galleryPicturesPortfolio = document.querySelectorAll(".gallery__picture--portfolio");
+  var galleryDescriptionsPortfolio = document.querySelectorAll(".gallery__description--portfolio");
+  var galleryTitlesPortfolio = document.querySelectorAll(".gallery__title--portfolio");
+  var galleryTextsPortfolio = document.querySelectorAll(".gallery__text--portfolio");
+
+  for (let i = 0; i < galleryItemsPortfolio.length; ++i) {
+    galleryLinks[i].addEventListener("click", function (e) {
+      sectionPortfolio.appendChild(galleryItemsPortfolio[i]);
+      galleryItemsPortfolio[i].classList.add("gallery__item--popup");
+      galleryLinksPortfolio[i].classList.add("gallery__link--popup");
+      galleryPicturesPortfolio[i].classList.add(".gallery__picture--popup");
+      galleryDescriptionsPortfolio[i].classList.add(".gallery__description--popup");
+      galleryTitlesPortfolio[i].classList.add(".gallery__title--popup");
+      galleryTextsPortfolio[i].classList.add(".gallery__text--popup");
+    })
   }
 })();

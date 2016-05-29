@@ -794,8 +794,47 @@ label[for="spoiler"] {
   margin-right: 0;
 }
 
+.gallery__link {
+  cursor: pointer;
+}
+
 .gallery__picture {
   margin: 0;
+}
+
+.gallery__item--popup {
+  position: absolute;
+  top: 107px;
+  bottom: 40px;
+  left: 0;
+  z-index: 5;
+
+  width: 100%;
+
+  background-color: #1e2535;
+}
+
+.gallery__link--popup {
+  display: block;
+  min-width: 900px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery__picture--popup {
+
+}
+
+.gallery__description--popup {
+
+}
+
+.gallery__title--popup {
+
+}
+
+.gallery__text--popup {
+  
 }
 
 .scroll {
