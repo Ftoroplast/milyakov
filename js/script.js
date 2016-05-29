@@ -20,8 +20,6 @@
   var scrollArrowsLeft = document.querySelectorAll(".scroll__arrow--left");
   var scrollArrowsRight = document.querySelectorAll(".scroll__arrow--right");
   var scrollTracks = document.querySelectorAll(".scroll__track");
-  var timerOnLeftArrow;
-  var timerOnRightArrow;
   var timerTrackToRight;
   var timerTrackToLeft;
   var timerTrackMove;
@@ -94,6 +92,13 @@
       };
 
       document.onmouseup = function() {
+        setInterval(function (e) {
+          if (getCoords(scrolls[i]).left > getCoords(scrollTracks[i]).left) {
+            scrollTracks[i].style.left = getCoords(scrolls[i]).left + 14 + "px";
+          } else if (getCoords(scrollTracks[i]).left > getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 14) {
+            scrollTracks[i].style.left = getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 14 + "px";
+          }
+        }, 4);
         document.onmousedown = document.onselectstart = function() {
           return true;
         };
