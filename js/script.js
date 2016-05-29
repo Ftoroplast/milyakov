@@ -110,6 +110,24 @@
     scrollTracks[i].ondragstart = function() {
       return false;
     };
+
+    galleries[i].addEventListener("mouseover", function (e) {
+      document.onkeydown = function (e) {
+      if (e.keyCode === 37) {
+          if (getCoords(scrollTracks[i]).left >= 10 + getCoords(scrolls[i]).left) {
+            scrollTracks[i].style.left = parseFloat(getComputedStyle(scrollTracks[i]).left) - 5 + "px";
+          }
+      } else if (e.keyCode === 39) {
+          if (getCoords(scrollTracks[i]).left <= getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 18) {
+            scrollTracks[i].style.left = parseFloat(getComputedStyle(scrollTracks[i]).left) + 5 + "px";
+          };
+      }
+    };
+  });
+
+    galleries[i].addEventListener("mouseout", function (e) {
+      document.onkeydown = null;
+    })
   }
 
   function getCoords(elem) { // кроме IE8-
