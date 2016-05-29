@@ -161,6 +161,8 @@
             previousPicture(e);
           } else if (e.keyCode === 39) {
             nextPicture(e);
+          } else if (e.keyCode === 27) {
+            closePopup(e);
           }
         };
       });
@@ -186,18 +188,7 @@
       galleryDescriptionPortfolioSelected.classList.add("gallery__description--popup");
     });
 
-    crossPortfolio.addEventListener("click", function (e) {
-      galleryBtnPrevious.classList.remove("gallery__btn--show");
-      galleryBtnNext.classList.remove("gallery__btn--show");
-      crossPortfolio.classList.remove("cross--show");
-
-      galleryItemPortfolioSelected.classList.remove("gallery__item--popup");
-      galleryLinkPortfolioSelected.classList.remove("gallery__link--popup");
-      galleryPicturePortfolioSelected.classList.remove("gallery__picture--popup");
-      galleryDescriptionPortfolioSelected.classList.remove("gallery__description--popup");
-
-      sectionPortfolio.removeChild(galleryItemPortfolioSelected);
-    })
+    crossPortfolio.addEventListener("click", closePopup);
 
     galleryBtnPrevious.addEventListener("click", previousPicture);
     galleryBtnPrevious.onmousedown = function (e) {
@@ -253,6 +244,8 @@
             previousPicture(e);
           } else if (e.keyCode === 39) {
             nextPicture(e);
+          } else if (e.keyCode === 27) {
+            closePopup(e);
           }
         };
       });
@@ -308,6 +301,8 @@
             previousPicture(e);
           } else if (e.keyCode === 39) {
             nextPicture(e);
+          } else if (e.keyCode === 27) {
+            closePopup(e);
           }
         };
       });
@@ -332,5 +327,18 @@
       galleryPicturePortfolioSelected.classList.add("gallery__picture--popup");
       galleryDescriptionPortfolioSelected.classList.add("gallery__description--popup");
     }
+  }
+
+  function closePopup(e) {
+    galleryBtnPrevious.classList.remove("gallery__btn--show");
+    galleryBtnNext.classList.remove("gallery__btn--show");
+    crossPortfolio.classList.remove("cross--show");
+
+    galleryItemPortfolioSelected.classList.remove("gallery__item--popup");
+    galleryLinkPortfolioSelected.classList.remove("gallery__link--popup");
+    galleryPicturePortfolioSelected.classList.remove("gallery__picture--popup");
+    galleryDescriptionPortfolioSelected.classList.remove("gallery__description--popup");
+
+    sectionPortfolio.removeChild(galleryItemPortfolioSelected);
   }
 })();

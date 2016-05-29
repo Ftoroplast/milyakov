@@ -770,6 +770,11 @@ label[for="spoiler"] {
   min-height: 530px;
 }
 
+.gallery--clients {
+  min-height: 230px;
+  margin-left: 0;
+}
+
 .gallery__container {
   position: absolute;
   left: 0;
@@ -787,7 +792,7 @@ label[for="spoiler"] {
 .gallery__item--clients {
   vertical-align: bottom;
 
-  margin-right: 9.091%;
+  margin-right: 100px;
 }
 
 .gallery__item:last-child {
@@ -880,11 +885,6 @@ label[for="spoiler"] {
   font-weight: 200;
   font-size: 18px;
   line-height: 24px;
-}
-
-.gallery__navigation {
-  display: none;
-  padding: 25px 0;
 }
 
 .gallery__btn {
@@ -1000,6 +1000,10 @@ label[for="spoiler"] {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+.scroll--clients {
+  background-color: rgba(26, 34, 50, 0.3);
+}
+
 .scroll__arrow {
   position: absolute;
 
@@ -1010,6 +1014,10 @@ label[for="spoiler"] {
   background-size: 100% 100%;
 
   cursor: pointer;
+}
+
+.scroll__arrow--clients {
+  background: transparent url("../img/icon__clients--arrow-right.png") no-repeat center;
 }
 
 .scroll__arrow--left {
@@ -1036,6 +1044,10 @@ label[for="spoiler"] {
   transform: skew(-22deg);
 
   cursor: pointer;
+}
+
+.scroll__track--clients {
+  background-color: #1a2232;
 }
 
 .page-footer {
