@@ -155,6 +155,18 @@
       galleryItemPortfolioSelected = galleryItemsPortfolio[galleryItemPortfolioNumber].cloneNode(true);
 
       sectionPortfolio.appendChild(galleryItemPortfolioSelected);
+      galleryItemPortfolioSelected.addEventListener("mouseover", function (e) {
+        document.onkeydown = function (e) {
+          if (e.keyCode === 37) {
+            previousPicture(e);
+          } else if (e.keyCode === 39) {
+            nextPicture(e);
+          }
+        };
+      });
+      galleryItemPortfolioSelected.addEventListener("mouseout", function (e) {
+        document.onkeydown = null;
+      });
 
       galleryLinkPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__link--portfolio");
       galleryPicturePortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__picture--portfolio");
@@ -188,8 +200,28 @@
     })
 
     galleryBtnPrevious.addEventListener("click", previousPicture);
+    galleryBtnPrevious.onmousedown = function (e) {
+      document.onmousedown = document.onselectstart = function() {
+        return false;
+      };
+    }
+    galleryBtnPrevious.onmouseup = function (e) {
+      document.onmousedown = document.onselectstart = function() {
+        return true;
+      };
+    }
 
     galleryBtnNext.addEventListener("click", nextPicture);
+    galleryBtnNext.onmousedown = function (e) {
+      document.onmousedown = document.onselectstart = function() {
+        return false;
+      };
+    }
+    galleryBtnNext.onmouseup = function (e) {
+      document.onmousedown = document.onselectstart = function() {
+        return true;
+      };
+    }
   }
 
   function nextPicture(e) {
@@ -215,6 +247,18 @@
       galleryItemPortfolioSelected = galleryItemsPortfolio[galleryItemPortfolioNumber].cloneNode(true);
 
       sectionPortfolio.appendChild(galleryItemPortfolioSelected);
+      galleryItemPortfolioSelected.addEventListener("mouseover", function (e) {
+        document.onkeydown = function (e) {
+          if (e.keyCode === 37) {
+            previousPicture(e);
+          } else if (e.keyCode === 39) {
+            nextPicture(e);
+          }
+        };
+      });
+      galleryItemPortfolioSelected.addEventListener("mouseout", function (e) {
+        document.onkeydown = null;
+      });
 
       galleryLinkPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__link--portfolio");
       galleryPicturePortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__picture--portfolio");
@@ -258,6 +302,18 @@
       galleryItemPortfolioSelected = galleryItemsPortfolio[galleryItemPortfolioNumber].cloneNode(true);
 
       sectionPortfolio.appendChild(galleryItemPortfolioSelected);
+      galleryItemPortfolioSelected.addEventListener("mouseover", function (e) {
+        document.onkeydown = function (e) {
+          if (e.keyCode === 37) {
+            previousPicture(e);
+          } else if (e.keyCode === 39) {
+            nextPicture(e);
+          }
+        };
+      });
+      galleryItemPortfolioSelected.addEventListener("mouseout", function (e) {
+        document.onkeydown = null;
+      });
 
       galleryLinkPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__link--portfolio");
       galleryPicturePortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__picture--portfolio");
