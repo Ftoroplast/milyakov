@@ -134,6 +134,7 @@
   var galleryLinkPortfolioSelected;
   var galleryPicturePortfolioSelected;
   var galleryDescriptionPortfolioSelected;
+  var galleryItemPortfolioNumber;
 
   var galleryBtnPrevious = document.createElement("a");
   galleryBtnPrevious.className = "gallery__btn gallery__btn--previous";
@@ -149,7 +150,10 @@
 
   for (let i = 0; i < galleryItemsPortfolio.length; ++i) {
     galleryLinksPortfolio[i].addEventListener("click", function (e) {
-      galleryItemPortfolioSelected = galleryItemsPortfolio[i].cloneNode(true);
+      galleryItemPortfolioNumber = i;
+      console.log(galleryItemPortfolioNumber);
+      galleryItemPortfolioSelected = galleryItemsPortfolio[galleryItemPortfolioNumber].cloneNode(true);
+
       sectionPortfolio.appendChild(galleryItemPortfolioSelected);
 
       galleryLinkPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__link--portfolio");
@@ -160,9 +164,9 @@
       galleryPicturePortfolioSelected.appendChild(galleryBtnNext);
       galleryLinkPortfolioSelected.appendChild(crossPortfolio);
 
-      galleryBtnPrevious.style.display = "block";
-      galleryBtnNext.style.display = "block";
-      crossPortfolio.style.display = "block";
+      galleryBtnPrevious.classList.add("gallery__btn--show");
+      galleryBtnNext.classList.add("gallery__btn--show");
+      crossPortfolio.classList.add("cross--show");
 
       galleryItemPortfolioSelected.classList.add("gallery__item--popup");
       galleryLinkPortfolioSelected.classList.add("gallery__link--popup");
@@ -171,9 +175,9 @@
     });
 
     crossPortfolio.addEventListener("click", function (e) {
-      galleryBtnPrevious.style.display = "none";
-      galleryBtnNext.style.display = "none";
-      crossPortfolio.style.display = "none";
+      galleryBtnPrevious.classList.remove("gallery__btn--show");
+      galleryBtnNext.classList.remove("gallery__btn--show");
+      crossPortfolio.classList.remove("cross--show");
 
       galleryItemPortfolioSelected.classList.remove("gallery__item--popup");
       galleryLinkPortfolioSelected.classList.remove("gallery__link--popup");
@@ -182,5 +186,95 @@
 
       sectionPortfolio.removeChild(galleryItemPortfolioSelected);
     })
+
+    galleryBtnPrevious.addEventListener("click", previousPicture);
+
+    galleryBtnNext.addEventListener("click", nextPicture);
+  }
+
+  function nextPicture(e) {
+    if (galleryItemPortfolioNumber < galleryItemsPortfolio.length - 1) {
+      galleryBtnPrevious.classList.remove("gallery__btn--show");
+      galleryBtnNext.classList.remove("gallery__btn--show");
+      crossPortfolio.classList.remove("cross--show");
+
+      galleryItemPortfolioSelected.classList.remove("gallery__item--popup");
+      galleryLinkPortfolioSelected.classList.remove("gallery__link--popup");
+      galleryPicturePortfolioSelected.classList.remove("gallery__picture--popup");
+      galleryDescriptionPortfolioSelected.classList.remove("gallery__description--popup");
+
+      sectionPortfolio.removeChild(galleryItemPortfolioSelected);
+
+      galleryItemPortfolioNumber += 1;
+
+      galleryBtnNext.removeEventListener("click", nextPicture);
+      setTimeout(function (e) {
+        galleryBtnNext.addEventListener("click", nextPicture);
+      }, 100);
+
+      galleryItemPortfolioSelected = galleryItemsPortfolio[galleryItemPortfolioNumber].cloneNode(true);
+
+      sectionPortfolio.appendChild(galleryItemPortfolioSelected);
+
+      galleryLinkPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__link--portfolio");
+      galleryPicturePortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__picture--portfolio");
+      galleryDescriptionPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__description--portfolio");
+
+      galleryPicturePortfolioSelected.appendChild(galleryBtnPrevious);
+      galleryPicturePortfolioSelected.appendChild(galleryBtnNext);
+      galleryLinkPortfolioSelected.appendChild(crossPortfolio);
+
+      galleryBtnPrevious.classList.add("gallery__btn--show");
+      galleryBtnNext.classList.add("gallery__btn--show");
+      crossPortfolio.classList.add("cross--show");
+
+      galleryItemPortfolioSelected.classList.add("gallery__item--popup");
+      galleryLinkPortfolioSelected.classList.add("gallery__link--popup");
+      galleryPicturePortfolioSelected.classList.add("gallery__picture--popup");
+      galleryDescriptionPortfolioSelected.classList.add("gallery__description--popup");
+    }
+  }
+
+  function previousPicture(e) {
+    if (galleryItemPortfolioNumber > 0) {
+      galleryBtnPrevious.classList.remove("gallery__btn--show");
+      galleryBtnNext.classList.remove("gallery__btn--show");
+      crossPortfolio.classList.remove("cross--show");
+
+      galleryItemPortfolioSelected.classList.remove("gallery__item--popup");
+      galleryLinkPortfolioSelected.classList.remove("gallery__link--popup");
+      galleryPicturePortfolioSelected.classList.remove("gallery__picture--popup");
+      galleryDescriptionPortfolioSelected.classList.remove("gallery__description--popup");
+
+      sectionPortfolio.removeChild(galleryItemPortfolioSelected);
+
+      galleryItemPortfolioNumber -= 1;
+
+      galleryBtnPrevious.removeEventListener("click", previousPicture);
+      setTimeout(function (e) {
+        galleryBtnPrevious.addEventListener("click", previousPicture);
+      }, 100);
+
+      galleryItemPortfolioSelected = galleryItemsPortfolio[galleryItemPortfolioNumber].cloneNode(true);
+
+      sectionPortfolio.appendChild(galleryItemPortfolioSelected);
+
+      galleryLinkPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__link--portfolio");
+      galleryPicturePortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__picture--portfolio");
+      galleryDescriptionPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__description--portfolio");
+
+      galleryPicturePortfolioSelected.appendChild(galleryBtnPrevious);
+      galleryPicturePortfolioSelected.appendChild(galleryBtnNext);
+      galleryLinkPortfolioSelected.appendChild(crossPortfolio);
+
+      galleryBtnPrevious.classList.add("gallery__btn--show");
+      galleryBtnNext.classList.add("gallery__btn--show");
+      crossPortfolio.classList.add("cross--show");
+
+      galleryItemPortfolioSelected.classList.add("gallery__item--popup");
+      galleryLinkPortfolioSelected.classList.add("gallery__link--popup");
+      galleryPicturePortfolioSelected.classList.add("gallery__picture--popup");
+      galleryDescriptionPortfolioSelected.classList.add("gallery__description--popup");
+    }
   }
 })();

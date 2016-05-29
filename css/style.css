@@ -906,6 +906,10 @@ label[for="spoiler"] {
   line-height: 20px;
 }
 
+.gallery__btn--show {
+  display: block;
+}
+
 .gallery__btn--previous {
   left: -4px;
 }
@@ -972,6 +976,10 @@ label[for="spoiler"] {
   font-family: "Georgia", "Times New Roman", serif;
   font-size: 36px;
   line-height: 42px;
+}
+
+.cross--show {
+  display: block;
 }
 
 .cross--portfolio {
