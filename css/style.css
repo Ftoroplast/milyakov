@@ -815,26 +815,167 @@ label[for="spoiler"] {
 }
 
 .gallery__link--popup {
+  position: relative;
+
   display: block;
   min-width: 900px;
   max-width: 1200px;
   margin: 0 auto;
+
+  padding-top: 50px;
+
+  cursor: auto;
+
+  font-size: 0;
 }
 
 .gallery__picture--popup {
+  position: relative;
 
+  display: inline-block;
+  vertical-align: top;
+  width: 54.158%;
+  height: 523px;
+  margin: 0 4.166%;
+
+  text-align: center;
+}
+
+.gallery__picture--popup img {
+  max-width: 100%;
+  max-height: 430px;
+  width: auto;
+  height: auto;
 }
 
 .gallery__description--popup {
+  display: inline-block;
+  vertical-align: top;
 
+  width: 33.328%;
+
+  color: #fafafa;
 }
 
-.gallery__title--popup {
+.gallery__title {
+  margin-bottom: 21px;
 
+  font-family: "Lato Semibold", "Arial", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
 }
 
-.gallery__text--popup {
-  
+.gallery__text {
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.gallery__time {
+  display: block;
+
+  font-family: "Lato Thin", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.gallery__navigation {
+  display: none;
+  padding: 25px 0;
+}
+
+.gallery__btn {
+  position: absolute;
+  bottom: 30px;
+
+  display: none;
+  width: 170px;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  color: #d0d3d9;
+
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.gallery__btn--previous {
+  left: -4px;
+}
+
+.gallery__btn--previous::before {
+  content: "";
+  float: left;
+  width: 27px;
+  height: 20px;
+
+  background: url("../img/icon__gallery--popup-arrow-left.png") no-repeat center;
+  background-size: 100% 100%;
+}
+
+.gallery__btn--previous::after {
+  content: "";
+  float: right;
+  width: 2px;
+  height: 22px;
+
+  background-color: #c8cbd1;
+
+  transform: rotate(22deg);
+}
+
+.gallery__btn--next {
+  right: -4px;
+}
+
+.gallery__btn--next::before {
+  content: "";
+  float: left;
+  width: 2px;
+  height: 22px;
+
+  background-color: #c8cbd1;
+
+  transform: rotate(22deg);
+}
+
+.gallery__btn--next::after {
+  content: "";
+  float: right;
+  width: 27px;
+  height: 20px;
+
+  background: url("../img/icon__gallery--popup-arrow-left.png") no-repeat center;
+  background-size: 100% 100%;
+
+  transform: rotate(180deg);
+}
+
+.cross {
+  position: absolute;
+  bottom: 25px;
+  right: 4.166%;
+
+  display: none;
+
+  cursor: pointer;
+
+  color: #f48647;
+
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 36px;
+  line-height: 42px;
+}
+
+.cross--portfolio {
+  vertical-align: middle;
 }
 
 .scroll {

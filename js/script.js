@@ -130,18 +130,57 @@
   var galleryLinksPortfolio = document.querySelectorAll(".gallery__link--portfolio");
   var galleryPicturesPortfolio = document.querySelectorAll(".gallery__picture--portfolio");
   var galleryDescriptionsPortfolio = document.querySelectorAll(".gallery__description--portfolio");
-  var galleryTitlesPortfolio = document.querySelectorAll(".gallery__title--portfolio");
-  var galleryTextsPortfolio = document.querySelectorAll(".gallery__text--portfolio");
+  var galleryItemPortfolioSelected;
+  var galleryLinkPortfolioSelected;
+  var galleryPicturePortfolioSelected;
+  var galleryDescriptionPortfolioSelected;
+
+  var galleryBtnPrevious = document.createElement("a");
+  galleryBtnPrevious.className = "gallery__btn gallery__btn--previous";
+  galleryBtnPrevious.innerHTML = "Предыдущее";
+
+  var galleryBtnNext = document.createElement("a");
+  galleryBtnNext.className = "gallery__btn gallery__btn--next";
+  galleryBtnNext.innerHTML = "Следующее";
+
+  var crossPortfolio = document.createElement("a");
+  crossPortfolio.className = "cross cross--portfolio";
+  crossPortfolio.innerHTML = "&times;";
 
   for (let i = 0; i < galleryItemsPortfolio.length; ++i) {
-    galleryLinks[i].addEventListener("click", function (e) {
-      sectionPortfolio.appendChild(galleryItemsPortfolio[i]);
-      galleryItemsPortfolio[i].classList.add("gallery__item--popup");
-      galleryLinksPortfolio[i].classList.add("gallery__link--popup");
-      galleryPicturesPortfolio[i].classList.add(".gallery__picture--popup");
-      galleryDescriptionsPortfolio[i].classList.add(".gallery__description--popup");
-      galleryTitlesPortfolio[i].classList.add(".gallery__title--popup");
-      galleryTextsPortfolio[i].classList.add(".gallery__text--popup");
+    galleryLinksPortfolio[i].addEventListener("click", function (e) {
+      galleryItemPortfolioSelected = galleryItemsPortfolio[i].cloneNode(true);
+      sectionPortfolio.appendChild(galleryItemPortfolioSelected);
+
+      galleryLinkPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__link--portfolio");
+      galleryPicturePortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__picture--portfolio");
+      galleryDescriptionPortfolioSelected = galleryItemPortfolioSelected.querySelector(".gallery__description--portfolio");
+
+      galleryPicturePortfolioSelected.appendChild(galleryBtnPrevious);
+      galleryPicturePortfolioSelected.appendChild(galleryBtnNext);
+      galleryLinkPortfolioSelected.appendChild(crossPortfolio);
+
+      galleryBtnPrevious.style.display = "block";
+      galleryBtnNext.style.display = "block";
+      crossPortfolio.style.display = "block";
+
+      galleryItemPortfolioSelected.classList.add("gallery__item--popup");
+      galleryLinkPortfolioSelected.classList.add("gallery__link--popup");
+      galleryPicturePortfolioSelected.classList.add("gallery__picture--popup");
+      galleryDescriptionPortfolioSelected.classList.add("gallery__description--popup");
+    });
+
+    crossPortfolio.addEventListener("click", function (e) {
+      galleryBtnPrevious.style.display = "none";
+      galleryBtnNext.style.display = "none";
+      crossPortfolio.style.display = "none";
+
+      galleryItemPortfolioSelected.classList.remove("gallery__item--popup");
+      galleryLinkPortfolioSelected.classList.remove("gallery__link--popup");
+      galleryPicturePortfolioSelected.classList.remove("gallery__picture--popup");
+      galleryDescriptionPortfolioSelected.classList.remove("gallery__description--popup");
+
+      sectionPortfolio.removeChild(galleryItemPortfolioSelected);
     })
   }
 })();
