@@ -9,17 +9,18 @@
   var timerTrackToRight;
   var timerTrackToLeft;
   var shiftX = [];
+  var i;
 
   setInterval(function () {
-    for (let i = 0; i < scrolls.length; ++i) {
+    for (i = 0; i < scrolls.length; ++i)(function(i) {
       scrollTracks[i].style.width = (scrolls[i].offsetWidth - 30) / galleryContainers[i].offsetWidth * galleries[i].offsetWidth + "px";
       if (parseFloat(getComputedStyle(galleryContainers[i]).left) <= 0 || parseFloat(getComputedStyle(galleryContainers[i]).left) >= galleries[i].offsetWidth - galleryContainers[i].offsetWidth) {
         galleryContainers[i].style.left = (getCoords(scrolls[i]).left + 15 - getCoords(scrollTracks[i]).left) * (galleryContainers[i].offsetWidth - galleries[i].offsetWidth) / (scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 30) + "px";
       }
-    }
+    })(i);
   }, 4);
 
-  for (let i = 0; i < galleries.length; ++i) {
+  for (i = 0; i < galleries.length; ++i)(function(i) {
     galleries[i].style.overflow = "hidden";
     scrolls[i].style.display = "block";
 
@@ -113,7 +114,7 @@
     galleries[i].addEventListener("mouseout", function (e) {
       document.onkeydown = null;
     })
-  }
+  })(i);
 
   function getCoords(elem) { // кроме IE8-
     var box = elem.getBoundingClientRect();
@@ -148,7 +149,7 @@
   crossPortfolio.className = "cross cross--portfolio";
   crossPortfolio.innerHTML = "&times;";
 
-  for (let i = 0; i < galleryItemsPortfolio.length; ++i) {
+  for (i = 0; i < galleryItemsPortfolio.length; ++i)(function(i) {
     galleryLinksPortfolio[i].addEventListener("click", function (e) {
       galleryItemPortfolioNumber = i;
       console.log(galleryItemPortfolioNumber);
@@ -213,7 +214,7 @@
         return true;
       };
     }
-  }
+  })(i);
 
   function nextPicture(e) {
     if (galleryItemPortfolioNumber < galleryItemsPortfolio.length - 1) {
