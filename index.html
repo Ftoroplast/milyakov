@@ -43,28 +43,30 @@
           <label for="spoiler"></label>
         </div>
       </div>
-      <input type="checkbox" id="spoiler">
-      <div class="spoiler container container--header">
-        <div class="container__inner-wrapper">
-          <p class="spoiler__text spoiler__text--title">
-            Здравствуйте!<br>
-            Меня зовут Антон Миляков.
-          </p>
-          <p class="spoiler__text">Я ведущий <b class="spoiler__text spoiler__text--feature">ярких</b> мероприятий в Москве и не только.
-            От&nbsp;маленьких и уютных до больших и роскошных.</p>
-          <p class="spoiler__text">К каждому мероприятию у меня <b class="spoiler__text spoiler__text--feature">персональный подход</b>,
-            я&nbsp;стараюсь сделать их <b class="spoiler__text spoiler__text--feature">уникальными</b>
-            и&nbsp;не&nbsp;похожими&nbsp;друг&nbsp;на&nbsp;друга.</p>
-          <p class="spoiler__text">Сценарий каждого события составляется на основе
-            <b class="spoiler__text spoiler__text--feature">ваших&nbsp;пожеланий</b> и моих идей.</p>
-          <p class="spoiler__text spoiler__text--conclusion">Я люблю свою работу.<br>
-            Видеть сияющие и радостные глаза гостей,
-            для меня <b class="spoiler__text spoiler__text--conclusion spoiler__text--feature">настоящее удовольствие</b>!</p>
-        </div>
-      </div>
     </header>
 
     <main>
+      <input type="checkbox" id="spoiler" hidden>
+      <div class="spoiler">
+        <div class="container container--spoiler">
+          <div class="container__inner-wrapper">
+            <p class="spoiler__text spoiler__text--title">
+              Здравствуйте!<br>
+              Меня зовут Антон Миляков.
+            </p>
+            <p class="spoiler__text">Я ведущий <b class="spoiler__text spoiler__text--feature">ярких</b> мероприятий в Москве и не только.
+              От&nbsp;маленьких и уютных до больших и роскошных.</p>
+            <p class="spoiler__text">К каждому мероприятию у меня <b class="spoiler__text spoiler__text--feature">персональный подход</b>,
+              я&nbsp;стараюсь сделать их <b class="spoiler__text spoiler__text--feature">уникальными</b>
+              и&nbsp;не&nbsp;похожими&nbsp;друг&nbsp;на&nbsp;друга.</p>
+            <p class="spoiler__text">Сценарий каждого события составляется на основе
+              <b class="spoiler__text spoiler__text--feature">ваших&nbsp;пожеланий</b> и моих идей.</p>
+            <p class="spoiler__text spoiler__text--conclusion">Я люблю свою работу.<br>
+              Видеть сияющие и радостные глаза гостей,
+              для меня <b class="spoiler__text spoiler__text--conclusion spoiler__text--feature">настоящее удовольствие</b>!</p>
+          </div>
+        </div>
+      </div>
       <section class="content content--my-experience clearfix" id="my-experience">
         <div class="container">
           <div class="container__inner-wrapper clearfix">
@@ -185,9 +187,9 @@
               </div>
             </div>
             <div class="scroll scroll--portfolio">
-              <div class="scroll__arrow scroll__arrow--left"></div>
-              <div class="scroll__track"></div>
-              <div class="scroll__arrow scroll__arrow--right"></div>
+              <div class="scroll__arrow scroll__arrow--left scroll__arrow--portfolio"></div>
+              <div class="scroll__track scroll__track--portfolio"></div>
+              <div class="scroll__arrow scroll__arrow--right scroll__arrow--portfolio"></div>
             </div>
           </div>
         </div>
