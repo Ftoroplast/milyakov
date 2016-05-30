@@ -609,7 +609,11 @@ label[for="spoiler"] {
 
   box-sizing: border-box;
   padding-top: 27px;
-  padding-bottom: 72px;
+  padding-bottom: 76px;
+}
+
+.content--how-i-work {
+  padding-top: 32px;
 }
 
 .content__title {
@@ -626,10 +630,6 @@ label[for="spoiler"] {
 
 .content__title--my-experience {
   margin-bottom: 50px;
-}
-
-.content__title--how-i-works {
-  padding-top: 5px;
 }
 
 .content__title::before {
@@ -684,7 +684,7 @@ label[for="spoiler"] {
   font-family: "Lato Semibold", "Arial", sans-serif;
   font-size: 24px;
   font-weight: 600;
-  line-height: 70px;
+  line-height: 68px;
 }
 
 .content__text--channels {
@@ -772,8 +772,8 @@ label[for="spoiler"] {
 
   content: "";
 
-  border-bottom: 959px solid #1a2232;
-  border-left: 388px solid transparent;
+  border-bottom: 980px solid #1a2232;
+  border-left: 396px solid transparent;
 }
 
 .content--clients {
