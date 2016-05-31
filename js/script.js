@@ -13,9 +13,9 @@
 
   setInterval(function () {
     for (i = 0; i < scrolls.length; ++i)(function(i) {
-      scrollTracks[i].style.width = (scrolls[i].offsetWidth - 30) / galleryContainers[i].offsetWidth * galleries[i].offsetWidth + "px";
+      scrollTracks[i].style.width = (scrolls[i].offsetWidth - 42) / galleryContainers[i].offsetWidth * galleries[i].offsetWidth + "px";
       if (parseFloat(getComputedStyle(galleryContainers[i]).left) <= 0 || parseFloat(getComputedStyle(galleryContainers[i]).left) >= galleries[i].offsetWidth - galleryContainers[i].offsetWidth) {
-        galleryContainers[i].style.left = (getCoords(scrolls[i]).left + 15 - getCoords(scrollTracks[i]).left) * (galleryContainers[i].offsetWidth - galleries[i].offsetWidth) / (scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 30) + "px";
+        galleryContainers[i].style.left = (getCoords(scrolls[i]).left + 17 - getCoords(scrollTracks[i]).left) * (galleryContainers[i].offsetWidth - galleries[i].offsetWidth) / (scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 42) + "px";
       }
     })(i);
   }, 4);
@@ -26,7 +26,7 @@
 
     scrollArrowsLeft[i].addEventListener("mousedown", function () {
       timerTrackToLeft = setInterval(function () {
-        if (getCoords(scrollTracks[i]).left >= 10 + getCoords(scrolls[i]).left) {
+        if (getCoords(scrollTracks[i]).left >= 17 + getCoords(scrolls[i]).left) {
           scrollTracks[i].style.left = parseFloat(getComputedStyle(scrollTracks[i]).left) - 1 + "px";
         }
       }, 4);
@@ -38,7 +38,7 @@
 
     scrollArrowsRight[i].addEventListener("mousedown", function () {
       timerTrackToRight = setInterval(function () {
-        if (getCoords(scrollTracks[i]).left <= getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 18) {
+        if (getCoords(scrollTracks[i]).left <= getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 25) {
           scrollTracks[i].style.left = parseFloat(getComputedStyle(scrollTracks[i]).left) + 1 + "px";
         }
       }, 4);
@@ -64,10 +64,10 @@
       }, 4);
 
       function moveXAt(e) {
-        if (e.pageX - shiftX + 4 < getCoords(scrolls[i]).left + 14) {
-          scrollTracks[i].style.left = getCoords(scrolls[i]).left + 14 + "px";
-        } else if (e.pageX - shiftX + 4 > getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 14) {
-          scrollTracks[i].style.left = getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 14 + "px";
+        if (e.pageX - shiftX + 4 < getCoords(scrolls[i]).left + 21) {
+          scrollTracks[i].style.left = getCoords(scrolls[i]).left + 21 + "px";
+        } else if (e.pageX - shiftX + 4 > getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 21) {
+          scrollTracks[i].style.left = getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 21 + "px";
         } else {
           scrollTracks[i].style.left = e.pageX - shiftX + "px";
         }
@@ -80,9 +80,9 @@
       document.onmouseup = function() {
         setInterval(function (e) {
           if (getCoords(scrolls[i]).left > getCoords(scrollTracks[i]).left) {
-            scrollTracks[i].style.left = getCoords(scrolls[i]).left + 14 + "px";
-          } else if (getCoords(scrollTracks[i]).left > getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 14) {
-            scrollTracks[i].style.left = getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 14 + "px";
+            scrollTracks[i].style.left = getCoords(scrolls[i]).left + 21 + "px";
+          } else if (getCoords(scrollTracks[i]).left > getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 21) {
+            scrollTracks[i].style.left = getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 21 + "px";
           }
         }, 4);
         document.onmousedown = document.onselectstart = function() {
@@ -100,11 +100,11 @@
     galleries[i].addEventListener("mouseover", function (e) {
       document.onkeydown = function (e) {
       if (e.keyCode === 37) {
-          if (getCoords(scrollTracks[i]).left >= 10 + getCoords(scrolls[i]).left) {
+          if (getCoords(scrollTracks[i]).left >= 17 + getCoords(scrolls[i]).left) {
             scrollTracks[i].style.left = parseFloat(getComputedStyle(scrollTracks[i]).left) - 5 + "px";
           }
       } else if (e.keyCode === 39) {
-          if (getCoords(scrollTracks[i]).left <= getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 18) {
+          if (getCoords(scrollTracks[i]).left <= getCoords(scrolls[i]).left + scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 25) {
             scrollTracks[i].style.left = parseFloat(getComputedStyle(scrollTracks[i]).left) + 5 + "px";
           };
       }

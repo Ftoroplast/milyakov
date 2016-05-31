@@ -441,7 +441,7 @@ a {
   width: 522px;
   height: 44px;
   margin: 0 auto;
-  margin-bottom: 50px;
+  padding-bottom: 160px;
 
   text-align: center;
 
@@ -527,15 +527,22 @@ a {
   background-color: #f4c547;
 }
 
+main {
+  position: relative;
+}
+
 label[for="spoiler"] {
-  display: block;
+  position: absolute;
+  z-index: 1;
+  top: -66px;
+  left: 50%;
 
   width: 50px;
   height: 15px;
-  margin: 0 auto;
-  margin-bottom: 50px;
 
   cursor: pointer;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 
   background-image: url("../img/icon__header--arrow.svg");
   background-repeat: no-repeat;
@@ -565,6 +572,11 @@ label[for="spoiler"] {
 
 #spoiler:checked ~ .spoiler {
   display: block;
+}
+
+#spoiler:checked ~ label[for="spoiler"] {
+  -webkit-transform: rotate(180deg) translateX(50%);
+          transform: rotate(180deg) translateX(50%);
 }
 
 .spoiler__text {
@@ -608,12 +620,12 @@ label[for="spoiler"] {
   position: relative;
 
   box-sizing: border-box;
-  padding-top: 27px;
+  padding-top: 32px;
   padding-bottom: 76px;
 }
 
-.content--how-i-work {
-  padding-top: 32px;
+.content--my-experience {
+  padding-top: 27px;
 }
 
 .content__title {
@@ -739,7 +751,7 @@ label[for="spoiler"] {
 .container--about-me::before {
   position: absolute;
   z-index: 1;
-  top: -27px;
+  top: -32px;
   left: 0;
 
   width: 0;
@@ -752,7 +764,7 @@ label[for="spoiler"] {
 }
 
 .content--portfolio {
-  padding-bottom: 40px;
+  padding-bottom: 39px;
 
   background-color: #f48647;
 }
@@ -772,14 +784,18 @@ label[for="spoiler"] {
 
   content: "";
 
-  border-bottom: 980px solid #1a2232;
-  border-left: 396px solid transparent;
+  border-bottom: 960px solid #1a2232;
+  border-left: 390px solid transparent;
 }
 
 .content--clients {
-  padding-bottom: 36px;
+  padding-bottom: 39px;
 
   background-color: #f9f9f9;
+}
+
+.content__title--clients {
+  margin-bottom: 56px;
 }
 
 .gallery {
@@ -788,7 +804,7 @@ label[for="spoiler"] {
 
   overflow: auto;
 
-  margin-left: 3.6%;
+  margin-left: 4.166%;
 
   white-space: nowrap;
 
@@ -796,11 +812,11 @@ label[for="spoiler"] {
 }
 
 .gallery--portfolio {
-  min-height: 530px;
+  min-height: 505px;
 }
 
 .gallery--clients {
-  min-height: 230px;
+  min-height: 211px;
   margin-left: 0;
 }
 
@@ -813,7 +829,8 @@ label[for="spoiler"] {
   display: inline-block;
 
   margin: 0;
-  margin-right: 9px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 
   vertical-align: top;
 
@@ -835,14 +852,15 @@ label[for="spoiler"] {
 }
 
 .gallery__picture {
-  margin: 0;
+  font-size: 0;
+  line-height: 0;
 }
 
 .gallery__item--popup {
   position: absolute;
   z-index: 5;
   top: 107px;
-  bottom: 40px;
+  bottom: 29px;
   left: 0;
 
   width: 100%;
@@ -922,7 +940,7 @@ label[for="spoiler"] {
 
 .gallery__btn {
   position: absolute;
-  bottom: 30px;
+  bottom: 42px;
 
   display: none;
 
@@ -1006,7 +1024,7 @@ label[for="spoiler"] {
 .cross {
   position: absolute;
   right: 4.166%;
-  bottom: 25px;
+  bottom: 37px;
 
   display: none;
 
@@ -1064,7 +1082,7 @@ label[for="spoiler"] {
 
 .scroll__arrow--left {
   top: 0;
-  left: -1%;
+  left: -4px;
 
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
@@ -1072,13 +1090,13 @@ label[for="spoiler"] {
 
 .scroll__arrow--right {
   top: 0;
-  right: -1%;
+  right: -4px;
 }
 
 .scroll__track {
   position: absolute;
   z-index: 1;
-  left: 14px;
+  left: 21px;
 
   height: 20px;
 
