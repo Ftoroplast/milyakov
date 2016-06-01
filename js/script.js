@@ -342,4 +342,12 @@
 
     sectionPortfolio.removeChild(galleryItemPortfolioSelected);
   }
+
+  // Реализация прокручиваемости хедера
+  var containerHeader = document.querySelector(".container--header");
+  var innerContainerHeader = document.querySelector(".container__inner-wrapper--header");
+
+  containerHeader.classList.add("container--js");
+
+  
 })();

@@ -215,11 +215,21 @@ a {
 }
 
 .container--header {
+  min-height: 637px;
+
+  overflow: auto;
+
   background: url("../img/bg__header--milyakov.png") no-repeat 86% bottom;
   background-size: 602px 588px;
 }
 
+.container--js {
+  overflow: hidden;
+}
+
 .container__inner-wrapper--header {
+  position: absolute;
+
   padding-top: 50px;
 }
 
@@ -534,7 +544,7 @@ main {
 label[for="spoiler"] {
   position: absolute;
   z-index: 1;
-  top: -66px;
+  bottom: -66px;
   left: 50%;
 
   width: 50px;
@@ -550,33 +560,7 @@ label[for="spoiler"] {
 }
 
 .spoiler {
-  display: none;
 
-  background-color: #171c2a;
-  /*background-image: linear-gradient(to right, #171d2a, #4d5461);*/
-  background-image: url("../img/bg__header--gradient.jpg");
-  background-size: cover;
-}
-
-.container--spoiler {
-  padding-top: 94px;
-  padding-bottom: 74px;
-
-  background: url("../img/bg__header--milyakov.png") no-repeat 86% bottom;
-  background-size: 602px 588px;
-}
-
-#spoiler {
-  display: none;
-}
-
-#spoiler:checked ~ .spoiler {
-  display: block;
-}
-
-#spoiler:checked ~ label[for="spoiler"] {
-  -webkit-transform: rotate(180deg) translateX(50%);
-          transform: rotate(180deg) translateX(50%);
 }
 
 .spoiler__text {
