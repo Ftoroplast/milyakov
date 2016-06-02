@@ -344,10 +344,52 @@
   }
 
   // Реализация прокручиваемости хедера
+  var pageHeader = document.querySelector(".page-header");
   var containerHeader = document.querySelector(".container--header");
   var innerContainerHeader = document.querySelector(".container__inner-wrapper--header");
+  var firstScreen = document.querySelector(".first-screen");
+  var secondScreen = document.querySelector(".second-screen");
+  var logo = firstScreen.querySelector(".logo");
+  var navigation = firstScreen.querySelector(".navigation");
+  var phoneBlock = firstScreen.querySelector(".phone-block");
+  var innerContainerHeaderOffsetHeight = innerContainerHeader.offsetHeight;
+  var containerHeaderOffsetHeight = containerHeader.offsetHeight;
 
   containerHeader.classList.add("container--js");
 
-  
+  var firstScreenWrapper = document.createElement("div");
+  firstScreenWrapper.className = "js__wrapper js__wrapper--first-screen";
+  innerContainerHeader.insertBefore(firstScreenWrapper, secondScreen);
+  firstScreenWrapper.appendChild(firstScreen);
+
+  window.onscroll = function (e) {
+    if (window.pageYOffset < innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight) {
+      transformFirstScreenToBlock();
+      pageHeader.classList.add("page-header--fixed");
+      innerContainerHeader.style.top = -window.pageYOffset + "px";
+      return false;
+    } else {
+      transformFirstScreenToFixedHat();
+      pageHeader.classList.remove("page-header--fixed");
+    }
+  }
+
+  function transformFirstScreenToFixedHat() {
+    innerContainerHeader.style.top = 60 + "px";
+    document.body.appendChild(firstScreenWrapper);
+    firstScreenWrapper.classList.add("js__wrapper--fixed-hat");
+    firstScreen.classList.add("first-screen--fixed-hat");
+    logo.classList.add("logo--fixed-hat");
+    navigation.classList.add("navigation--fixed-hat");
+    phoneBlock.classList.add("phone-block--fixed-hat");
+  }
+
+  function transformFirstScreenToBlock() {
+    innerContainerHeader.insertBefore(firstScreenWrapper, secondScreen);
+    firstScreenWrapper.classList.remove("js__wrapper--fixed-hat");
+    firstScreen.classList.remove("first-screen--fixed-hat");
+    logo.classList.remove("logo--fixed-hat");
+    navigation.classList.remove("navigation--fixed-hat");
+    phoneBlock.classList.remove("phone-block--fixed-hat");
+  }
 })();
