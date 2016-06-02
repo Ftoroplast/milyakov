@@ -354,6 +354,8 @@
   var phoneBlock = firstScreen.querySelector(".phone-block");
   var innerContainerHeaderOffsetHeight = innerContainerHeader.offsetHeight;
   var containerHeaderOffsetHeight = containerHeader.offsetHeight;
+  var phoneBlockTopCoords = getCoords(phoneBlock).top;
+  var arrowToSecondScreen = firstScreen.querySelector(".arrow");
 
   containerHeader.classList.add("container--js");
 
@@ -363,15 +365,19 @@
   firstScreenWrapper.appendChild(firstScreen);
 
   window.onscroll = function (e) {
-    if (window.pageYOffset < innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight) {
+    if (window.pageYOffset < phoneBlockTopCoords - 15) {
       transformFirstScreenToBlock();
-      pageHeader.classList.add("page-header--fixed");
+      pageHeader.style.marginTop = window.pageYOffset + "px";
       innerContainerHeader.style.top = -window.pageYOffset + "px";
       return false;
     } else {
       transformFirstScreenToFixedHat();
       pageHeader.classList.remove("page-header--fixed");
     }
+  }
+
+  arrowToSecondScreen.onclick = function (e) {
+    document.body.scrollTop = 520;
   }
 
   function transformFirstScreenToFixedHat() {
