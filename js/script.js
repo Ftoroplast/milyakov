@@ -365,14 +365,17 @@
   firstScreenWrapper.appendChild(firstScreen);
 
   window.onscroll = function (e) {
-    if (window.pageYOffset < phoneBlockTopCoords - 15) {
-      transformFirstScreenToBlock();
+    if (window.pageYOffset < innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 50) {
       pageHeader.style.marginTop = window.pageYOffset + "px";
       innerContainerHeader.style.top = -window.pageYOffset + "px";
-      return false;
+    } else {
+
+    }
+
+    if (window.pageYOffset < phoneBlockTopCoords - 15) {
+      transformFirstScreenToBlock();
     } else {
       transformFirstScreenToFixedHat();
-      pageHeader.classList.remove("page-header--fixed");
     }
   }
 
@@ -381,7 +384,7 @@
   }
 
   function transformFirstScreenToFixedHat() {
-    innerContainerHeader.style.top = 60 + "px";
+    innerContainerHeader.style.top = -parseFloat(getComputedStyle(pageHeader).marginTop) + containerHeader.offsetHeight - parseFloat(getComputedStyle(innerContainerHeader).paddingTop) + "px";
     document.body.appendChild(firstScreenWrapper);
     firstScreenWrapper.classList.add("js__wrapper--fixed-hat");
     firstScreen.classList.add("first-screen--fixed-hat");
