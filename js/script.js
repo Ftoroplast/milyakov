@@ -55,12 +55,12 @@
 
       var coords = getCoords(scrollTracks[i]);
       var shiftX = e.pageX - coords.left;
-      var shiftY = e.pageY - coords.top
+      var shiftY = e.pageY - coords.top;
 
       document.body.appendChild(scrollTracks[i]);
       scrollTracks[i].style.left = e.pageX - shiftX + 4 + "px";
       setInterval(function () {
-        scrollTracks[i].style.top = getCoords(scrolls[i]).top + "px";
+        scrollTracks[i].style.top = getCoords(scrolls[i]).top - parseFloat(getComputedStyle(pageHeader).marginTop) + "px";
       }, 4);
 
       function moveXAt(e) {
@@ -356,6 +356,8 @@
   var containerHeaderOffsetHeight = containerHeader.offsetHeight;
   var phoneBlockTopCoords = getCoords(phoneBlock).top;
   var arrowToSecondScreen = firstScreen.querySelector(".arrow");
+  var navigationBtn = navigation.querySelector(".navigation__btn");
+  var navigationList = navigation.querySelector(".navigation__list");
 
   containerHeader.classList.add("container--js");
 
@@ -383,6 +385,18 @@
     document.body.scrollTop = 520;
   }
 
+  navigationList.onmouseover = function (e) {
+    if (navigationList.classList.contains("navigation__list--fixed-hat")) {
+      phoneBlock.classList.add("phone-block--hidden");
+    }
+  }
+
+  navigationList.onmouseout = function (e) {
+    phoneBlock.classList.remove("phone-block--hidden");
+  }
+
+  navigationBtn.onmouseove
+
   function transformFirstScreenToFixedHat() {
     innerContainerHeader.style.top = -parseFloat(getComputedStyle(pageHeader).marginTop) + containerHeader.offsetHeight - parseFloat(getComputedStyle(innerContainerHeader).paddingTop) + "px";
     document.body.appendChild(firstScreenWrapper);
@@ -391,6 +405,8 @@
     logo.classList.add("logo--fixed-hat");
     navigation.classList.add("navigation--fixed-hat");
     phoneBlock.classList.add("phone-block--fixed-hat");
+    navigationBtn.classList.add("navigation__btn--fixed-hat");
+    navigationList.classList.add("navigation__list--fixed-hat");
   }
 
   function transformFirstScreenToBlock() {
@@ -400,5 +416,7 @@
     logo.classList.remove("logo--fixed-hat");
     navigation.classList.remove("navigation--fixed-hat");
     phoneBlock.classList.remove("phone-block--fixed-hat");
+    navigationBtn.classList.remove("navigation__btn--fixed-hat");
+    navigationList.classList.remove("navigation__list--fixed-hat");
   }
 })();
