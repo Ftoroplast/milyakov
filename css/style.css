@@ -834,10 +834,6 @@ main {
   background-color: #f4c547;
 }
 
-.bg-line--about {
-  
-}
-
 .content--portfolio {
   padding-bottom: 39px;
 
@@ -879,6 +875,13 @@ main {
   z-index: 2;
 
   background-color: #2a3140;
+}
+
+.bg-line--about {
+  left: 0;
+  right: 50%;
+  width: 2000px;
+  transform: skew(-22deg) translateX(-91.6%);
 }
 
 .content--clients {
