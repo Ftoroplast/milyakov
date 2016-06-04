@@ -491,7 +491,20 @@
   var bgLine = document.createElement("div");
   bgLine.classList.add("bg-line");
   document.body.appendChild(bgLine);
+
+  var bgLineCopyright = document.createElement("div");
+  bgLineCopyright.classList.add("bg-line");
+  bgLineCopyright.classList.add("bg-line--copyright")
+  document.body.appendChild(bgLineCopyright);
+
+  var bgLineAbout = document.createElement("div");
+  bgLineAbout.classList.add("bg-line");
+  bgLineAbout.classList.add("bg-line--about")
+  document.body.appendChild(bgLineAbout);
+
   setInterval(function () {
-    bgLine.style.transform = "skew(-24deg) translateX(" + 1000/bgLine.offsetWidth * 80 + "%)";
+    bgLine.style.transform = "skew(-22deg) translateX(" + 1000/bgLine.offsetWidth * 72.9 + "%)";
+    bgLineCopyright.style.transform = "skew(-22deg) translateX(" + 1000/bgLineCopyright.offsetWidth * 111.5 + "%)";
+    // bgLineAbout.style.transform = "skew(-22deg) translateX(" + 1000/bgLineAbout.offsetWidth * (-150.7) + "%)";
   }, 4);
 })();

@@ -218,7 +218,7 @@ a {
 
 .page-header {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   background-image: url("../img/bg__header--gradient.jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -705,7 +705,7 @@ main {
 }
 
 .content--my-experience {
-  z-index: 2;
+  z-index: 3;
 
   padding-top: 27px;
 
@@ -821,7 +821,7 @@ main {
 }
 
 .content--how-i-work {
-  z-index: 2;
+  z-index: 3;
 
   min-height: 700px;
 
@@ -834,19 +834,8 @@ main {
   background-color: #f4c547;
 }
 
-.container--about-me::before {
-  position: absolute;
-  z-index: 1;
-  top: -32px;
-  left: 0;
-
-  width: 0;
-  height: 0;
-
-  content: "";
-
-  border-top: 365px solid #1a2232;
-  border-right: 146px solid transparent;
+.bg-line--about {
+  
 }
 
 .content--portfolio {
@@ -886,8 +875,14 @@ main {
   background-color: #1a2232;
 }
 
-.content--clients {
+.bg-line--copyright {
   z-index: 2;
+
+  background-color: #2a3140;
+}
+
+.content--clients {
+  z-index: 3;
 
   padding-bottom: 39px;
 
@@ -900,7 +895,7 @@ main {
 
 .gallery {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 
   overflow: auto;
 
@@ -1216,7 +1211,8 @@ main {
 }
 
 .container--footer {
-  padding: 25px 0;
+  padding-top: 20px;
+  padding-bottom: 12px;
 }
 
 .contacts__btn--link {
@@ -1237,21 +1233,21 @@ main {
 }
 
 .contacts__text {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 
   color: #1a2232;
   font-family: "Lato Regular", "Arial", sans-serif;
   font-weight: 400;;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
 }
 
 .contacts__text--social {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .contacts__text--title {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
   font-family: "Lato Regular", "Arial", sans-serif;
   font-size: 22px;
@@ -1265,15 +1261,15 @@ main {
 }
 
 .contacts__key--phone {
-  margin-right: 35px;
+  margin-right: 27px;
 }
 
 .contacts__key--e-mail {
-  margin-right: 59px;
+  margin-right: 47px;
 }
 
 .contacts__key--social {
-  margin-right: 35px;
+  margin-right: 20px;
 }
 
 .contacts__link {
@@ -1304,9 +1300,15 @@ main {
 
 .partners__logo {
   width: 150px;
-  margin: 0 auto;
+  margin-top: 32px;
+  margin-left: 29px;
 
   text-align: center;
+}
+
+.partners__link {
+  display: block;
+  margin-bottom: 6px;
 }
 
 .partners__text {
@@ -1322,11 +1324,11 @@ main {
 
 .copyright {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .copyright__text {
-  margin-top: 121px;
+  margin-top: 175px;
 
   text-align: right;
   text-transform: lowercase;
@@ -1337,8 +1339,12 @@ main {
   line-height: 18px;
 }
 
+.copyright__key {
+  margin-right: 3px;
+}
+
 .copyright__company {
-  margin-left: 13px;
+  margin-right: -5px;
 
   letter-spacing: 3px;
   text-transform: uppercase;
