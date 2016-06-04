@@ -413,4 +413,77 @@
     navigationBtn.classList.remove("navigation__btn--fixed-hat");
     navigationList.classList.remove("navigation__list--fixed-hat");
   }
+
+  //Оживление формы "Заказать звонок"
+  var phoneBlockBtn = document.querySelector(".phone-block__btn--link");
+  var phoneBlockForm = document.querySelector(".phone-block__form");
+  var phoneBlockPhone = document.querySelector(".phone-block__phone");
+  var phoneBlockSubmitBtn = document.querySelector(".phone-block__btn--form");
+  var phoneBlockLabelName = document.querySelector(".phone-block__label--name");
+  var phoneBlockLabelPhone = document.querySelector(".phone-block__label--phone");
+  var phoneBlockInputName = document.querySelector(".phone-block__input--name");
+  var phoneBlockInputPhone = document.querySelector(".phone-block__input--phone");
+
+  phoneBlockInputName.required = false;
+  phoneBlockInputPhone.required = false;
+
+  phoneBlockBtn.onclick = function (e) {
+    phoneBlockForm.classList.add("phone-block__form--show");
+    phoneBlockBtn.classList.add("phone-block__btn--hidden");
+    phoneBlockPhone.classList.add("phone-block__phone--hidden");
+
+    return false;
+  }
+
+  phoneBlock.onmouseover = function (e) {
+    document.onkeydown = function (e) {
+      if (e.keyCode === 27) {
+        phoneBlockForm.classList.remove("phone-block__form--show");
+        phoneBlockBtn.classList.remove("phone-block__btn--hidden");
+        phoneBlockPhone.classList.remove("phone-block__phone--hidden");
+      }
+    }
+  }
+
+  phoneBlock.onmouseout = function (e) {
+    document.onkeydown = null;
+  }
+
+  phoneBlockForm.onsubmit = function (e) {
+    phoneBlockLabelName.classList.remove("phone-block__label--invalid");
+    phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
+    phoneBlockSubmitBtn.classList.remove("phone-block__btn--invalid");
+    
+    if (!phoneBlockInputName.value || !phoneBlockInputPhone.value) {
+      e.preventDefault();
+    };
+
+    setInterval(function (e) {
+      if (!phoneBlockInputName.value && !phoneBlockInputPhone.value) {
+        phoneBlockLabelName.classList.add("phone-block__label--invalid");
+        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
+        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
+      } else if (!phoneBlockInputName.value && phoneBlockInputPhone.value) {
+        phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
+        phoneBlockLabelName.classList.add("phone-block__label--invalid");
+        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
+      } else if (phoneBlockInputName.value && !phoneBlockInputPhone.value) {
+        phoneBlockLabelName.classList.remove("phone-block__label--invalid");
+        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
+        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
+      } else {
+        phoneBlockLabelName.classList.remove("phone-block__label--invalid");
+        phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
+        phoneBlockSubmitBtn.classList.remove("phone-block__btn--invalid");
+      }
+    }, 4);
+  }
+
+  setInterval(function () {
+    if (phoneBlockInputName.value && phoneBlockInputPhone.value) {
+      phoneBlockSubmitBtn.classList.add("phone-block__btn--ready");
+    } else {
+      phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
+    }
+  }, 4);
 })();

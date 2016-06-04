@@ -39,7 +39,16 @@
             </h1>
             <div class="phone-block">
               <a class="phone-block__phone" href="tel:89262461146">+7 (926) 246-11-46</a>
-              <a class="phone-block__btn" href="#">Заказать звонок</a>
+              <a class="phone-block__btn phone-block__btn--link" href="form.html">Заказать звонок</a>
+              <form class="phone-block__form" action="#" method="POST">
+                <label class="phone-block__label phone-block__label--name" for="phone-block__input--name">
+                  <input class="phone-block__input phone-block__input--name" id="phone-block__input--name" type="text" name="name" placeholder="Как к вам обратиться?" required>
+                </label>
+                <label class="phone-block__label phone-block__label--phone" for="phone-block__input--phone">
+                  <input class="phone-block__input phone-block__input--phone" id="phone-block__input--phone" type="text" name="phone" placeholder="Ваш номер" required>
+                </label>
+                <button  class="phone-block__btn phone-block__btn--form" id="phone-block__input--btn" type="submit">Отправить запрос</button>
+              </form>
             </div>
             <div class="arrow"></div>
           </div>

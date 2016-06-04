@@ -457,7 +457,8 @@ a {
   z-index: 1;
 
   box-sizing: border-box;
-  width: 522px;
+  min-width: 522px;
+  max-width: 800px;
   height: 44px;
   margin: 0 auto;
   margin-bottom: 50px;
@@ -511,13 +512,12 @@ a {
   position: relative;
 
   display: inline-block;
+  vertical-align: top;
 
   box-sizing: border-box;
   width: 249px;
   height: 44px;
   padding: 0 25px;
-
-  vertical-align: top;
 
   color: #1a2232;
 
@@ -544,6 +544,136 @@ a {
           transform: skew(-24deg);
 
   background-color: #f4c547;
+}
+
+.phone-block__btn--ready::before {
+  background-color: #86cf4f;
+}
+
+.phone-block__btn--invalid::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  content: "";
+  -webkit-transform: skew(-24deg);
+          transform: skew(-24deg);
+
+  background-color: rgba(244, 49, 17, 0.2);
+}
+
+.phone-block__form {
+  display: none;
+
+  font-size: 0;
+}
+
+.phone-block__form--show {
+  display: block;
+}
+
+.phone-block__btn--form {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.phone-block__btn--hidden {
+  display: none;
+}
+
+.phone-block__phone--hidden {
+  display: none;
+}
+
+.phone-block__label {
+  position: relative;
+
+  display: inline-block;
+  vertical-align: top;
+  height: 44px;
+  margin-right: 2px;
+}
+
+.phone-block__label::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  content: "";
+  -webkit-transform: skew(-24deg);
+          transform: skew(-24deg);
+
+  border: 2px solid #f4c547;
+}
+
+.phone-block__label--invalid::before {
+  background-color: rgba(244, 49, 17, 0.2);
+}
+
+.phone-block__input {
+  padding: 7px 0;
+
+  background-color: transparent;
+  border: none;
+
+  text-align: center;
+
+  color: #f9f9f9;
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.phone-block__input:focus {
+  outline: none;
+}
+
+.phone-block__btn--form {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Lato Thin", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+::-moz-placeholder {
+  font-family: "Lato Thin", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+:-moz-placeholder {
+  font-family: "Lato Thin", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+:-ms-input-placeholder {
+  font-family: "Lato Thin", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 main {
