@@ -197,21 +197,11 @@
         return false;
       };
     }
-    galleryBtnPrevious.onmouseup = function (e) {
-      document.onmousedown = document.onselectstart = function() {
-        return true;
-      };
-    }
 
     galleryBtnNext.addEventListener("click", nextPicture);
     galleryBtnNext.onmousedown = function (e) {
       document.onmousedown = document.onselectstart = function() {
         return false;
-      };
-    }
-    galleryBtnNext.onmouseup = function (e) {
-      document.onmousedown = document.onselectstart = function() {
-        return true;
       };
     }
   })(i);
@@ -395,7 +385,11 @@
     phoneBlock.classList.remove("phone-block--hidden");
   }
 
-  navigationBtn.onmouseove
+  navigationBtn.onmouseover = function (e) {
+    if (navigationList.classList.contains("navigation__list--fixed-hat")) {
+      phoneBlock.classList.add("phone-block--hidden");
+    }
+  }
 
   function transformFirstScreenToFixedHat() {
     innerContainerHeader.style.top = -parseFloat(getComputedStyle(pageHeader).marginTop) + containerHeader.offsetHeight - parseFloat(getComputedStyle(innerContainerHeader).paddingTop) + "px";
