@@ -453,7 +453,7 @@
     phoneBlockLabelName.classList.remove("phone-block__label--invalid");
     phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
     phoneBlockSubmitBtn.classList.remove("phone-block__btn--invalid");
-    
+
     if (!phoneBlockInputName.value || !phoneBlockInputPhone.value) {
       e.preventDefault();
     };
@@ -485,5 +485,13 @@
     } else {
       phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
     }
+  }, 4);
+
+  //Реализация декоративных полос на фоне
+  var bgLine = document.createElement("div");
+  bgLine.classList.add("bg-line");
+  document.body.appendChild(bgLine);
+  setInterval(function () {
+    bgLine.style.transform = "skew(-24deg) translateX(" + 1000/bgLine.offsetWidth * 80 + "%)";
   }, 4);
 })();

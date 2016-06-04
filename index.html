@@ -17,19 +17,20 @@
             <nav class="navigation column column--right column--eighteen-quarters">
               <a class="navigation__btn" href="#">Меню</a>
               <ul class="navigation__list">
-                <li class="navigation__item"><a class="navigation__link" href="#how-i-work">Как я работаю</a></li>
-                <li class="navigation__item"><a class="navigation__link" href="#about-me">О себе</a></li>
-                <li class="navigation__item"><a class="navigation__link" href="#portfolio">Портфолио</a></li>
-                <li class="navigation__item"><a class="navigation__link" href="#clients">Клиенты</a></li>
+                <li class="navigation__item">
+                  <a class="navigation__link" href="#how-i-work">Как я работаю</a>
+                </li>
+                <li class="navigation__item">
+                  <a class="navigation__link" href="#about-me">О себе</a>
+                </li>
+                <li class="navigation__item">
+                  <a class="navigation__link" href="#portfolio">Портфолио</a>
+                </li>
+                <li class="navigation__item">
+                  <a class="navigation__link" href="#clients">Клиенты</a>
+                </li>
                 <li class="navigation__item">
                   <a class="navigation__link" href="#contacts">Контакты</a>
-                  <div class="navigation__modal-window">
-                    <ul class="navigation__list navigation__list--modal-window">
-                      <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="https://www.instagram.com/milyakov.anton/" target="_blank">instagram</a></li>
-                      <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="http://vk.com/milyakov.anton" target="_blank">vkontakte</a></li>
-                      <li class="navigation__item navigation__item--modal-window"><a class="navigation__link navigation__link--modal-window" href="mailto:milyakov.anton@gmail.com">milyakov.anton@gmail.com</a></li>
-                    </ul>
-                  </div>
                 </li>
               </ul>
             </nav>
@@ -39,7 +40,7 @@
             </h1>
             <div class="phone-block">
               <a class="phone-block__phone" href="tel:89262461146">+7 (926) 246-11-46</a>
-              <a class="phone-block__btn phone-block__btn--link" href="form.html">Заказать звонок</a>
+              <a class="phone-block__btn phone-block__btn--link" href="phone-block-form.html">Заказать звонок</a>
               <form class="phone-block__form" action="#" method="POST">
                 <label class="phone-block__label phone-block__label--name" for="phone-block__input--name">
                   <input class="phone-block__input phone-block__input--name" id="phone-block__input--name" type="text" name="name" placeholder="Как к вам обратиться?" required>
@@ -253,16 +254,31 @@
     <footer class="page-footer">
       <div class="container container--footer">
         <div class="container__inner-wrapper clearfix">
-          <section class="contacts column column--six-quarters" id="contacts">
-            <h3 class="contacts__title">Антон Миляков</h3>
-            <p class="contacts__phone">
-              Телефон: <a class="contacts__link" href="tel:89262461146">+7&nbsp;(926)&nbsp;246-11-46</a>
+          <section class="contacts column column--thirteen-quarters" id="contacts">
+            <h3 class="contacts__text contacts__text--title">Антон Миляков</h3>
+            <p class="contacts__text contacts__text--phone">
+              <span class="contacts__key contacts__key--phone">Телефон:</span> <span class="contacts__value contacts__value--phone"><a class="contacts__link contacts__link--phone" href="tel:89262461146">+7&nbsp;(926)&nbsp;246-11-46</a></span>
             </p>
-            <p class="contacts__email">
-              Email: <a class="contacts__link" href="mailto:milyakov.anton@gmail.com">milyakov.anton@gmail.com</a>
+            <p class="contacts__text contacts__text--e-mail">
+              <span class="contacts__key contacts__key--e-mail">Email:</span> <span class="contacts__value contacts__value--e-mail"><a class="contacts__link contacts__link--e-mail" href="mailto:milyakov.anton@gmail.com">milyakov.anton@gmail.com</a></span>
             </p>
+            <p class="contacts__text contacts__text--social">
+              <span class="contacts__key contacts__key--social">Соц.сети:</span> <span class="contacts__value contacts__value--social"><a class="contacts__link contacts__link--social" href="#">instagram</a> / <a class="contacts__link contacts__link--social" href="#">vkontakte</a></span>
+            </p>
+            <a class="contacts__btn contacts__btn--link" href="contacts-form.html">Форма обратной связи</a>
+            <form class="contacts__form" action="#" method="POST">
+              <input class="contacts__input contacts__input--name" id="contacts__input--name" type="text" name="name" placeholder="Введите ваше имя">
+              <label class="contacts__label contacts__label--name" for="contacts__input--name"></label>
+              <input class="contacts__input contacts__input--e-mail" id="contacts__input--e-mail" type="e-mail" name="e-mail" placeholder="Введите ваш e-mail">
+              <label class="contacts__label contacts__label--e-mail" for="contacts__input--e-mail"></label>
+              <input class="contacts__input contacts__input--phone" id="contacts__input--phone" type="text" name="phone" placeholder="Введите ваш телефон">
+              <label class="contacts__label contacts__label--phone" for="contacts__input--phone"></label>
+              <textarea class="contacts__input contacts__input--message" id="contacts__input--message" name="message" placeholder="Введите ваше сообщение"></textarea>
+              <label class="contacts__label contacts__label--message" for="contacts__input--message"></label>
+              <input class="contacts__btn contacts__btn--form" type="submit" value="Отправить">
+            </form>
           </section>
-          <section class="partners column column--ten-quarters">
+          <section class="partners column column--five-quarters">
             <div class="partners__logo">
               <a class="partners__link" href="http://i-egoist.ru/" target="_blank">
                 <img src="img/logo__footer--i-egoist.png" width="102" height="86" alt="I-Egoist">
@@ -270,7 +286,7 @@
               <p class="partners__text">Я одеваюсь здесь!</p>
             </div>
           </section>
-          <section class="copyright column column--six-quarters">
+          <section class="copyright column column--four-quarters">
             <p class="copyright__text">
               Разработано <a class="copyright__company" href="http://startjulo.ru/" target="_blank">Julo</a>
             </p>
