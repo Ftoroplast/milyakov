@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Миляков</title>
+    <link rel="icon" type="image/x-icon" href="img/icon__window--logo.png">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -41,7 +42,7 @@
             <div class="phone-block">
               <a class="phone-block__phone" href="tel:89262461146">+7 (926) 246-11-46</a>
               <a class="phone-block__btn phone-block__btn--link" href="phone-block-form.html">Заказать звонок</a>
-              <form class="phone-block__form" action="#" method="POST">
+              <form class="phone-block__form" action="php/mail.php" method="POST">
                 <label class="phone-block__label phone-block__label--name" for="phone-block__input--name">
                   <input class="phone-block__input phone-block__input--name" id="phone-block__input--name" type="text" name="name" placeholder="Как к вам обратиться?" required>
                 </label>
@@ -263,17 +264,18 @@
               <span class="contacts__key contacts__key--e-mail">E-mail:</span> <span class="contacts__value contacts__value--e-mail"><a class="contacts__link contacts__link--e-mail" href="mailto:milyakov.anton@gmail.com">milyakov.anton@gmail.com</a></span>
             </p>
             <p class="contacts__text contacts__text--social">
-              <span class="contacts__key contacts__key--social">Соц. сети:</span> <span class="contacts__value contacts__value--social"><a class="contacts__link contacts__link--social" href="#">instagram</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="contacts__link contacts__link--social" href="#">vkontakte</a></span>
+              <span class="contacts__key contacts__key--social">Соц. сети:</span> <span class="contacts__value contacts__value--social"><a class="contacts__link contacts__link--social" href="https://www.instagram.com/milyakov.anton/" target="_blank">instagram</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="contacts__link contacts__link--social" href="http://vk.com/milyakov.anton" target="_blank">vkontakte</a></span>
             </p>
             <a class="contacts__btn contacts__btn--link" href="contacts-form.html">Форма обратной связи</a>
             <form class="contacts__form" action="#" method="POST">
+              <h4 class="contacts__text contacts__text--form-title">Опишите ваше мероприятие</h4>
               <input class="contacts__input contacts__input--name" id="contacts__input--name" type="text" name="name" placeholder="Введите ваше имя">
               <label class="contacts__label contacts__label--name" for="contacts__input--name"></label>
               <input class="contacts__input contacts__input--e-mail" id="contacts__input--e-mail" type="e-mail" name="e-mail" placeholder="Введите ваш e-mail">
               <label class="contacts__label contacts__label--e-mail" for="contacts__input--e-mail"></label>
               <input class="contacts__input contacts__input--phone" id="contacts__input--phone" type="text" name="phone" placeholder="Введите ваш телефон">
               <label class="contacts__label contacts__label--phone" for="contacts__input--phone"></label>
-              <textarea class="contacts__input contacts__input--message" id="contacts__input--message" name="message" placeholder="Введите ваше сообщение"></textarea>
+              <textarea class="contacts__input contacts__input--message" id="contacts__input--message" rows="8" name="message" placeholder="Введите ваше сообщение"></textarea>
               <label class="contacts__label contacts__label--message" for="contacts__input--message"></label>
               <input class="contacts__btn contacts__btn--form" type="submit" value="Отправить">
             </form>

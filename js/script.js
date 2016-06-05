@@ -13,7 +13,14 @@
 
   setInterval(function () {
     for (i = 0; i < scrolls.length; ++i)(function(i) {
-      scrollTracks[i].style.width = (scrolls[i].offsetWidth - 42) / galleryContainers[i].offsetWidth * galleries[i].offsetWidth + "px";
+
+
+      if (galleries[i].offsetWidth >= galleryContainers[i].offsetWidth) {
+        scrollTracks[i].style.width = scrolls[i].offsetWidth - 42 + "px";
+      } else {
+        scrollTracks[i].style.width = (scrolls[i].offsetWidth - 42) / galleryContainers[i].offsetWidth * galleries[i].offsetWidth + "px";
+      }
+
       if (parseFloat(getComputedStyle(galleryContainers[i]).left) <= 0 || parseFloat(getComputedStyle(galleryContainers[i]).left) >= galleries[i].offsetWidth - galleryContainers[i].offsetWidth) {
         galleryContainers[i].style.left = (getCoords(scrolls[i]).left + 17 - getCoords(scrollTracks[i]).left) * (galleryContainers[i].offsetWidth - galleries[i].offsetWidth) / (scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 42) + "px";
       }
@@ -487,24 +494,68 @@
     }
   }, 4);
 
+  //Реализация появления формы обратной связи
+  var contactsFormBtn = document.querySelector(".contacts__btn--link");
+  var contactsForm = document.querySelector(".contacts__form");
+
+  var overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+
+  var contactsCross = document.createElement("a");
+  contactsCross.innerHTML = "&times;";
+  contactsCross.classList.add("cross");
+  contactsCross.classList.add("cross--contacts");
+  contactsForm.appendChild(contactsCross);
+
+  contactsFormBtn.onclick = function (e) {
+    contactsForm.classList.add("contacts__form--show");
+    document.body.appendChild(overlay);
+
+    return false;
+  }
+
+  contactsCross.onclick = function (e) {
+    contactsForm.classList.remove("contacts__form--show");
+    document.body.removeChild(overlay);
+
+    return false;
+  }
+
+  overlay.ondblclick = function (e) {
+    contactsForm.classList.remove("contacts__form--show");
+    document.body.removeChild(overlay);
+  }
+
+  window.addEventListener("keydown", function (e) {
+    if (e.keyCode === 27) {
+      contactsForm.classList.remove("contacts__form--show");
+      document.body.removeChild(overlay);
+    }
+  })
+
   //Реализация декоративных полос на фоне
+  var pageFooter = document.querySelector(".page-footer");
+  var partners = pageFooter.querySelector(".partners");
+  var containerAbout = document.querySelector(".container--about-me");
+
   var bgLine = document.createElement("div");
   bgLine.classList.add("bg-line");
   document.body.appendChild(bgLine);
 
   var bgLineCopyright = document.createElement("div");
   bgLineCopyright.classList.add("bg-line");
-  bgLineCopyright.classList.add("bg-line--copyright")
+  bgLineCopyright.classList.add("bg-line--copyright");
   document.body.appendChild(bgLineCopyright);
 
   var bgLineAbout = document.createElement("div");
   bgLineAbout.classList.add("bg-line");
-  bgLineAbout.classList.add("bg-line--about")
+  bgLineAbout.classList.add("bg-line--about");
   document.body.appendChild(bgLineAbout);
 
   setInterval(function () {
+    bgLine.style.WebkitTransform = "skew(-22deg) translateX(" + 1000/bgLine.offsetWidth * 72.9 + "%)";
     bgLine.style.transform = "skew(-22deg) translateX(" + 1000/bgLine.offsetWidth * 72.9 + "%)";
-    bgLineCopyright.style.transform = "skew(-22deg) translateX(" + 1000/bgLineCopyright.offsetWidth * 111.5 + "%)";
-    // bgLineAbout.style.transform = "skew(-22deg) translateX(" + 1000/bgLineAbout.offsetWidth * (-150.7) + "%)";
+    bgLineCopyright.style.left = getCoords(partners).left + partners.offsetWidth + "px";
+    bgLineAbout.style.left = getCoords(containerAbout).left - bgLineAbout.offsetWidth + "px";
   }, 4);
 })();

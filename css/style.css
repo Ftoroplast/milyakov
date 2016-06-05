@@ -208,11 +208,13 @@ a {
   position: relative;
 
   min-width: 900px;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
 .container__inner-wrapper {
+  box-sizing: border-box;
+  width: 100%;
   padding: 0 4.166%;
 }
 
@@ -253,6 +255,9 @@ a {
 }
 
 .navigation__btn {
+  position: relative;
+  z-index: 2;
+
   display: block;
   float: right;
 
@@ -286,7 +291,7 @@ a {
 
 .navigation__btn::after {
   position: relative;
-  z-index: 3;
+  z-index: 4;
 
   display: inline-block;
 
@@ -306,6 +311,7 @@ a {
   position: absolute;
   top: 20px;
   right: 3px;
+  z-index: 3;
 
   display: none;
 
@@ -606,28 +612,28 @@ a {
   outline: none;
 }
 
-::-webkit-input-placeholder {
+.phone-block__input::-webkit-input-placeholder {
   font-family: "Lato Thin", "Arial", sans-serif;
   font-weight: 200;
   font-size: 18px;
   line-height: 24px;
 }
 
-::-moz-placeholder {
+.phone-block__input::-moz-placeholder {
   font-family: "Lato Thin", "Arial", sans-serif;
   font-weight: 200;
   font-size: 18px;
   line-height: 24px;
 }
 
-:-moz-placeholder {
+.phone-block__input:-moz-placeholder {
   font-family: "Lato Thin", "Arial", sans-serif;
   font-weight: 200;
   font-size: 18px;
   line-height: 24px;
 }
 
-:-ms-input-placeholder {
+.phone-block__input:-ms-input-placeholder {
   font-family: "Lato Thin", "Arial", sans-serif;
   font-weight: 200;
   font-size: 18px;
@@ -845,20 +851,6 @@ main {
   padding-left: 0;
 }
 
-/*.container__inner-wrapper--portfolio::before {
-  position: absolute;
-  right: 0;
-  bottom: -50px;
-
-  width: 0;
-  height: 0;
-
-  content: "";
-
-  border-bottom: 960px solid #1a2232;
-  border-left: 390px solid transparent;
-}*/
-
 .bg-line {
   position: absolute;
   left: 50%;
@@ -874,14 +866,19 @@ main {
 .bg-line--copyright {
   z-index: 2;
 
+  height: 230px;
+
   background-color: #2a3140;
+
+  transform: skew(-22deg) translateX(4%);
 }
 
 .bg-line--about {
-  left: 0;
-  right: 50%;
+  left: -1850px;
+  top: 0;
+  z-index: 2;
   width: 2000px;
-  transform: skew(-22deg) translateX(-91.6%);
+  transform: matrix(1,0,-0.4,1,93,0);
 }
 
 .content--clients {
@@ -1143,9 +1140,19 @@ main {
   vertical-align: middle;
 }
 
+.cross--contacts {
+  right: 10px;
+  top: 10px;
+
+  display: block;
+
+  color: #1a2232;
+  line-height: 20px;
+}
+
 .scroll {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   right: 4.166%;
   bottom: 0;
   left: 4.166%;
@@ -1193,7 +1200,7 @@ main {
 
 .scroll__track {
   position: absolute;
-  z-index: 1;
+  z-index: 4;
   left: 21px;
 
   height: 20px;
@@ -1258,6 +1265,15 @@ main {
   font-weight: 400;
 }
 
+.contacts__text--form-title {
+  font-size: 18px;
+  line-height: 24px;
+
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
 .contacts__key {
   font-family: "Lato Light", "Arial", sans-serif;
   font-weight: 300;
@@ -1289,11 +1305,94 @@ main {
 }
 
 .contacts__form {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 7;
+  transform: translate(-50%, -50%);
+
+  box-sizing: border-box;
   display: none;
+  width: 541px;
+  padding: 35px 25px;
+
+  background-color: #f4c547;
+}
+
+.contacts__input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 9px 0;
+  padding-left: 25px;
+  margin-bottom: 18px;
+  border: 1px solid #1a2232;
+
+  color: #1a2232;
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.contacts__input:focus {
+  outline: none;
+}
+
+.contacts__btn--form:focus {
+  outline: none;
+}
+
+.contacts__input::-webkit-input-placeholder {
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+}
+
+.contacts__input::-moz-placeholder {
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+}
+
+.contacts__input:-moz-placeholder {
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+}
+
+.contacts__input:-ms-input-placeholder {
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-weight: 300;
+}
+
+.contacts__btn--form {
+  display: block;
+  width: 290px;
+  margin: 0 auto;
+  border: 1px solid #1a2232;
+
+  background-color: #f48647;
+
+  text-align: center;
+
+  color: #1a2232;
+  font-family: "Lato Regular", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 40px;
 }
 
 .contacts__form--show {
   display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(26, 34, 50, 0.3);
 }
 
 .partners {
