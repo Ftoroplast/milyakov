@@ -531,7 +531,6 @@
 
   //script для отправки формы на email
   var contactsSubmitBtn = document.querySelector(".contacts__btn--form");
-  var phoneBlockCrossText = document.createElement("p");
   var phoneBlockTextSubmit = document.querySelector(".phone-block__text--submit");
   var phoneBlockCross = document.createElement("a");
 
@@ -570,24 +569,23 @@
     }, 4);
   }
 
-  contactsSubmitBtn.onclick = function (e) {
+  contactsSubmitBtn.addEventListener("click", ajaxSendContactsForm);
+
+  function ajaxSendContactsForm(e) {
     var formData = new FormData(contactsForm);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/php/send.php", true);
-
-    xhr.onloadstart = function (e) {
-
-    }
+    xhr.open("POST", "/php/send.php", false);
 
     xhr.onload = function (e) {
-
+      contactsForm.classList.remove("contacts__form--show");
+      document.body.removeChild(overlay);
     }
 
     xhr.send(formData);
   }
 
-  function ajaxSendForm(e) {
+  function ajaxSendPhoneBlockForm(e) {
     var formData = new FormData(phoneBlockForm);
 
     var xhr = new XMLHttpRequest();
@@ -595,7 +593,7 @@
 
     xhr.onloadstart = function (e) {
       phoneBlockSubmitBtn.removeEventListener("click", phoneBlockSubmit);
-      phoneBlockSubmitBtn.removeEventListener("click", ajaxSendForm);
+      phoneBlockSubmitBtn.removeEventListener("click", ajaxSendPhoneBlockForm);
       phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
       phoneBlockLabelName.classList.add("phone-block__label--sending");
       phoneBlockLabelPhone.classList.add("phone-block__label--sending");
@@ -607,12 +605,6 @@
       phoneBlockCross.classList.add("cross");
       phoneBlockCross.classList.add("cross--phone-block");
       phoneBlockForm.appendChild(phoneBlockCross);
-
-
-      phoneBlockCrossText.classList.add("phone-block__text");
-      phoneBlockCrossText.classList.add("phone-block__text--cross");
-      phoneBlockCrossText.innerHTML = "&times;";
-      phoneBlockCross.appendChild(phoneBlockCrossText);
 
       phoneBlockCross.addEventListener("click", function (e) {
         e.preventDefault();
@@ -636,8 +628,6 @@
       phoneBlockTextSubmit.innerHTML = "Отправлено";
 
       phoneBlockCross.classList.add("cross--done");
-      // phoneBlockCrossText.classList.add("phone-block__text--done");
-      phoneBlockCrossText.innerHTML = "";
     }
 
     xhr.send(formData);
