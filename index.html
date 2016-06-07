@@ -40,16 +40,22 @@
               <p class="page-title__category">Корпоратива</p>
             </h1>
             <div class="phone-block">
-              <a class="phone-block__phone" href="tel:89262461146">+7 (926) 246-11-46</a>
-              <a class="phone-block__btn phone-block__btn--link" href="phone-block-form.html">Заказать звонок</a>
-              <form class="phone-block__form" action="php/mail.php" method="POST">
+              <a class="phone-block__phone" href="tel:89262461146">
+                <p class="phone-block__text phone-block__text--phone">+7 (926) 246-11-46</p>
+              </a>
+              <a class="phone-block__btn phone-block__btn--link" href="phone-block-form.html">
+                <p class="phone-block__text phone-block__text--link">Заказать звонок</p>
+              </a>
+              <form class="phone-block__form" action="php/send.php" method="POST">
                 <label class="phone-block__label phone-block__label--name" for="phone-block__input--name">
                   <input class="phone-block__input phone-block__input--name" id="phone-block__input--name" type="text" name="name" placeholder="Как к вам обратиться?" required>
                 </label>
                 <label class="phone-block__label phone-block__label--phone" for="phone-block__input--phone">
                   <input class="phone-block__input phone-block__input--phone" id="phone-block__input--phone" type="text" name="phone" placeholder="Ваш номер" required>
                 </label>
-                <button  class="phone-block__btn phone-block__btn--form" id="phone-block__input--btn" type="submit">Отправить запрос</button>
+                <button  class="phone-block__btn phone-block__btn--form" id="phone-block__input--btn" type="submit">
+                  <p class="phone-block__text phone-block__text--submit">Отправить запрос</p>
+                </button>
               </form>
             </div>
             <div class="arrow"></div>
@@ -267,7 +273,7 @@
               <span class="contacts__key contacts__key--social">Соц. сети:</span> <span class="contacts__value contacts__value--social"><a class="contacts__link contacts__link--social" href="https://www.instagram.com/milyakov.anton/" target="_blank">instagram</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="contacts__link contacts__link--social" href="http://vk.com/milyakov.anton" target="_blank">vkontakte</a></span>
             </p>
             <a class="contacts__btn contacts__btn--link" href="contacts-form.html">Форма обратной связи</a>
-            <form class="contacts__form" action="#" method="POST">
+            <form class="contacts__form" action="php/send.php" method="POST">
               <h4 class="contacts__text contacts__text--form-title">Опишите ваше мероприятие</h4>
               <input class="contacts__input contacts__input--name" id="contacts__input--name" type="text" name="name" placeholder="Введите ваше имя">
               <label class="contacts__label contacts__label--name" for="contacts__input--name"></label>
