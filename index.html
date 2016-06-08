@@ -48,10 +48,10 @@
               </a>
               <form class="phone-block__form" action="php/send.php" method="POST">
                 <label class="phone-block__label phone-block__label--name" for="phone-block__input--name">
-                  <input class="phone-block__input phone-block__input--name" id="phone-block__input--name" type="text" name="name" placeholder="Как к вам обратиться?" required>
+                  <input class="phone-block__input phone-block__input--name" id="phone-block__input--name" type="text" name="name" placeholder="Как к вам обратиться?" pattern="^[A-Za-zА-Яа-яЁё\s]+$" required>
                 </label>
                 <label class="phone-block__label phone-block__label--phone" for="phone-block__input--phone">
-                  <input class="phone-block__input phone-block__input--phone" id="phone-block__input--phone" type="text" name="phone" placeholder="Ваш номер" required>
+                  <input class="phone-block__input phone-block__input--phone" id="phone-block__input--phone" type="text" name="phone" placeholder="Ваш номер" pattern="^[0-9\s()+-]{1,18}$" required>
                 </label>
                 <button  class="phone-block__btn phone-block__btn--form" id="phone-block__input--btn" type="submit">
                   <p class="phone-block__text phone-block__text--submit">Отправить запрос</p>
@@ -260,7 +260,7 @@
     </main>
     <footer class="page-footer">
       <div class="container container--footer">
-        <div class="container__inner-wrapper clearfix">
+        <div class="container__inner-wrapper container__inner-wrapper--footer clearfix">
           <section class="contacts column column--twelve-quarters" id="contacts">
             <h3 class="contacts__text contacts__text--title">Антон Миляков</h3>
             <p class="contacts__text contacts__text--phone">
@@ -281,7 +281,7 @@
               <label class="contacts__label contacts__label--e-mail" for="contacts__input--e-mail"></label>
               <input class="contacts__input contacts__input--phone" id="contacts__input--phone" type="text" name="phone" placeholder="Введите ваш телефон">
               <label class="contacts__label contacts__label--phone" for="contacts__input--phone"></label>
-              <textarea class="contacts__input contacts__input--message" id="contacts__input--message" rows="8" name="message" placeholder="Введите ваше сообщение"></textarea>
+              <textarea class="contacts__input contacts__input--message" id="contacts__input--message" rows="6" name="message" placeholder="Введите ваше сообщение"></textarea>
               <label class="contacts__label contacts__label--message" for="contacts__input--message"></label>
               <input class="contacts__btn contacts__btn--form" type="submit" value="Отправить">
             </form>

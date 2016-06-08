@@ -457,7 +457,7 @@
   }
 
   setInterval(function () {
-    if (phoneBlockInputName.value && phoneBlockInputPhone.value && !phoneBlockSubmitBtn.classList.contains("phone-block__btn--sending")) {
+    if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternPhoneBlockInputName.test(phoneBlockInputName.value) && patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value) && !phoneBlockSubmitBtn.classList.contains("phone-block__btn--sending")) {
       phoneBlockSubmitBtn.classList.add("phone-block__btn--ready");
     } else {
       phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
@@ -467,44 +467,63 @@
   //Реализация появления формы обратной связи
   var contactsFormBtn = document.querySelector(".contacts__btn--link");
   var contactsForm = document.querySelector(".contacts__form");
+  var clients = document.querySelector(".content--clients");
+  var pageFooter = document.querySelector(".page-footer");
+  var containerFooter = document.querySelector(".container--footer");
+  var contacts = document.querySelector(".contacts");
+  var contactsFormSkew;
+  var elementsWithOverlay;
 
-  var overlay = document.createElement("div");
-  overlay.classList.add("overlay");
+  var contactsFormWrapper = document.createElement("div");
+  contactsFormWrapper.classList.add("js__wrapper");
+  contactsFormWrapper.classList.add("js__wrapper--contacts__form");
+  contactsFormWrapper.appendChild(contactsForm);
+  contacts.appendChild(contactsFormWrapper);
 
-  var contactsCross = document.createElement("a");
-  contactsCross.innerHTML = "&times;";
-  contactsCross.classList.add("cross");
-  contactsCross.classList.add("cross--contacts");
-  contactsForm.appendChild(contactsCross);
+  contactsFormWrapper.style.top = -clients.offsetHeight + "px";
+
+  setInterval(function () {
+    contactsFormWrapperSkew = Math.atan(contactsFormWrapper.offsetHeight / (containerFooter.offsetWidth - contactsFormWrapper.offsetWidth)) * 180 / 3.14 - 90;
+    contactsFormWrapper.style.WebkitTransform = "skewX(" + contactsFormWrapperSkew + "deg)";
+    contactsFormWrapper.style.transform = "skewX(" + contactsFormWrapperSkew + "deg)";
+
+    contactsForm.style.WebkitTransform = "skewX(" + -contactsFormWrapperSkew + "deg)";
+    contactsForm.style.transform = "skewX(" + -contactsFormWrapperSkew + "deg)";
+  }, 4);
 
   contactsFormBtn.onclick = function (e) {
-    contactsForm.classList.add("contacts__form--show");
-    document.body.appendChild(overlay);
-
-    return false;
-  }
-
-  contactsCross.onclick = function (e) {
-    contactsForm.classList.remove("contacts__form--show");
-    document.body.removeChild(overlay);
-
-    return false;
-  }
-
-  overlay.ondblclick = function (e) {
-    contactsForm.classList.remove("contacts__form--show");
-    document.body.removeChild(overlay);
-  }
-
-  window.addEventListener("keydown", function (e) {
-    if (e.keyCode === 27) {
-      contactsForm.classList.remove("contacts__form--show");
-      document.body.removeChild(overlay);
+    contactsFormWrapper.classList.add("js__wrapper--show");
+    clients.classList.add("overlay");
+    pageFooter.classList.add("overlay");
+    elementsWithOverlay = document.querySelectorAll(".overlay");
+    for (i = 0; i < elementsWithOverlay.length; ++i) {
+      elementsWithOverlay[i].ondblclick = function (e) {
+        contactsFormWrapper.classList.remove("js__wrapper--show");
+        clients.classList.remove("overlay");
+        pageFooter.classList.remove("overlay");
+      }
     }
+
+    return false;
+  }
+
+  contactsFormWrapper.addEventListener("mouseover", function (e) {
+    window.addEventListener("keydown", closeContactsForm);
   })
 
+  contactsFormWrapper.addEventListener("mouseout", function (e) {
+    window.removeEventListener("keydown", closeContactsForm);
+  });
+
+  function closeContactsForm(e) {
+    if (e.keyCode === 27) {
+      contactsFormWrapper.classList.remove("js__wrapper--show");
+      clients.classList.remove("overlay");
+      pageFooter.classList.remove("overlay");
+    }
+  }
+
   //Реализация декоративных полос на фоне
-  var pageFooter = document.querySelector(".page-footer");
   var partners = pageFooter.querySelector(".partners");
   var containerAbout = document.querySelector(".container--about-me");
 
@@ -533,6 +552,8 @@
   var contactsSubmitBtn = document.querySelector(".contacts__btn--form");
   var phoneBlockTextSubmit = document.querySelector(".phone-block__text--submit");
   var phoneBlockCross = document.createElement("a");
+  var patternPhoneBlockInputName = new RegExp("^[A-Za-zА-Яа-яЁё ]+$");
+  var patternPhoneBlockInputPhone = new RegExp("^[0-9 ()+-]{1,18}$");
 
   phoneBlockSubmitBtn.setAttribute("type", "button");
   contactsSubmitBtn.setAttribute("type", "button");
@@ -540,24 +561,62 @@
   phoneBlockSubmitBtn.addEventListener("click", phoneBlockSubmit);
 
   function phoneBlockSubmit(e) {
-    phoneBlockLabelName.classList.remove("phone-block__label--invalid");
-    phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
-    phoneBlockSubmitBtn.classList.remove("phone-block__btn--invalid");
+    if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternPhoneBlockInputName.test(phoneBlockInputName.value) && patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
+      var formData = new FormData(phoneBlockForm);
 
-    if (phoneBlockInputName.value && phoneBlockInputPhone.value) {
-      phoneBlockSubmitBtn.addEventListener("click", ajaxSendForm);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/php/send.php", true);
+
+      xhr.onloadstart = function (e) {
+        phoneBlockSubmitBtn.removeEventListener("click", phoneBlockSubmit);
+        phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
+        phoneBlockLabelName.classList.add("phone-block__label--sending");
+        phoneBlockLabelPhone.classList.add("phone-block__label--sending");
+        phoneBlockSubmitBtn.classList.add("phone-block__btn--sending");
+        phoneBlockTextSubmit.innerHTML = "Отправление...";
+        phoneBlockInputName.disabled = true;
+        phoneBlockInputPhone.disabled = true;
+
+        phoneBlockCross.classList.add("cross");
+        phoneBlockCross.classList.add("cross--phone-block");
+        phoneBlockForm.appendChild(phoneBlockCross);
+
+        phoneBlockCross.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          xhr.abort();
+
+          phoneBlockSubmitBtn.addEventListener("click", phoneBlockSubmit);
+          phoneBlockLabelName.classList.remove("phone-block__label--sending");
+          phoneBlockLabelPhone.classList.remove("phone-block__label--sending");
+          phoneBlockSubmitBtn.classList.remove("phone-block__btn--sending");
+          phoneBlockTextSubmit.innerHTML = "Отправить запрос";
+          phoneBlockInputName.disabled = false;
+          phoneBlockInputPhone.disabled = false;
+
+          phoneBlockForm.removeChild(phoneBlockCross);
+        })
+      }
+
+      xhr.onload = function (e) {
+        phoneBlockTextSubmit.innerHTML = "Отправлено";
+
+        phoneBlockCross.classList.add("cross--done");
+      }
+
+      xhr.send(formData);
     };
 
     setInterval(function (e) {
-      if (!phoneBlockInputName.value && !phoneBlockInputPhone.value) {
+      if (phoneBlockInputName.value && phoneBlockInputPhone.value && !patternPhoneBlockInputName.test(phoneBlockInputName.value) && !patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
         phoneBlockLabelName.classList.add("phone-block__label--invalid");
         phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
         phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (!phoneBlockInputName.value && phoneBlockInputPhone.value) {
+      } else if (phoneBlockInputName.value && phoneBlockInputPhone.value && !patternPhoneBlockInputName.test(phoneBlockInputName.value) && patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
         phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
         phoneBlockLabelName.classList.add("phone-block__label--invalid");
         phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (phoneBlockInputName.value && !phoneBlockInputPhone.value) {
+      } else if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternPhoneBlockInputName.test(phoneBlockInputName.value) && !patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
         phoneBlockLabelName.classList.remove("phone-block__label--invalid");
         phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
         phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
@@ -586,50 +645,6 @@
   }
 
   function ajaxSendPhoneBlockForm(e) {
-    var formData = new FormData(phoneBlockForm);
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/php/send.php", true);
-
-    xhr.onloadstart = function (e) {
-      phoneBlockSubmitBtn.removeEventListener("click", phoneBlockSubmit);
-      phoneBlockSubmitBtn.removeEventListener("click", ajaxSendPhoneBlockForm);
-      phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
-      phoneBlockLabelName.classList.add("phone-block__label--sending");
-      phoneBlockLabelPhone.classList.add("phone-block__label--sending");
-      phoneBlockSubmitBtn.classList.add("phone-block__btn--sending");
-      phoneBlockTextSubmit.innerHTML = "Отправление...";
-      phoneBlockInputName.disabled = true;
-      phoneBlockInputPhone.disabled = true;
-
-      phoneBlockCross.classList.add("cross");
-      phoneBlockCross.classList.add("cross--phone-block");
-      phoneBlockForm.appendChild(phoneBlockCross);
-
-      phoneBlockCross.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        xhr.abort();
-
-        phoneBlockSubmitBtn.addEventListener("click", phoneBlockSubmit);
-        phoneBlockSubmitBtn.classList.add("phone-block__btn--ready");
-        phoneBlockLabelName.classList.remove("phone-block__label--sending");
-        phoneBlockLabelPhone.classList.remove("phone-block__label--sending");
-        phoneBlockSubmitBtn.classList.remove("phone-block__btn--sending");
-        phoneBlockTextSubmit.innerHTML = "Отправить запрос";
-        phoneBlockInputName.disabled = false;
-        phoneBlockInputPhone.disabled = false;
-
-        phoneBlockForm.removeChild(phoneBlockCross);
-      })
-    }
-
-    xhr.onload = function (e) {
-      phoneBlockTextSubmit.innerHTML = "Отправлено";
-
-      phoneBlockCross.classList.add("cross--done");
-    }
-
-    xhr.send(formData);
   }
 })();
