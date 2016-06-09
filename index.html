@@ -275,13 +275,13 @@
             <a class="contacts__btn contacts__btn--link" href="contacts-form.html">Форма обратной связи</a>
             <form class="contacts__form" action="php/send.php" method="POST">
               <h4 class="contacts__text contacts__text--form-title">Опишите ваше мероприятие</h4>
-              <input class="contacts__input contacts__input--name" id="contacts__input--name" type="text" name="name" placeholder="Введите ваше имя">
+              <input class="contacts__input contacts__input--name" id="contacts__input--name" type="text" name="name" placeholder="Введите ваше имя" pattern="^[A-Za-zА-Яа-яЁё\s]+$">
               <label class="contacts__label contacts__label--name" for="contacts__input--name"></label>
               <input class="contacts__input contacts__input--e-mail" id="contacts__input--e-mail" type="e-mail" name="e-mail" placeholder="Введите ваш e-mail">
               <label class="contacts__label contacts__label--e-mail" for="contacts__input--e-mail"></label>
-              <input class="contacts__input contacts__input--phone" id="contacts__input--phone" type="text" name="phone" placeholder="Введите ваш телефон">
+              <input class="contacts__input contacts__input--phone" id="contacts__input--phone" type="text" name="phone" placeholder="Введите ваш телефон" pattern="^[0-9\s()+-]{1,18}$">
               <label class="contacts__label contacts__label--phone" for="contacts__input--phone"></label>
-              <textarea class="contacts__input contacts__input--message" id="contacts__input--message" rows="6" name="message" placeholder="Введите ваше сообщение"></textarea>
+              <textarea class="contacts__input contacts__input--message" id="contacts__input--message" rows="6" name="message" placeholder="Введите ваше сообщение" pattern="^.*$"></textarea>
               <label class="contacts__label contacts__label--message" for="contacts__input--message"></label>
               <input class="contacts__btn contacts__btn--form" type="submit" value="Отправить">
             </form>

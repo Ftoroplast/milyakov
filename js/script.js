@@ -457,7 +457,7 @@
   }
 
   setInterval(function () {
-    if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternPhoneBlockInputName.test(phoneBlockInputName.value) && patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value) && !phoneBlockSubmitBtn.classList.contains("phone-block__btn--sending")) {
+    if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternInputName.test(phoneBlockInputName.value) && patternInputPhone.test(phoneBlockInputPhone.value) && !phoneBlockSubmitBtn.classList.contains("phone-block__btn--sending")) {
       phoneBlockSubmitBtn.classList.add("phone-block__btn--ready");
     } else {
       phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
@@ -474,6 +474,9 @@
   var contactsFormSkew;
   var elementsWithOverlay;
 
+  var overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+
   var contactsFormWrapper = document.createElement("div");
   contactsFormWrapper.classList.add("js__wrapper");
   contactsFormWrapper.classList.add("js__wrapper--contacts__form");
@@ -487,40 +490,38 @@
     contactsFormWrapper.style.WebkitTransform = "skewX(" + contactsFormWrapperSkew + "deg)";
     contactsFormWrapper.style.transform = "skewX(" + contactsFormWrapperSkew + "deg)";
 
-    contactsForm.style.WebkitTransform = "skewX(" + -contactsFormWrapperSkew + "deg)";
-    contactsForm.style.transform = "skewX(" + -contactsFormWrapperSkew + "deg)";
+    contactsForm.style.WebkitTransform = "translate(-50%, -50%) skewX(" + -contactsFormWrapperSkew + "deg)";
+    contactsForm.style.transform = "translate(-50%, -50%) skewX(" + -contactsFormWrapperSkew + "deg)";
   }, 4);
 
   contactsFormBtn.onclick = function (e) {
     contactsFormWrapper.classList.add("js__wrapper--show");
-    clients.classList.add("overlay");
-    pageFooter.classList.add("overlay");
-    elementsWithOverlay = document.querySelectorAll(".overlay");
-    for (i = 0; i < elementsWithOverlay.length; ++i) {
-      elementsWithOverlay[i].ondblclick = function (e) {
-        contactsFormWrapper.classList.remove("js__wrapper--show");
-        clients.classList.remove("overlay");
-        pageFooter.classList.remove("overlay");
-      }
-    }
+    clients.appendChild(overlay);
+    pageFooter.appendChild(overlay.cloneNode(true));
 
     return false;
   }
 
+  overlay.ondblclick = function (e) {
+    closeContactsForm();
+  }
+
   contactsFormWrapper.addEventListener("mouseover", function (e) {
-    window.addEventListener("keydown", closeContactsForm);
+    window.onkeydown = function (e) {
+      if (e.keyCode === 27) {
+        closeContactsForm();
+      }
+    }
   })
 
   contactsFormWrapper.addEventListener("mouseout", function (e) {
-    window.removeEventListener("keydown", closeContactsForm);
+    window.onkeydown = "";
   });
 
   function closeContactsForm(e) {
-    if (e.keyCode === 27) {
-      contactsFormWrapper.classList.remove("js__wrapper--show");
-      clients.classList.remove("overlay");
-      pageFooter.classList.remove("overlay");
-    }
+    contactsFormWrapper.classList.remove("js__wrapper--show");
+    clients.removeChild(clients.querySelector(".overlay"));
+    pageFooter.removeChild(pageFooter.querySelector(".overlay"));
   }
 
   //Реализация декоративных полос на фоне
@@ -552,8 +553,8 @@
   var contactsSubmitBtn = document.querySelector(".contacts__btn--form");
   var phoneBlockTextSubmit = document.querySelector(".phone-block__text--submit");
   var phoneBlockCross = document.createElement("a");
-  var patternPhoneBlockInputName = new RegExp("^[A-Za-zА-Яа-яЁё ]+$");
-  var patternPhoneBlockInputPhone = new RegExp("^[0-9 ()+-]{1,18}$");
+  var patternInputName = new RegExp("^[A-Za-zА-Яа-яЁё ]+$");
+  var patternInputPhone = new RegExp("^[0-9 ()+-]{1,18}$");
 
   phoneBlockSubmitBtn.setAttribute("type", "button");
   contactsSubmitBtn.setAttribute("type", "button");
@@ -561,7 +562,7 @@
   phoneBlockSubmitBtn.addEventListener("click", phoneBlockSubmit);
 
   function phoneBlockSubmit(e) {
-    if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternPhoneBlockInputName.test(phoneBlockInputName.value) && patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
+    if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternInputName.test(phoneBlockInputName.value) && patternInputPhone.test(phoneBlockInputPhone.value)) {
       var formData = new FormData(phoneBlockForm);
 
       var xhr = new XMLHttpRequest();
@@ -608,15 +609,25 @@
     };
 
     setInterval(function (e) {
-      if (phoneBlockInputName.value && phoneBlockInputPhone.value && !patternPhoneBlockInputName.test(phoneBlockInputName.value) && !patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
+      if (!phoneBlockInputName.value && !phoneBlockInputPhone.value) {
         phoneBlockLabelName.classList.add("phone-block__label--invalid");
         phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
         phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (phoneBlockInputName.value && phoneBlockInputPhone.value && !patternPhoneBlockInputName.test(phoneBlockInputName.value) && patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
+      } else if (!phoneBlockInputName.value) {
+        phoneBlockLabelName.classList.add("phone-block__label--invalid");
+        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
+      } else if (!phoneBlockInputPhone.value) {
+        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
+        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
+      } else if (!patternInputName.test(phoneBlockInputName.value) && !patternInputPhone.test(phoneBlockInputPhone.value)) {
+        phoneBlockLabelName.classList.add("phone-block__label--invalid");
+        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
+        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
+      } else if (!patternInputName.test(phoneBlockInputName.value) && patternInputPhone.test(phoneBlockInputPhone.value)) {
         phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
         phoneBlockLabelName.classList.add("phone-block__label--invalid");
         phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternPhoneBlockInputName.test(phoneBlockInputName.value) && !patternPhoneBlockInputPhone.test(phoneBlockInputPhone.value)) {
+      } else if (patternInputName.test(phoneBlockInputName.value) && !patternInputPhone.test(phoneBlockInputPhone.value)) {
         phoneBlockLabelName.classList.remove("phone-block__label--invalid");
         phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
         phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
@@ -628,23 +639,80 @@
     }, 4);
   }
 
-  contactsSubmitBtn.addEventListener("click", ajaxSendContactsForm);
 
-  function ajaxSendContactsForm(e) {
-    var formData = new FormData(contactsForm);
+  var contactsInputs = document.querySelectorAll(".contacts__input");
+  var contactsInputName = document.querySelector(".contacts__input--name");
+  var contactsInputEmail = document.querySelector(".contacts__input--e-mail");
+  var contactsInputPhone = document.querySelector(".contacts__input--phone");
+  var contactsInputMessage = document.querySelector(".contacts__input--message");
+  var patternInputEmail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
+  var patternInputMessage = new RegExp("^.*$");
+  var patterns = [];
+  var contactsTextTitle = document.querySelector(".contacts__text--form-title");
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/php/send.php", false);
+  patterns.push(patternInputName);
+  patterns.push(patternInputEmail);
+  patterns.push(patternInputPhone);
+  patterns.push(patternInputMessage);
 
-    xhr.onload = function (e) {
-      contactsForm.classList.remove("contacts__form--show");
-      document.body.removeChild(overlay);
-    }
+  contactsSubmitBtn.onclick = contactsSubmit;
 
-    xhr.send(formData);
-  }
+  function contactsSubmit(e) {
+    if (contactsInputName.value && contactsInputPhone.value && contactsInputEmail.value && contactsInputMessage.value && patternInputName.test(contactsInputName.value) && patternInputPhone.test(contactsInputPhone.value) && patternInputEmail.test(contactsInputEmail.value) && patternInputMessage.test(contactsInputMessage.value)) {
+      var formData = new FormData(contactsForm);
 
-  function ajaxSendPhoneBlockForm(e) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/php/send.php", true);
 
+      xhr.onloadstart = function (e) {
+        contactsSubmitBtn.onclick = function (e) {
+          xhr.abort();
+
+          contactsSubmitBtn.setAttribute("value", "Отправить");
+
+          for (i = 0; i < contactsInputs.length; ++i) {
+            contactsInputs[i].disabled = false;
+          }
+        };
+        contactsSubmitBtn.setAttribute("value", "Отправка...");
+        for (i = 0; i < contactsInputs.length; ++i) {
+          contactsInputs[i].disabled = true;
+        }
+      }
+
+      xhr.onload = function (e) {
+        for (i = 0; i < contactsInputs.length; ++i) {
+          contactsInputs[i].classList.add("contacts__input--hidden");
+        }
+        contactsSubmitBtn.setAttribute("value", "Готово");
+        contactsSubmitBtn.classList.add("contacts__btn--complete");
+        contactsTextTitle.classList.add("contacts__text--complete");
+        contactsTextTitle.innerHTML = "Ваша&nbsp;заявка&nbsp;отправлена,<br>мы&nbsp;свяжемся&nbsp;с&nbsp;вами<br>при&nbsp;первой&nbsp;возможности";
+        contactsSubmitBtn.onclick = function (e) {
+          closeContactsForm();
+          contactsSubmitBtn.onclick = contactsSubmit;
+          contactsSubmitBtn.setAttribute("value", "Отправить");
+          contactsSubmitBtn.classList.remove("contacts__btn--complete");
+          for (i = 0; i < contactsInputs.length; ++i) {
+            contactsInputs[i].disabled = false;
+            contactsInputs[i].classList.remove("contacts__input--hidden");
+          }
+          contactsTextTitle.classList.remove("contacts__text--complete");
+          contactsTextTitle.innerHTML = "Опишите ваше мероприятие";
+        }
+      }
+
+      xhr.send(formData);
+    };
+
+    setInterval(function (e) {
+      for (i = 0; i < contactsInputs.length; ++i) {
+        if (!contactsInputs[i].value || !patterns[i].test(contactsInputs[i].value)) {
+          contactsInputs[i].classList.add("contacts__input--invalid");
+        } else {
+          contactsInputs[i].classList.remove("contacts__input--invalid");
+        }
+      }
+    }, 4);
   }
 })();

@@ -1303,6 +1303,11 @@ main {
   text-align: left;
 }
 
+.contacts__text--complete {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
 .contacts__key {
   font-family: "Lato Light", "Arial", sans-serif;
   font-weight: 300;
@@ -1334,8 +1339,9 @@ main {
 }
 
 .contacts__form {
-  margin: 0 auto;
-  margin-top: 110px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 
   width: 80%;
 }
@@ -1345,6 +1351,7 @@ main {
   width: 50%;
   padding-left: 25px;
   margin-bottom: 20px;
+  border: none;
 
   background-color: #f9f9f9;
 
@@ -1365,6 +1372,22 @@ main {
 
 .contacts__input:focus {
   outline: none;
+}
+
+.contacts__input:invalid,
+.contacts__input--invalid {
+  background-image: linear-gradient(rgba(244, 49, 17, 0.5), rgba(244, 49, 17, 0.5));
+}
+
+.contacts__input:disabled {
+  background-color: #3f4553;
+  font-family: "Lato Bold", "Arial", sans-serif;
+  font-weight: 700;
+  color: #f9f9f9;
+}
+
+.contacts__input--hidden {
+  display: none;
 }
 
 .contacts__btn--form:focus {
@@ -1401,6 +1424,7 @@ main {
 
 .contacts__btn--form {
   display: block;
+  box-sizing: border-box;
   width: 250px;
   margin: 0 auto;
   border: none;
@@ -1410,15 +1434,19 @@ main {
   text-align: center;
 
   color: #1a2232;
-  font-family: "Lato Regular", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "Lato Medium", "Arial", sans-serif;
+  font-weight: 500;
   font-size: 18px;
   line-height: 40px;
 }
 
-.overlay::before {
-  content: "";
+.contacts__btn--complete {
+  border: 1px solid #f9f9f9;
+  background-color: transparent;
+  color: #f9f9f9;
+}
 
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
