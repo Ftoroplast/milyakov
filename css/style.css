@@ -331,36 +331,70 @@ a {
   padding: 50px;
   padding-right: 0;
 
-  transform: skew(-5deg) scaleX(0);
-  transform-origin: right center;
-  animation-duration: 0.3s;
-  animation-timing-function: linear;
-
   list-style: none;
+
+  -webkit-transform: skew(-5deg) scaleX(0);
+          transform: skew(-5deg) scaleX(0);
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
 
   font-size: 0;
 }
 
+@-webkit-keyframes navigationListAppear {
+  0% {
+    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+  }
+  100% {
+    -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
+  }
+}
+
 @keyframes navigationListAppear {
-  0% {transform: skew(-5deg) scaleX(0);}
-  100% {transform: skew(-5deg) scaleX(1);}
+  0% {
+    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+  }
+  100% {
+    -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
+  }
+}
+
+@-webkit-keyframes navigationListDisappear {
+  0% {
+    -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
+  }
+  100% {
+    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+  }
 }
 
 @keyframes navigationListDisappear {
-  0% {transform: skew(-5deg) scaleX(1);}
-  100% {transform: skew(-5deg) scaleX(0);}
+  0% {
+    -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
+  }
+  100% {
+    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+  }
 }
 
 .navigation__list--hide {
-  transform: skew(-5deg) scaleX(0);
-  animation-name: navigationListDisappear;
+  -webkit-transform: skew(-5deg) scaleX(0);
+          transform: skew(-5deg) scaleX(0);
+  -webkit-animation-name: navigationListDisappear;
+          animation-name: navigationListDisappear;
 }
 
 .navigation__btn:hover + .navigation__list,
 .navigation__list:hover,
 .navigation__list--show {
-  transform: skew(-5deg) scaleX(1);
-  animation-name: navigationListAppear;
+  -webkit-transform: skew(-5deg) scaleX(1);
+          transform: skew(-5deg) scaleX(1);
+  -webkit-animation-name: navigationListAppear;
+          animation-name: navigationListAppear;
 }
 
 .navigation__item {
@@ -372,7 +406,6 @@ a {
 
   -webkit-transform: skew(-24deg);
           transform: skew(-24deg);
-
   vertical-align: top;
 
   background-color: #f48647;
@@ -425,7 +458,7 @@ a {
 
 .page-title {
   margin-bottom: 180px;
-  padding-left: 147px;
+  padding-left: 150px;
 }
 
 .page-title__role {
@@ -1311,11 +1344,10 @@ main {
   color: #1a2232;
 
   font-family: "Lato Regular", "Arial", sans-serif;
-
   font-size: 16px;
   font-weight: 400;
   line-height: 18px;
-;
+  ;
 }
 
 .contacts__text--social {
@@ -1584,9 +1616,11 @@ main {
 .js__wrapper--bg-line {
   position: absolute;
   bottom: 0;
+
+  overflow: hidden;
+
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .js__wrapper--contacts__form {
@@ -1661,16 +1695,22 @@ main {
 
 .phone-block--fixed-hat {
   display: block;
-  transform: scale(0.85);
 
   margin: 0 auto;
   margin-top: 3px;
   margin-bottom: 0;
+
+  -webkit-transform: scale(0.85);
+          transform: scale(0.85);
 }
 
 .phone-block--hidden {
-  transform: scale(0);
-  transition: transform 0s linear 0.3s;
+  -webkit-transition: -webkit-transform 0s linear 0.3s;
+          transition: -webkit-transform 0s linear 0.3s;
+          transition:         transform 0s linear 0.3s;
+          transition:         transform 0s linear 0.3s, -webkit-transform 0s linear 0.3s;
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 .scroll--show {
