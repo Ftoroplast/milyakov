@@ -13,11 +13,10 @@
 
   setInterval(function () {
     for (i = 0; i < scrolls.length; ++i)(function(i) {
-
-
-      if (galleries[i].offsetWidth >= galleryContainers[i].offsetWidth) {
-        scrollTracks[i].style.width = scrolls[i].offsetWidth - 42 + "px";
+      if (galleries[i].offsetWidth > galleryContainers[i].offsetWidth) {
+        scrolls[i].classList.remove("scroll--show");
       } else {
+        scrolls[i].classList.add("scroll--show");
         scrollTracks[i].style.width = (scrolls[i].offsetWidth - 42) / galleryContainers[i].offsetWidth * galleries[i].offsetWidth + "px";
       }
 
@@ -28,8 +27,8 @@
   }, 4);
 
   for (i = 0; i < galleries.length; ++i)(function(i) {
-    galleries[i].style.overflow = "hidden";
-    scrolls[i].style.display = "block";
+    galleries[i].classList.add("gallery--js-on");
+    scrolls[i].classList.add("scroll--show");
 
     scrollArrowsLeft[i].addEventListener("mousedown", function () {
       timerTrackToLeft = setInterval(function () {
@@ -368,13 +367,14 @@
       pageHeader.style.marginTop = window.pageYOffset + "px";
       innerContainerHeader.style.top = -window.pageYOffset + "px";
     } else {
-
+      pageHeader.style.marginTop = innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 100 + "px";
+      innerContainerHeader.style.top = -(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 100) + "px";
     }
 
-    if (window.pageYOffset < phoneBlockTopCoords - 15) {
-      transformFirstScreenToBlock();
-    } else {
+    if (window.pageYOffset > phoneBlockTopCoords - 15) {
       transformFirstScreenToFixedHat();
+    } else {
+      transformFirstScreenToBlock();
     }
   }
 
@@ -389,7 +389,6 @@
 
     //Пропадание меню с задержкой
     clearTimeout(hideNavigationListTimer);
-    navigationList.classList.remove("navigation__list--hide");
     navigationList.classList.add("navigation__list--show");
   }
 
@@ -399,6 +398,9 @@
       navigationList.classList.remove("navigation__list--show");
       navigationList.classList.add("navigation__list--hide");
       phoneBlock.classList.remove("phone-block--hidden");
+      setTimeout(function () {
+        navigationList.classList.remove("navigation__list--hide");
+      }, 301);
     }, 1000);
   }
 
@@ -491,7 +493,7 @@
   contactsFormWrapper.classList.add("js__wrapper");
   contactsFormWrapper.classList.add("js__wrapper--contacts__form");
   contactsFormWrapper.appendChild(contactsForm);
-  contacts.appendChild(contactsFormWrapper);
+  containerFooter.appendChild(contactsFormWrapper);
 
   contactsFormWrapper.style.top = -clients.offsetHeight + "px";
 
@@ -771,5 +773,26 @@
     }
   }
 
+  //Реализация переключения текста заголовка в хедере
+  var pageTitleAnimatedWord = document.querySelector(".page-title__animated-word");
+  var pageTitleCategory = document.querySelector(".page-title__category");
+  var pageTitleAnimatedWordList = ["вашего", "вашей"];
+  var pageTitleCategoryList = ["Корпоратива", "Свадьбы", "Праздничного концерта", "Рекламной акции", "Деловой конференции", "Спортивного мероприятия"];
+  var pageTitleCounter = 0;
 
+  setInterval(function () {
+    if (pageTitleCounter === 0 || pageTitleCounter === 2 || pageTitleCounter === 5) {
+      pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[0];
+    } else {
+      pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[1];
+    }
+
+    pageTitleCategory.innerHTML = pageTitleCategoryList[pageTitleCounter];
+
+    if (pageTitleCounter < pageTitleCategoryList.length - 1) {
+      ++pageTitleCounter;
+    } else {
+      pageTitleCounter = 0;
+    }
+  }, 5000);
 })();
