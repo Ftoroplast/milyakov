@@ -364,7 +364,7 @@
   firstScreenWrapper.appendChild(firstScreen);
 
   window.onscroll = function (e) {
-    if (window.pageYOffset < innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 50) {
+    if (window.pageYOffset < innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 100) {
       pageHeader.style.marginTop = window.pageYOffset + "px";
       innerContainerHeader.style.top = -window.pageYOffset + "px";
     } else {
@@ -378,18 +378,28 @@
     }
   }
 
-  arrowToSecondScreen.onclick = function (e) {
-    document.body.scrollTop = 520;
-  }
+  arrowToSecondScreen.onclick = gradualScrolling(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 70, 5);
+
+  var hideNavigationListTimer;
 
   navigationList.onmouseover = function (e) {
     if (navigationList.classList.contains("navigation__list--fixed-hat")) {
       phoneBlock.classList.add("phone-block--hidden");
     }
+
+    //Пропадание меню с задержкой
+    clearTimeout(hideNavigationListTimer);
+    navigationList.classList.remove("navigation__list--hide");
+    navigationList.classList.add("navigation__list--show");
   }
 
   navigationList.onmouseout = function (e) {
-    phoneBlock.classList.remove("phone-block--hidden");
+    //Пропадание меню с задержкой
+    hideNavigationListTimer = setTimeout(function (e) {
+      navigationList.classList.remove("navigation__list--show");
+      navigationList.classList.add("navigation__list--hide");
+      phoneBlock.classList.remove("phone-block--hidden");
+    }, 1000);
   }
 
   navigationBtn.onmouseover = function (e) {
@@ -528,23 +538,34 @@
   var partners = pageFooter.querySelector(".partners");
   var containerAbout = document.querySelector(".container--about-me");
 
-  var bgLine = document.createElement("div");
-  bgLine.classList.add("bg-line");
-  document.body.appendChild(bgLine);
+  var bgLineWrapper = document.createElement("div");
+  bgLineWrapper.classList.add("js__wrapper");
+  bgLineWrapper.classList.add("js__wrapper--bg-line");
 
+  var bgLineWrapperPartners = bgLineWrapper.cloneNode(true);
+  var bgLinePartners = document.createElement("div");
+  bgLinePartners.classList.add("bg-line");
+  bgLinePartners.classList.add("bg-line--partners");
+  document.body.appendChild(bgLineWrapperPartners);
+  bgLineWrapperPartners.appendChild(bgLinePartners);
+
+  var bgLineWrapperCopyright = bgLineWrapper.cloneNode(true);
   var bgLineCopyright = document.createElement("div");
   bgLineCopyright.classList.add("bg-line");
   bgLineCopyright.classList.add("bg-line--copyright");
-  document.body.appendChild(bgLineCopyright);
+  document.body.appendChild(bgLineWrapperCopyright);
+  bgLineWrapperCopyright.appendChild(bgLineCopyright);
 
+  var bgLineWrapperAbout = bgLineWrapper.cloneNode(true);
   var bgLineAbout = document.createElement("div");
   bgLineAbout.classList.add("bg-line");
   bgLineAbout.classList.add("bg-line--about");
-  document.body.appendChild(bgLineAbout);
+  document.body.appendChild(bgLineWrapperAbout);
+  bgLineWrapperAbout.appendChild(bgLineAbout);
 
   setInterval(function () {
-    bgLine.style.WebkitTransform = "skew(-22deg) translateX(" + 1000/bgLine.offsetWidth * 72.9 + "%)";
-    bgLine.style.transform = "skew(-22deg) translateX(" + 1000/bgLine.offsetWidth * 72.9 + "%)";
+    bgLinePartners.style.WebkitTransform = "skew(-22deg) translateX(" + 1000/bgLinePartners.offsetWidth * 72.9 + "%)";
+    bgLinePartners.style.transform = "skew(-22deg) translateX(" + 1000/bgLinePartners.offsetWidth * 72.9 + "%)";
     bgLineCopyright.style.left = getCoords(partners).left + partners.offsetWidth + "px";
     bgLineAbout.style.left = getCoords(containerAbout).left - bgLineAbout.offsetWidth + "px";
   }, 4);
@@ -715,4 +736,40 @@
       }
     }, 4);
   }
+
+  //События прокрутки для якорей
+  var navigationLinks = navigation.querySelectorAll(".navigation__link");
+  var contents = document.querySelectorAll(".content");
+
+  for (i = 0; i < navigationLinks.length; ++i) {
+    navigationLinks[i].onclick = gradualScrolling(getCoords(contents[i]).top + pageHeader.offsetHeight, 10);
+  }
+
+  function gradualScrolling(distanceToDestinationElement, scrollSpeed) {
+    return function (e) {
+      var scrollTimer = setInterval(function (e) {
+        if (document.body.scrollTop < distanceToDestinationElement) {
+          document.body.scrollTop += scrollSpeed;
+        } else if (document.body.scrollTop > distanceToDestinationElement + scrollSpeed - 1) {
+          document.body.scrollTop -= scrollSpeed;
+        } else {
+          clearInterval(scrollTimer);
+        }
+      }, 4);
+
+      var scrollStopTimer = setInterval(function () {
+        var oldPageYOffset = window.pageYOffset;
+        setTimeout(function () {
+          if (window.pageYOffset === oldPageYOffset) {
+            clearInterval(scrollTimer);
+            clearInterval(scrollStopTimer);
+          }
+        }, 4);
+      }, 4);
+
+      return false;
+    }
+  }
+
+
 })();
