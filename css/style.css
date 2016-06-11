@@ -80,7 +80,7 @@ h1 {
   font-family: "Lato Medium", "Arial", sans-serif;
   font-size: 44px;
   font-weight: 500;
-  line-height: 14.58px;
+  line-height: 66px;
 }
 
 h2 {
@@ -264,7 +264,7 @@ a {
 .navigation {
   position: relative;
 
-  margin-bottom: 185px;
+  margin-bottom: 170px;
 
   text-align: right;
 }
@@ -328,8 +328,11 @@ a {
   top: -30px;
   right: -4px;
 
+  width: 100%;
   padding: 50px;
   padding-right: 0;
+
+  white-space: nowrap;
 
   list-style: none;
 
@@ -402,7 +405,8 @@ a {
 
   display: inline-block;
 
-  margin-right: 3px;
+  min-width: 18%;
+  margin-right: 0.3%;
 
   -webkit-transform: skew(-24deg);
           transform: skew(-24deg);
@@ -418,7 +422,6 @@ a {
   display: block;
 
   box-sizing: border-box;
-  min-width: 175px;
   min-height: 38px;
   padding: 7px 29px;
 
@@ -434,20 +437,6 @@ a {
   line-height: 24px;
 }
 
-/*.navigation__item:first-child::before {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-
-  width: 2px;
-  height: 38px;
-
-  content: "";
-
-  background-color: #f9f9f9;
-}*/
-
 .navigation__item:hover {
   background-color: #f4c547;
 }
@@ -457,19 +446,49 @@ a {
 }
 
 .page-title {
-  margin-bottom: 180px;
-  padding-left: 150px;
+  margin-bottom: 155px;
+  margin-left: 100px;
+  padding-left: 50px;
+  margin-right: auto;
+}
+
+.page-title--animated {
+  overflow: hidden;
+  transform: skew(-24deg);
+  width: 50%;
 }
 
 .page-title__role {
-  margin-bottom: 40px;
-
   color: #f9f9f9;
 
   font-family: "Lato Light", "Arial", sans-serif;
   font-size: 30px;
   font-weight: 300;
-  line-height: 14.58px;
+  line-height: 45px;
+}
+
+.page-title__category {
+  transform-origin: left center;
+  animation-timing-function: linear;
+  animation-duration: 0.8s;
+}
+
+.page-title__category--disappear {
+  animation-name: pageTitleDisappear;
+}
+
+.page-title__category--appear {
+  animation-name: pageTitleAppear;
+}
+
+@keyframes pageTitleDisappear {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes pageTitleAppear {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 .phone-block {

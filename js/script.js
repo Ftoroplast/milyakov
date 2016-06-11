@@ -363,12 +363,12 @@
   firstScreenWrapper.appendChild(firstScreen);
 
   window.onscroll = function (e) {
-    if (window.pageYOffset < innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 100) {
+    if (window.pageYOffset < innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 50) {
       pageHeader.style.marginTop = window.pageYOffset + "px";
       innerContainerHeader.style.top = -window.pageYOffset + "px";
     } else {
-      pageHeader.style.marginTop = innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 100 + "px";
-      innerContainerHeader.style.top = -(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 100) + "px";
+      pageHeader.style.marginTop = innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 50 + "px";
+      innerContainerHeader.style.top = -(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 50) + "px";
     }
 
     if (window.pageYOffset > phoneBlockTopCoords - 15) {
@@ -378,7 +378,7 @@
     }
   }
 
-  arrowToSecondScreen.onclick = gradualScrolling(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 70, 5);
+  arrowToSecondScreen.onclick = gradualScrolling(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 30, 5);
 
   var hideNavigationListTimer;
 
@@ -774,11 +774,13 @@
   }
 
   //Реализация переключения текста заголовка в хедере
+  var pageTitle = document.querySelector(".page-title");
+  var pageTitleRole = document.querySelector(".page-title__role");
   var pageTitleAnimatedWord = document.querySelector(".page-title__animated-word");
   var pageTitleCategory = document.querySelector(".page-title__category");
   var pageTitleAnimatedWordList = ["вашего", "вашей"];
   var pageTitleCategoryList = ["Корпоратива", "Свадьбы", "Праздничного концерта", "Рекламной акции", "Деловой конференции", "Спортивного мероприятия"];
-  var pageTitleCounter = 0;
+  var pageTitleCounter = 1;
 
   setInterval(function () {
     if (pageTitleCounter === 0 || pageTitleCounter === 2 || pageTitleCounter === 5) {
@@ -787,7 +789,15 @@
       pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[1];
     }
 
+    pageTitleCategory.classList.remove("page-title__category--disappear");
+    pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
+    pageTitleCategory.classList.add("page-title__category--disappear");
+
     pageTitleCategory.innerHTML = pageTitleCategoryList[pageTitleCounter];
+
+    pageTitleCategory.classList.remove("page-title__category--appear");
+    pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
+    pageTitleCategory.classList.add("page-title__category--appear");
 
     if (pageTitleCounter < pageTitleCategoryList.length - 1) {
       ++pageTitleCounter;
