@@ -378,7 +378,7 @@
     }
   }
 
-  arrowToSecondScreen.onclick = gradualScrolling(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 30, 5);
+  arrowToSecondScreen.onclick = gradualScrolling(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 70, 5);
 
   var hideNavigationListTimer;
 
