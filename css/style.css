@@ -326,7 +326,7 @@ a {
   position: absolute;
   z-index: 3;
   top: -30px;
-  right: -4px;
+  right: 0px;
 
   width: 100%;
   padding: 50px;
@@ -350,7 +350,7 @@ a {
 
 @-webkit-keyframes navigationListAppear {
   0% {
-    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+    -webkit-transform: skew(-24deg) scaleX(0)                                    ;transform: skew(-24deg) scaleX(0);
   }
   100% {
     -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
@@ -359,7 +359,7 @@ a {
 
 @keyframes navigationListAppear {
   0% {
-    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+    -webkit-transform: skew(-24deg) scaleX(0)                                    ;transform: skew(-24deg) scaleX(0);
   }
   100% {
     -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
@@ -371,7 +371,7 @@ a {
     -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
   }
   100% {
-    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+    -webkit-transform: skew(-24deg) scaleX(0)                                    ;transform: skew(-24deg) scaleX(0);
   }
 }
 
@@ -380,7 +380,7 @@ a {
     -webkit-transform: skew(-5deg) scaleX(1)                                    ;transform: skew(-5deg) scaleX(1);
   }
   100% {
-    -webkit-transform: skew(-5deg) scaleX(0)                                    ;transform: skew(-5deg) scaleX(0);
+    -webkit-transform: skew(-24deg) scaleX(0)                                    ;transform: skew(-24deg) scaleX(0);
   }
 }
 
@@ -408,8 +408,8 @@ a {
   min-width: 18%;
   margin-right: 0.3%;
 
-  -webkit-transform: skew(-24deg);
-          transform: skew(-24deg);
+  -webkit-transform: skew(-20deg);
+          transform: skew(-20deg);
   vertical-align: top;
 
   background-color: #f48647;
@@ -425,8 +425,8 @@ a {
   min-height: 38px;
   padding: 7px 29px;
 
-  -webkit-transform: skew(27deg);
-          transform: skew(27deg);
+  -webkit-transform: skew(24deg);
+          transform: skew(24deg);
   text-align: center;
 
   color: #f9f9f9;
@@ -450,12 +450,10 @@ a {
   margin-left: 100px;
   padding-left: 50px;
   margin-right: auto;
-}
 
-.page-title--animated {
+  width: 600px;
   overflow: hidden;
   transform: skew(-24deg);
-  width: 50%;
 }
 
 .page-title__role {
@@ -482,13 +480,13 @@ a {
 }
 
 @keyframes pageTitleDisappear {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
+  0% {transform: translateX(0);}
+  100% {transform: translateX(600px);}
 }
 
 @keyframes pageTitleAppear {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+  0% {transform: translateX(-600px);}
+  100% {transform: translateX(0);}
 }
 
 .phone-block {
@@ -727,6 +725,7 @@ main {
 .arrow {
   position: relative;
   z-index: 1;
+  opacity: 0.3;
 
   display: block;
 
@@ -742,7 +741,9 @@ main {
   background-size: 100% 100%;
 }
 
-
+.arrow:hover {
+  opacity: 1;
+}
 
 .second-screen__text {
   width: 54.54%;
@@ -1659,6 +1660,10 @@ main {
   background-color: #2a3140;
 }
 
+.js__wrapper--page-title {
+  transform: skew(24deg);
+}
+
 .js__wrapper--show {
   display: block;
 }
@@ -1706,6 +1711,7 @@ main {
 }
 
 .navigation__list--fixed-hat {
+  right: -2px;
   z-index: 2;
   top: -18px;
 

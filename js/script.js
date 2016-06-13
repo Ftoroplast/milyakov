@@ -420,6 +420,7 @@
     phoneBlock.classList.add("phone-block--fixed-hat");
     navigationBtn.classList.add("navigation__btn--fixed-hat");
     navigationList.classList.add("navigation__list--fixed-hat");
+    pageTitle.classList.add("page-title--fixed-hat");
   }
 
   function transformFirstScreenToBlock() {
@@ -431,6 +432,7 @@
     phoneBlock.classList.remove("phone-block--fixed-hat");
     navigationBtn.classList.remove("navigation__btn--fixed-hat");
     navigationList.classList.remove("navigation__list--fixed-hat");
+    pageTitle.classList.remove("page-title--fixed-hat");
   }
 
   //Оживление формы "Заказать звонок"
@@ -782,27 +784,35 @@
   var pageTitleCategoryList = ["Корпоратива", "Свадьбы", "Праздничного концерта", "Рекламной акции", "Деловой конференции", "Спортивного мероприятия"];
   var pageTitleCounter = 1;
 
-  setInterval(function () {
-    if (pageTitleCounter === 0 || pageTitleCounter === 2 || pageTitleCounter === 5) {
-      pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[0];
-    } else {
-      pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[1];
-    }
+  var pageTitleInnerWrapper = document.createElement("div");
+  pageTitleInnerWrapper.className = "js__wrapper js__wrapper--page-title";
+  pageTitle.appendChild(pageTitleInnerWrapper);
+  pageTitleInnerWrapper.appendChild(pageTitleRole);
+  pageTitleInnerWrapper.appendChild(pageTitleCategory);
 
-    pageTitleCategory.classList.remove("page-title__category--disappear");
+  setInterval(function () {
     pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
     pageTitleCategory.classList.add("page-title__category--disappear");
+    setTimeout(function () {
+      if (pageTitleCounter === 0 || pageTitleCounter === 2 || pageTitleCounter === 5) {
+        pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[0];
+      } else {
+        pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[1];
+      }
+      pageTitleCategory.innerHTML = pageTitleCategoryList[pageTitleCounter];
 
-    pageTitleCategory.innerHTML = pageTitleCategoryList[pageTitleCounter];
+      pageTitleCategory.classList.remove("page-title__category--disappear");
+      pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
+      pageTitleCategory.classList.add("page-title__category--appear");
+      setTimeout(function () {
+        pageTitleCategory.classList.remove("page-title__category--appear");
+      }, 800);
 
-    pageTitleCategory.classList.remove("page-title__category--appear");
-    pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
-    pageTitleCategory.classList.add("page-title__category--appear");
-
-    if (pageTitleCounter < pageTitleCategoryList.length - 1) {
-      ++pageTitleCounter;
-    } else {
-      pageTitleCounter = 0;
-    }
+      if (pageTitleCounter < pageTitleCategoryList.length - 1) {
+        ++pageTitleCounter;
+      } else {
+        pageTitleCounter = 0;
+      }
+    }, 790);
   }, 5000);
 })();
