@@ -1,30 +1,23 @@
 (function () {
-  // Реализация скроллбара
+  var i;
   var galleries = document.querySelectorAll(".gallery");
   var galleryContainers = document.querySelectorAll(".gallery__container");
   var scrolls = document.querySelectorAll(".scroll");
   var scrollArrowsLeft = document.querySelectorAll(".scroll__arrow--left");
   var scrollArrowsRight = document.querySelectorAll(".scroll__arrow--right");
   var scrollTracks = document.querySelectorAll(".scroll__track");
-  var timerTrackToRight;
-  var timerTrackToLeft;
-  var shiftX = [];
-  var i;
 
-  setInterval(function () {
-    for (i = 0; i < scrolls.length; ++i)(function(i) {
-      if (galleries[i].offsetWidth > galleryContainers[i].offsetWidth) {
-        scrolls[i].classList.remove("scroll--show");
-      } else {
-        scrolls[i].classList.add("scroll--show");
-        scrollTracks[i].style.width = (scrolls[i].offsetWidth - 42) / galleryContainers[i].offsetWidth * galleries[i].offsetWidth + "px";
-      }
+  (function scrollbar(scrollableContents, scrollableContentContainers, scrollbars, scrollArrowsLeft, scrollArrowsRight, scrollbarTracks) {
+    var timerTrackToRight;
+    var timerTrackToLeft;
+    var shiftX = [];
 
-      if (parseFloat(getComputedStyle(galleryContainers[i]).left) <= 0 || parseFloat(getComputedStyle(galleryContainers[i]).left) >= galleries[i].offsetWidth - galleryContainers[i].offsetWidth) {
-        galleryContainers[i].style.left = (getCoords(scrolls[i]).left + 17 - getCoords(scrollTracks[i]).left) * (galleryContainers[i].offsetWidth - galleries[i].offsetWidth) / (scrolls[i].offsetWidth - scrollTracks[i].offsetWidth - 42) + "px";
-      }
-    })(i);
-  }, 4);
+    setInterval(function () {
+      for (i = 0; i < scrollbars.length; ++i)(function(i) {
+        resizeScrollbarTrack(scrollableContents[i], scrollableContentContainers[i], scrollbars[i], scrollbarTracks[i]);
+        scrollContent(scrollableContents[i], scrollableContentContainers[i], scrollbars[i], scrollbarTracks[i]);
+      })(i);
+    }, 50);
 
   for (i = 0; i < galleries.length; ++i)(function(i) {
     galleries[i].classList.add("gallery--js-on");
@@ -122,14 +115,21 @@
     })
   })(i);
 
-  function getCoords(elem) { // кроме IE8-
-    var box = elem.getBoundingClientRect();
+  function resizeScrollbarTrack(scrollableContent, scrollableContentContainer, scrollbar, scrollbarTrack) {
+    if (scrollableContent.offsetWidth > scrollableContentContainer.offsetWidth) {
+      scrollbar.classList.remove("scroll--show");
+    } else {
+      scrollbar.classList.add("scroll--show");
+      scrollbarTrack.style.width = (scrollbar.offsetWidth - 42) / scrollableContentContainer.offsetWidth * scrollableContent.offsetWidth + "px";
+    }
+  };
 
-    return {
-      top: box.top + pageYOffset,
-      left: box.left + pageXOffset
-    };
-  }
+  function scrollContent(scrollableContent, scrollableContentContainer, scrollbar, scrollbarTrack) {
+     if (parseFloat(getComputedStyle(scrollableContentContainer).left) <= 0 || parseFloat(getComputedStyle(scrollableContentContainer).left) >= scrollableContent.offsetWidth - scrollableContentContainer.offsetWidth) {
+      scrollableContentContainer.style.left = (getCoords(scrollbar).left + 17 - getCoords(scrollbarTrack).left) * (scrollableContentContainer.offsetWidth - scrollableContent.offsetWidth) / (scrollbar.offsetWidth - scrollbarTrack.offsetWidth - 42) + "px";
+    }
+  };
+})(galleries, galleryContainers, scrolls, scrollArrowsLeft, scrollArrowsRight, scrollTracks);
 
   //Реализация попапа
   var sectionPortfolio = document.querySelector(".content--portfolio");
@@ -470,14 +470,6 @@
     document.onkeydown = null;
   }
 
-  setInterval(function () {
-    if (phoneBlockInputName.value && phoneBlockInputPhone.value && patternInputName.test(phoneBlockInputName.value) && patternInputPhone.test(phoneBlockInputPhone.value) && !phoneBlockSubmitBtn.classList.contains("phone-block__btn--sending")) {
-      phoneBlockSubmitBtn.classList.add("phone-block__btn--ready");
-    } else {
-      phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
-    }
-  }, 4);
-
   //Реализация появления формы обратной связи
   var contactsFormBtn = document.querySelector(".contacts__btn--link");
   var contactsForm = document.querySelector(".contacts__form");
@@ -512,12 +504,14 @@
     contactsFormWrapper.classList.add("js__wrapper--show");
     clients.appendChild(overlay);
     pageFooter.appendChild(overlay.cloneNode(true));
+    elementsWithOverlay = document.querySelectorAll(".overlay");
+    for (var i = 0; i < elementsWithOverlay.length; ++i) {
+      elementsWithOverlay[i].onclick = function (e) {
+        closeContactsForm();
+      }
+    }
 
     return false;
-  }
-
-  overlay.ondblclick = function (e) {
-    closeContactsForm();
   }
 
   contactsFormWrapper.addEventListener("mouseover", function (e) {
@@ -594,8 +588,8 @@
       xhr.open("POST", "/php/send.php", true);
 
       xhr.onloadstart = function (e) {
+        phoneBlockCross.classList.remove("cross--done");
         phoneBlockSubmitBtn.removeEventListener("click", phoneBlockSubmit);
-        phoneBlockSubmitBtn.classList.remove("phone-block__btn--ready");
         phoneBlockLabelName.classList.add("phone-block__label--sending");
         phoneBlockLabelPhone.classList.add("phone-block__label--sending");
         phoneBlockSubmitBtn.classList.add("phone-block__btn--sending");
@@ -633,37 +627,24 @@
       xhr.send(formData);
     };
 
+    var phoneBlockLabels = document.querySelectorAll(".phone-block__label");
+    var phoneBlockInputs = document.querySelectorAll(".phone-block__input");
+
     setInterval(function (e) {
-      if (!phoneBlockInputName.value && !phoneBlockInputPhone.value) {
-        phoneBlockLabelName.classList.add("phone-block__label--invalid");
-        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
-        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (!phoneBlockInputName.value) {
-        phoneBlockLabelName.classList.add("phone-block__label--invalid");
-        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (!phoneBlockInputPhone.value) {
-        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
-        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (!patternInputName.test(phoneBlockInputName.value) && !patternInputPhone.test(phoneBlockInputPhone.value)) {
-        phoneBlockLabelName.classList.add("phone-block__label--invalid");
-        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
-        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (!patternInputName.test(phoneBlockInputName.value) && patternInputPhone.test(phoneBlockInputPhone.value)) {
-        phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
-        phoneBlockLabelName.classList.add("phone-block__label--invalid");
-        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else if (patternInputName.test(phoneBlockInputName.value) && !patternInputPhone.test(phoneBlockInputPhone.value)) {
-        phoneBlockLabelName.classList.remove("phone-block__label--invalid");
-        phoneBlockLabelPhone.classList.add("phone-block__label--invalid");
-        phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
-      } else {
-        phoneBlockLabelName.classList.remove("phone-block__label--invalid");
-        phoneBlockLabelPhone.classList.remove("phone-block__label--invalid");
-        phoneBlockSubmitBtn.classList.remove("phone-block__btn--invalid");
+      for (i = 0; i < phoneBlockInputs.length; ++i) {
+        var patterns = [];
+        patterns.push(patternInputName);
+        patterns.push(patternInputPhone);
+        if (!phoneBlockInputs[i].value || !patterns[i].test(phoneBlockInputs[i].value)) {
+          phoneBlockLabels[i].classList.add("phone-block__label--invalid");
+          phoneBlockSubmitBtn.classList.add("phone-block__btn--invalid");
+        } else {
+          phoneBlockLabels[i].classList.remove("phone-block__label--invalid");
+          phoneBlockSubmitBtn.classList.remove("phone-block__btn--invalid");
+        }
       }
     }, 4);
   }
-
 
   var contactsInputs = document.querySelectorAll(".contacts__input");
   var contactsInputName = document.querySelector(".contacts__input--name");
@@ -692,6 +673,8 @@
       xhr.onloadstart = function (e) {
         contactsSubmitBtn.onclick = function (e) {
           xhr.abort();
+
+          contactsSubmitBtn.onclick = contactsSubmit;
 
           contactsSubmitBtn.setAttribute("value", "Отправить");
 
@@ -810,4 +793,13 @@
       }, 600);
     }, 580);
   }, 5000);
+
+  function getCoords(elem) { // кроме IE8-
+    var box = elem.getBoundingClientRect();
+
+    return {
+      top: box.top + pageYOffset,
+      left: box.left + pageXOffset
+    };
+  }
 })();

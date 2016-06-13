@@ -557,10 +557,6 @@ a {
   font-family: "Arial", sans-serif;
 }
 
-.phone-block__btn--ready {
-  background-color: #86cf4f;
-}
-
 .phone-block__btn--invalid::after {
   position: absolute;
   z-index: -1;
