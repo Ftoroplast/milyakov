@@ -784,15 +784,10 @@
   var pageTitleCategoryList = ["Корпоратива", "Свадьбы", "Праздничного концерта", "Рекламной акции", "Деловой конференции", "Спортивного мероприятия"];
   var pageTitleCounter = 1;
 
-  var pageTitleInnerWrapper = document.createElement("div");
-  pageTitleInnerWrapper.className = "js__wrapper js__wrapper--page-title";
-  pageTitle.appendChild(pageTitleInnerWrapper);
-  pageTitleInnerWrapper.appendChild(pageTitleRole);
-  pageTitleInnerWrapper.appendChild(pageTitleCategory);
-
   setInterval(function () {
     pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
     pageTitleCategory.classList.add("page-title__category--disappear");
+
     setTimeout(function () {
       if (pageTitleCounter === 0 || pageTitleCounter === 2 || pageTitleCounter === 5) {
         pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[0];
@@ -800,19 +795,19 @@
         pageTitleAnimatedWord.innerHTML = pageTitleAnimatedWordList[1];
       }
       pageTitleCategory.innerHTML = pageTitleCategoryList[pageTitleCounter];
-
-      pageTitleCategory.classList.remove("page-title__category--disappear");
-      pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
-      pageTitleCategory.classList.add("page-title__category--appear");
-      setTimeout(function () {
-        pageTitleCategory.classList.remove("page-title__category--appear");
-      }, 800);
-
       if (pageTitleCounter < pageTitleCategoryList.length - 1) {
         ++pageTitleCounter;
       } else {
         pageTitleCounter = 0;
       }
-    }, 790);
+
+      pageTitleCategory.classList.remove("page-title__category--disappear");
+      pageTitleCategory.offsetWidth = pageTitleCategory.offsetWidth;
+      pageTitleCategory.classList.add("page-title__category--appear");
+
+      setTimeout(function () {
+        pageTitleCategory.classList.remove("page-title__category--appear");
+      }, 600);
+    }, 580);
   }, 5000);
 })();
