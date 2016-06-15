@@ -207,7 +207,7 @@ a {
   position: relative;
 
   min-width: 1000px;
-  max-width: 1600px;
+  max-width: 2400px;
   margin: 0 auto;
 }
 
@@ -450,6 +450,8 @@ a {
   margin-left: 100px;
   padding-left: 50px;
   margin-right: auto;
+
+  clear: both;
 }
 
 .page-title__role {
@@ -1027,7 +1029,7 @@ main {
 }
 
 .gallery__item--popup {
-  position: fixed;
+  position: absolute;
   z-index: 5;
   top: 107px;
   bottom: 29px;
@@ -1044,7 +1046,7 @@ main {
   display: block;
 
   min-width: 1000px;
-  max-width: 1600px;
+  max-width: 2400px;
   margin: 0 auto;
   padding-top: 50px;
 
@@ -1359,7 +1361,6 @@ main {
   font-size: 16px;
   font-weight: 400;
   line-height: 18px;
-  ;
 }
 
 .contacts__text--social {
@@ -1676,7 +1677,7 @@ main {
   position: relative;
 
   min-width: 1000px;
-  max-width: 1600px;
+  max-width: 2400px;
   margin: 0 auto;
   padding: 15px 0;
 
