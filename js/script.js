@@ -401,45 +401,67 @@
     firstScreenWrapper.appendChild(firstScreen);
 
     window.onscroll = function (e) {
-      scrollHeader(e);
+        if (document.body.offsetWidth > 999) {
+          scrollHeader(e);
 
-      if (window.pageYOffset > phoneBlockTopCoords - 15) {
-        transformFirstScreenToFixedHat();
-      } else {
-        transformFirstScreenToBlock();
-      }
+          if (window.pageYOffset > phoneBlockTopCoords - 65 && window.pageYOffset < phoneBlockTopCoords + 35) {
+            navigationList.classList.remove("navigation__list--show");
+            navigationList.classList.remove("navigation__list--hide");
+            phoneBlock.classList.remove("phone-block--hidden");
+          }
+
+          if (window.pageYOffset > phoneBlockTopCoords - 15) {
+            transformFirstScreenToFixedHat();
+          } else {
+            transformFirstScreenToBlock();
+          }
+        }
     }
 
     arrowToSecondScreen.onclick = gradualScrolling(innerContainerHeaderOffsetHeight - containerHeaderOffsetHeight + 70, 5);
 
     var hideNavigationListTimer;
 
-    navigationList.onmouseover = function (e) {
-      if (navigationList.classList.contains("navigation__list--fixed-hat")) {
-        phoneBlock.classList.add("phone-block--hidden");
+    navigationBtn.onclick = function (e) {
+      if (!navigationList.classList.contains("navigation__list--show")) {
+        openMenu();
+      } else {
+        closeMenu();
       }
 
-      //Пропадание меню с задержкой
+      return false;
+    }
+
+    navigationList.onmouseover = function (e) {
       clearTimeout(hideNavigationListTimer);
-      navigationList.classList.add("navigation__list--show");
     }
 
     navigationList.onmouseout = function (e) {
-      //Пропадание меню с задержкой
-      hideNavigationListTimer = setTimeout(function (e) {
-        navigationList.classList.remove("navigation__list--show");
-        navigationList.classList.add("navigation__list--hide");
-        phoneBlock.classList.remove("phone-block--hidden");
-        setTimeout(function () {
-          navigationList.classList.remove("navigation__list--hide");
-        }, 301);
-      }, 1000);
+      hideNavigationListTimer = setTimeout(closeMenu, 5000);
     }
 
-    navigationBtn.onmouseover = function (e) {
+    function openMenu() {
+      navigationList.classList.remove("navigation__list--hide");
+      navigationList.offsetWidth = navigationList.offsetWidth;
+      navigationList.classList.add("navigation__list--show");
+
       if (navigationList.classList.contains("navigation__list--fixed-hat")) {
         phoneBlock.classList.add("phone-block--hidden");
       }
+    }
+
+    function closeMenu() {
+      navigationList.classList.remove("navigation__list--show");
+      navigationList.offsetWidth = navigationList.offsetWidth;
+      navigationList.classList.add("navigation__list--hide");
+
+      phoneBlock.classList.remove("phone-block--hidden");
+
+      setTimeout(function () {
+        if (navigationList.classList.contains("navigation__list--hide")) {
+          navigationList.classList.remove("navigation__list--hide");
+        }
+      }, 301);
     }
 
     function scrollHeader() {
