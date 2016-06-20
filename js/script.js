@@ -54,6 +54,7 @@
   var pageTitleRole = document.querySelector(".page-title__role");
   var pageTitleAnimatedWord = document.querySelector(".page-title__animated-word");
   var pageTitleCategory = document.querySelector(".page-title__category");
+  var main = document.querySelector("main");
 
   (function scrollbar(scrollableContents, scrollableContentContainers, scrollbars, scrollArrowsLeft, scrollArrowsRight, scrollbarTracks) {
     var timerTrackToRight;
@@ -803,6 +804,27 @@
         }, 600);
       }, 580);
     }, 5000);
+  })();
+
+  (function responsiveOn() {
+    if (document.body.offsetWidth < 1000) {
+      containerHeader.appendChild(secondScreen);
+
+      var sectionContacts = document.createElement("section");
+      sectionContacts.className = "content content--contacts";
+      main.appendChild(sectionContacts);
+      sectionContacts.appendChild(contacts);
+    } else {
+      innerContainerHeader.appendChild(secondScreen);
+    }
+
+    setInterval(function () {
+      if (document.body.offsetWidth < 1000) {
+        containerHeader.appendChild(secondScreen);
+      } else {
+        innerContainerHeader.appendChild(secondScreen);
+      }
+    }, 2000);
   })();
 
   function getCoords(elem) { // кроме IE8-

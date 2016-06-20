@@ -1338,7 +1338,7 @@ main {
   box-sizing: border-box;
   width: 300px;
   height: 36px;
-  padding: 3px 0;
+  padding: 0;
 
   text-align: center;
 
@@ -1348,7 +1348,7 @@ main {
   font-family: "Lato Regular", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 32px;
 }
 
 .contacts__text {
@@ -1585,17 +1585,6 @@ main {
   margin-bottom: 6px;
 }
 
-.partners__text {
-  margin-top: 2px;
-
-  color: #f9f9f9;
-
-  font-family: "Lato Light", "Arial", sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 24px;
-}
-
 .copyright {
   position: relative;
   z-index: 3;
@@ -1766,6 +1755,13 @@ main {
 
   .second-screen {
     height: auto;
+    padding: 0 4.166%;
+
+    padding-top: 85px;
+    padding-bottom: 140px;
+    background-image: url("../img/bg__header--gradient.jpg");
+    background-size: 100% 100%;
+    background-position: center center;
   }
 
   .page-header {
@@ -1786,7 +1782,7 @@ main {
 
   .logo {
     width: 22.5%;
-    height: 60px;
+    min-height: 60px;
   }
 
   .logo img {
@@ -1934,18 +1930,8 @@ main {
     font-size: 12px;
   }
 
-  .second-screen {
-    margin: 0 -4.5%;
-    padding-top: 85px;
-    padding-bottom: 140px;
-    background-image: url("../img/bg__header--gradient.jpg");
-    background-size: 110% 100%;
-    background-position: center center;
-  }
-
   .second-screen__text {
     width: 100%;
-    padding: 0 4.166%;
   }
 
   .second-screen__text--title {
@@ -1959,23 +1945,235 @@ main {
     padding: 0;
   }
 
+  .content {
+    padding-top: 70px;
+  }
+
+  .content--how-i-work {
+    display: none;
+  }
+
+  .gallery--clients {
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .gallery__container--clients {
+    position: relative;
+    padding: 0 4.166%;
+    padding-bottom: 100px;
+    text-align: center;
+  }
+
+  .gallery__item--clients {
+    margin-right: 60px;
+    margin-bottom: 60px;
+    vertical-align: middle;
+  }
+
+  .gallery__item--clients:nth-of-type(3n) {
+    margin-right: 0;
+  }
+
+  .gallery__item--clients img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .gallery__item--clients {
+    width: 25%;
+    height: auto;
+  }
+
+  .scroll--clients {
+    display: none;
+  }
+
   .content__column {
     width: 100%;
-    padding: 0;
+    padding: 0 4.166%;
     margin: 0;
+  }
+
+  .content__title {
+    margin-bottom: 95px;
+  }
+
+  .content__title--clients {
+    margin-bottom: 55px;
+  }
+
+  .content__column--infographics {
+    margin-bottom: 55px;
+  }
+
+  .content__column--infographics::after {
+    width: 100%;
+    height: 2px;
+    top: auto;
+    bottom: 0;
+    left: 0;
   }
 
   .content__text--infographics {
     float: none;
     padding: 0;
     margin: 0;
+    margin-bottom: 50px;
     text-align: left;
+    font-size: 28px;
+    max-width: 100%;
+  }
+
+  .content__text--channels {
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 34px;
   }
 
   .content__column--channels {
     float: none;
-    text-align: center;
-    padding: 0;
+    text-align: left;
     margin: 0;
+  }
+
+  .content__picture img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .content__picture--match-tv {
+    width: 349px;
+    height: 94px;
+    margin-right: 70px;
+  }
+
+  .content__picture--s-tv {
+    width: 110px;
+    height: 97px;
+  }
+
+  .contacts {
+    float: none;
+    width: 77%;
+    margin: 0 auto;
+  }
+
+  .contacts__text {
+    margin-bottom: 15px;
+
+    font-size: 28px;
+    line-height: 42px;
+  }
+
+  .contacts__text--title {
+    margin-bottom: 40px;
+
+    font-size: 40px;
+    line-height: 60px;
+  }
+
+  .contacts__key {
+    margin-right: 48px;
+
+    font-size: 26px;
+    line-height: 39px;
+  }
+
+  .contacts__text:last-of-type {
+    margin-bottom: 28px;
+  }
+
+  .contacts__link {
+    font-size: 28px;
+    line-height: 42px;
+  }
+
+  .contacts__btn--link {
+    height: 50px;
+    width: 100%;
+    font-size: 26px;
+    line-height: 46px;
+  }
+
+  .partners {
+    width: 50%;
+  }
+
+  .copyright {
+    width: 50%;
+  }
+
+  .content--contacts {
+    position: relative;
+    z-index: 3;
+
+    padding-top: 82px;
+
+    background-color: #f48647;
+  }
+
+  .page-footer {
+    background-color: #1a2232;
+  }
+
+  .partners__link img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .partners__link {
+    width: 100%;
+    height: 100%;
+  }
+
+  .partners__logo {
+    width: 146px;
+    height: 123px;
+  }
+
+  .copyright__key {
+    margin-right: 8px;
+  }
+
+  .copyright__company {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .gallery__item--clients {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .phone-block__phone,
+  .phone-block__btn {
+    font-size: 11px;
+  }
+
+  .content__text--infographics {
+    font-size: 12px;
+  }
+
+  .content__text--channels {
+    font-size: 16px;
+  }
+
+  .content__column--channels {
+    text-align: center;
+  }
+
+  .content__picture--match-tv {
+    width: 232px;
+    height: 62px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .content__picture--s-tv {
+    width: 73px;
+    height: 64px;
   }
 }
