@@ -326,7 +326,7 @@ a {
 .navigation__list {
   position: absolute;
   z-index: 3;
-  top: -30px;
+  top: -29px;
   right: 0px;
 
   width: 100%;
@@ -1451,6 +1451,7 @@ main {
 .contacts__input--message {
   padding-top: 8px;
   padding-right: 10px;
+  margin-bottom: 25px;
 
   font-size: 14px;
   line-height: 18px;
@@ -1570,11 +1571,11 @@ main {
 
 .partners__logo {
   position: relative;
-  right: 33px;
+  right: 20px;
+  top: 40px;
 
   width: 150px;
   margin: 0 auto;
-  margin-top: 32px;
 
   text-align: center;
 }
@@ -1655,10 +1656,31 @@ main {
   text-align: center;
 
   background-color: #2a3140;
+
+  animation-duration: 0.6s;
+}
+
+@keyframes contactsFormAppear {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes contactsFormDisappear {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 .js__wrapper--show {
   display: block;
+
+  animation-name: contactsFormAppear;
+}
+
+.js__wrapper--hide {
+  opacity: 0;
+  display: block;
+
+  animation-name: contactsFormDisappear;
 }
 
 .first-screen--fixed-hat {
@@ -1706,7 +1728,7 @@ main {
 .navigation__list--fixed-hat {
   right: -6px;
   z-index: 2;
-  top: -68px;
+  top: -67px;
 
   padding-top: 20px;
 }
@@ -1953,6 +1975,63 @@ main {
     display: none;
   }
 
+  .gallery--portfolio {
+    min-height: 755px;
+  }
+
+  .gallery__link {
+    min-width: 0px;
+    max-width: 999px;
+  }
+
+  .gallery__text {
+    font-size: 9px;
+    line-height: 11px;
+  }
+
+  .gallery__time {
+    font-size: 9px;
+    line-height: 11px;
+  }
+
+  .gallery__item--popup {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+    opacity: 0.98;
+
+    padding-bottom: 40px;
+    max-height: 100%;
+  }
+
+  .gallery__picture--popup img {
+    max-height: 100%;
+  }
+
+  .gallery__btn {
+    bottom: -25px;
+    width: 85px;
+    font-size: 7px;
+    line-height: 12px;
+  }
+
+  .gallery__btn--next::before,
+  .gallery__btn--previous::after {
+    height: 12px;
+  }
+
+  .gallery__btn--next::after,
+  .gallery__btn--previous::before {
+    height: 12px;
+    width: 14px;
+  }
+
+  .gallery__title {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
   .gallery--clients {
     overflow: visible;
     white-space: normal;
@@ -2139,6 +2218,97 @@ main {
   .copyright__company {
     font-size: 16px;
   }
+
+  .content--contacts {
+    z-index: 4;
+  }
+
+  .container__inner-wrapper--contacts {
+    padding: 0;
+  }
+
+  .js__wrapper--contacts__form {
+    top: 0;
+    right: 0;
+
+    width: auto;
+  }
+
+  .contacts__form {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 4.166%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  .contacts__text.contacts__text--form-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 63px;
+  }
+
+  .contacts__input {
+    width: 100%;
+    font-size: 20px;
+    line-height: 50px;
+  }
+
+  .contacts__input--message {
+    line-height: 27px;
+  }
+
+  .contacts__input::-webkit-input-placeholder {
+    font-family: "Lato Regular", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .contacts__input::-moz-placeholder {
+    font-family: "Lato Regular", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .contacts__input:-moz-placeholder {
+    font-family: "Lato Regular", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .contacts__input:-ms-input-placeholder {
+    font-family: "Lato Regular", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 50px;
+  }
+
+  .contacts__input--message::-webkit-input-placeholder {
+    line-height: 27px;
+  }
+
+  .contacts__input--message::-moz-placeholder  {
+    line-height: 27px;
+  }
+
+  .contacts__input--message:-moz-placeholder {
+    line-height: 27px;
+  }
+
+  .contacts__input--message:-ms-input-placeholder {
+    line-height: 27px;
+  }
+
+  .contacts__btn--form {
+    width: 70%;
+  }
+
+  .cross--portfolio {
+    bottom: -40px;
+  }
 }
 
 @media screen and (max-width: 639px) {
@@ -2175,5 +2345,26 @@ main {
   .content__picture--s-tv {
     width: 73px;
     height: 64px;
+  }
+
+  .contacts__key {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .contacts__text {
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+
+  .contacts__text--title {
+    font-size: 28px;
+    line-height: 42px;
+  }
+
+  .contacts__link {
+    font-size: 16px;
+    line-height: 24px;
   }
 }
