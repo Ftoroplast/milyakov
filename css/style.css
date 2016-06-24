@@ -493,7 +493,7 @@ a {
   box-sizing: border-box;
   min-width: 522px;
   max-width: 800px;
-  height: 44px;
+  min-height: 44px;
   margin: 0 auto;
   margin-bottom: 50px;
 
@@ -1037,6 +1037,17 @@ main {
   width: 100%;
 
   background-color: #1e2535;
+
+  animation-duration: 0s;
+}
+
+.gallery__item--appear {
+  animation-name: popupAppear;
+}
+
+@keyframes popupAppear {
+  0% {opacity: 0};
+  100% {opacity: 0.98};
 }
 
 .gallery__link--popup {
@@ -1212,23 +1223,35 @@ main {
   display: block;
 }
 
-.cross--phone-block {
+.js__wrapper--cross {
   position: static;
 
   display: inline-block;
 
   width: 77px;
   height: 44px;
-  margin-left: -10px;
 
   vertical-align: top;
 
-  background: transparent url("../img/icon__phone-block--sending-symbol.png") no-repeat center;
-  background-size: 100% 100%;
+  transform: skew(-24deg);
+  background-color: #f48a31;
+}
+
+.js__wrapper--cross-done {
+  background-color: #18d958;
+}
+
+.cross--phone-block {
+  position: static;
+  display: block;
+  color: #1a2232;
+  transform: skew(24deg);
 }
 
 .cross--done {
-  background: transparent url("../img/icon__phone-block--done-symbol.png") no-repeat center;
+  font-size: 0;
+  background: transparent url("../img/icon__phone-block--done-symbol.svg") no-repeat center;
+  background-size: 25px 25px;
 }
 
 .cross--portfolio {
@@ -1586,6 +1609,17 @@ main {
   margin-bottom: 6px;
 }
 
+.partners__text {
+  margin-top: 2px;
+
+  color: #f9f9f9;
+
+  font-family: "Lato Light", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
 .copyright {
   position: relative;
   z-index: 3;
@@ -1660,17 +1694,8 @@ main {
   animation-duration: 0.6s;
 }
 
-@keyframes contactsFormAppear {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-@keyframes contactsFormDisappear {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
 .js__wrapper--show {
+  opacity: 1;
   display: block;
 
   animation-name: contactsFormAppear;
@@ -1681,6 +1706,16 @@ main {
   display: block;
 
   animation-name: contactsFormDisappear;
+}
+
+@keyframes contactsFormAppear {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes contactsFormDisappear {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 .first-screen--fixed-hat {
@@ -2003,6 +2038,8 @@ main {
 
     padding-bottom: 40px;
     max-height: 100%;
+
+    animation-duration: 0.6s;
   }
 
   .gallery__picture--popup img {
@@ -2064,7 +2101,7 @@ main {
     height: auto;
   }
 
-  .scroll--clients {
+  .scroll {
     display: none;
   }
 
@@ -2196,21 +2233,6 @@ main {
     background-color: #1a2232;
   }
 
-  .partners__link img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .partners__link {
-    width: 100%;
-    height: 100%;
-  }
-
-  .partners__logo {
-    width: 146px;
-    height: 123px;
-  }
-
   .copyright__key {
     margin-right: 8px;
   }
@@ -2308,6 +2330,16 @@ main {
 
   .cross--portfolio {
     bottom: -40px;
+  }
+
+  .bg-line--about {
+    -webkit-transform: matrix(1,0,-0.4,1,0,0);
+            transform: matrix(1,0,-0.4,1,0,0);
+  }
+
+  .cross--contacts-form {
+    display: block;
+    top: -45px;
   }
 }
 
