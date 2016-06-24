@@ -1,6 +1,6 @@
 <?
 if ((isset($_POST['name'])&&$_POST['name']!="")&&(isset($_POST['phone'])&&$_POST['phone']!="")&&(isset($_POST['e-mail'])&&$_POST['e-mail']!="")&&(isset($_POST['message'])&&$_POST['message']!="")){
-  $to = 'ftrplst@yandex.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+  $to = 'milyakov.anton@gmail.com'; //Почта получателя, через запятую можно указать сколько угодно адресов
   $subject = 'Форма обратной связи'; //Загаловок сообщения
   $message = '
           <html>
@@ -15,10 +15,10 @@ if ((isset($_POST['name'])&&$_POST['name']!="")&&(isset($_POST['phone'])&&$_POST
               </body>
           </html>'; //Текст нащего сообщения можно использовать HTML теги
   $headers  = "Content-type: text/html; charset=utf-8 \r\n"; //Кодировка письма
-  $headers .= "From: Отправитель <from@example.com>\r\n"; //Наименование и почта отправителя
+  $headers .= "From: Отправитель <$_POST['e-mail']>\r\n"; //Наименование и почта отправителя
   mail($to, $subject, $message, $headers); //Отправка письма с помощью функции mail
 } elseif ((isset($_POST['name'])&&$_POST['name']!="")&&(isset($_POST['phone'])&&$_POST['phone']!="")){ //Проверка отправилось ли наше поля name и не пустые ли они
-        $to = 'ftrplst@yandex.ru'; //Почта получателя, через запятую можно указать сколько угодно адресов
+        $to = 'milyakov.anton@gmail.com'; //Почта получателя, через запятую можно указать сколько угодно адресов
         $subject = 'Обратный звонок'; //Загаловок сообщения
         $message = '
                 <html>
@@ -31,7 +31,7 @@ if ((isset($_POST['name'])&&$_POST['name']!="")&&(isset($_POST['phone'])&&$_POST
                     </body>
                 </html>'; //Текст нащего сообщения можно использовать HTML теги
         $headers  = "Content-type: text/html; charset=utf-8 \r\n"; //Кодировка письма
-        $headers .= "From: Отправитель <from@example.com>\r\n"; //Наименование и почта отправителя
+        $headers .= "From: Отправитель <$_POST['e-mail']>\r\n"; //Наименование и почта отправителя
         mail($to, $subject, $message, $headers); //Отправка письма с помощью функции mail
 }
 ?>

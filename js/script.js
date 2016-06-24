@@ -161,7 +161,7 @@
       var galleryPicturesPopup = document.querySelectorAll(".gallery__picture--popup");
       if (document.body.offsetWidth < 1000) {
         for (i = 0; i < galleryPicturesPopup.length; ++i) {
-          galleryPicturesPopup[i].style.height = window.screen.height * 0.3 + "px";
+          galleryPicturesPopup[i].style.height = window.screen.height * 0.7 + "px";
         }
       }
     }, 20);
