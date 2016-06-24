@@ -2105,6 +2105,10 @@ main {
     display: none;
   }
 
+  .scroll__track {
+    display: none;
+  }
+
   .content__column {
     width: 100%;
     padding: 0 4.166%;

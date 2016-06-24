@@ -208,6 +208,8 @@
         if (!(contactsCross in contactsForm)) {
           contactsForm.appendChild(contactsCross);
         }
+
+        galleryContainerPortfolio.style.left = 0 + "px";
       } else {
         if (!(secondScreen in innerContainerHeader)) {
           innerContainerHeader.appendChild(secondScreen);
@@ -251,10 +253,12 @@
     var timerTrackToLeft;
 
     setInterval(function () {
-      for (i = 0; i < scrollbars.length; ++i)(function(i) {
-        resizeScrollbarTrack(scrollableContents[i], scrollableContentContainers[i], scrollbars[i], scrollbarTracks[i]);
-        scrollContent(scrollableContents[i], scrollableContentContainers[i], scrollbars[i], scrollbarTracks[i]);
-      })(i);
+      if (document.body.offsetWidth > 999) {
+        for (i = 0; i < scrollbars.length; ++i)(function(i) {
+          resizeScrollbarTrack(scrollableContents[i], scrollableContentContainers[i], scrollbars[i], scrollbarTracks[i]);
+          scrollContent(scrollableContents[i], scrollableContentContainers[i], scrollbars[i], scrollbarTracks[i]);
+        })(i);
+      }
     }, 50);
 
     for (i = 0; i < scrollableContents.length; ++i)(function(i) {
@@ -306,8 +310,8 @@
 
       scrollableContents[i].addEventListener("mouseout", function (e) {
         document.onkeydown = null;
-      })
-    }
+      });
+    };
 
     function scrollbarDragAndDrop(i) {
       return function (e) {
