@@ -917,6 +917,76 @@ main {
   background-color: #f9f9f9;
 }
 
+.container--how-i-work {
+  padding-bottom: 0;
+}
+
+.container__inner-wrapper--how-i-work {
+  padding-bottom: 0;
+}
+
+.work-process {
+  text-align: center;
+
+  font-size: 0;
+}
+
+.work-process__item {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  width: 33.33333%;
+  min-height: 235px;
+  margin-bottom: 55px;
+}
+
+.work-process__item:nth-of-type(1),
+.work-process__item:nth-of-type(4) {
+  padding-right: 4.166%;
+}
+
+.work-process__item:nth-of-type(2) {
+  padding: 0 4.166%;
+}
+
+.work-process__item:nth-of-type(3),
+.work-process__item:nth-of-type(5) {
+  padding-left: 4.166%;
+}
+
+.work-process__item:nth-of-type(4),
+.work-process__item:nth-of-type(5) {
+  margin-bottom: 0;
+}
+
+
+.work-process__picture {
+  min-height: 160px;
+}
+
+.work-process__text {
+  display: inline-block;
+  vertical-align: top;
+
+  color: #1a2232;
+
+  font-family: "Lato Bold", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.work-process__text--number {
+  color: #d0d3d9;
+
+  font-size: 50px;
+}
+
+.work-process__text--description {
+  width: 320px;
+  padding-top: 10px;
+}
+
 .content--about-me {
   min-height: 700px;
 
@@ -2050,8 +2120,24 @@ main {
     padding-top: 70px;
   }
 
-  .content--how-i-work {
-    display: none;
+  .work-process > .work-process__item {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    padding: 0;
+  }
+
+  .work-process__text {
+    position: relative;
+  }
+
+  .work-process__text--number {
+    position: absolute;
+    left: -40%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
   }
 
   .gallery--portfolio {
@@ -2390,8 +2476,8 @@ main {
   }
 
   .bg-line--about {
-    -webkit-transform: matrix(1,0,-0.4,1,0,0);
-            transform: matrix(1,0,-0.4,1,0,0);
+    -webkit-transform: matrix(1,0,-0.4,1,420,0);
+            transform: matrix(1,0,-0.4,1,420,0);
   }
 
   .cross--contacts-form {
@@ -2415,6 +2501,10 @@ main {
 
   .content__text--infographics {
     font-size: 18px;
+  }
+
+  .bg-line--partners {
+    height: 300px;
   }
 }
 
